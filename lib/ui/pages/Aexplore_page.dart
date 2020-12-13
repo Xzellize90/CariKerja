@@ -9,7 +9,7 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
         children: [
           Container(
             alignment: Alignment.topCenter,
@@ -19,7 +19,13 @@ class _ExplorePageState extends State<ExplorePage> {
             child: Center(
               child: Text(
                 "Hello,, Hakiki",
-                style: TextStyle(color: Colors.white, fontSize: 25),
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontFamily: 'Arial',
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ),
             decoration: BoxDecoration(
@@ -33,8 +39,108 @@ class _ExplorePageState extends State<ExplorePage> {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(70),
                     bottomRight: Radius.circular(70)),
-                color: Colors.blue),
-          )
+                color: Colors.blue[400]),
+          ),
+          Container(
+            width: 700,
+            height: 570,
+            margin: EdgeInsets.only(left: 25, right: 10, top: 20),
+            child: ListView(
+              children: <Widget>[
+                Text(
+                  "Job List",
+                  style: TextStyle(
+                    fontFamily: 'Arial',
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 17,
+                  ),
+                ),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title:
+                          Text("Highlight 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title:
+                          Text("Highlight 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title:
+                          Text("Highlight 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title:
+                          Text("Highlight 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title: Text("Job 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title: Text("Job 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+                Card(
+                    margin: EdgeInsets.only(top: 20),
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      title: Text("Job 1", style: TextStyle(fontSize: 20)),
+                      subtitle: Text("Company name"),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.blue[400],
+                      ),
+                    )),
+              ],
+            ),
+          ),
         ],
       ),
     );
