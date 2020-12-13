@@ -18,7 +18,7 @@ class _ExplorePageState extends State<ExplorePage> {
             height: 150,
             child: Center(
               child: Text(
-                "Hello,, Hakiki",
+                "Hello,, Hakiki :)",
                 style: TextStyle(
                   decoration: TextDecoration.none,
                   color: Colors.white,
@@ -41,9 +41,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     bottomRight: Radius.circular(70)),
                 color: Colors.blue[400]),
           ),
-          Container(
-            width: 700,
-            height: 570,
+          Flexible(flex:1 , child: Container(
             margin: EdgeInsets.only(left: 25, right: 10, top: 20),
             child: ListView(
               children: <Widget>[
@@ -140,7 +138,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     )),
               ],
             ),
-          ),
+          ))
         ],
       ),
     );
