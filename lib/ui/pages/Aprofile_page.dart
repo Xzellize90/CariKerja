@@ -1,26 +1,45 @@
 part of 'page.dart';
 
-class ProfilePage extends StatefulWidget {
-  @override
-  _ProfilePageState createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
+class ProfileApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: 450,
-        height: 270,
-        color: Colors.blue[400],
-        child: Center(
-            child: Container(
-          width: 130,
-          height: 130,
-          color: Colors.blue,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-        ) //CirlceAvatar
-            ),
+      body: Column(
+        children: <Widget>[
+          Container(
+              decoration: BoxDecoration(color: Colors.blue[400]),
+              child: Container(
+                width: double.infinity,
+                height: 350.0,
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          "",
+                        ),
+                        radius: 50.0,
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        "Hakiki",
+                        style: TextStyle(
+                          fontSize: 22.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                    ],
+                  ),
+                ),
+              )),
+        ],
       ),
     );
   }

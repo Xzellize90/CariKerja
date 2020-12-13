@@ -29,7 +29,7 @@ class _MainMenuState extends State<MainMenu> {
   static List<Widget> _widgetOptions = <Widget>[
     ExplorePage(),
     NotifPage(),
-    ProfilePage()
+    ProfileApp()
   ];
 
   void _onItemTapped(int index) {
