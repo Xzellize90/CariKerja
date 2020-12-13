@@ -25,13 +25,38 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  int _selectedIndex = 0;
+  static List<Widget> _widgetOptions = <Widget>[
+    ExplorePage(),
+    NotifPage(),
+    ProfilePage()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('MainMenu'),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline), title: Text("Add Data")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list), title: Text("List Data")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), title: Text("My Account"))
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
