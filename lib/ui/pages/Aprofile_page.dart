@@ -10,7 +10,7 @@ class ProfileApp extends StatelessWidget {
               decoration: BoxDecoration(color: Colors.blue[400]),
               child: Container(
                 width: double.infinity,
-                height: 350.0,
+                height: 250.0,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
