@@ -32,7 +32,7 @@ class _ExplorePageState extends State<ExplorePage> {
                   Expanded(
                       child: Container(
                     padding: EdgeInsets.only(left: 16),
-                    child: _folder
+                    child: !_folder
                         ? TextField(
                             decoration: InputDecoration(
                                 hintText: 'search',
@@ -41,22 +41,26 @@ class _ExplorePageState extends State<ExplorePage> {
                           )
                         : null,
                   )),
-                  AnimatedContainer(
-                      duration: Duration(milliseconds: 499),
+                  Container(
                       child: Material(
-                        type: MaterialType.transparency,
-                        child: InkWell(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(_folder ? 32 : 0),
-                              topRight: Radius.circular(32),
-                              bottomLeft: Radius.circular(_folder ? 32 : 0),
-                              bottomRight: Radius.circular(32)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Icon(Icons.search, color: Colors.blue),
-                          ),
-                        ),
-                      ))
+                    type: MaterialType.transparency,
+                    child: InkWell(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(_folder ? 32 : 0),
+                          topRight: Radius.circular(32),
+                          bottomLeft: Radius.circular(_folder ? 32 : 0),
+                          bottomRight: Radius.circular(32)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Icon(Icons.search, color: Colors.blue),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          _folder = !_folder;
+                        });
+                      },
+                    ),
+                  ))
                 ],
               ),
             )),
