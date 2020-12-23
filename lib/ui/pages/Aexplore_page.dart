@@ -19,51 +19,97 @@ class _ExplorePageState extends State<ExplorePage> {
             margin: EdgeInsets.only(left: 5, right: 5, top: 0),
             width: 385,
             height: 120,
-            child: AnimatedContainer(
-              margin: EdgeInsets.only(top: 30),
-              duration: Duration(milliseconds: 400),
-              width: _folder ? 35 : 300,
-              height: 35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(32),
-                color: Colors.orange,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: Container(
-                    padding: EdgeInsets.only(left: 16, top: 0),
-                    child: !_folder
-                        ? TextField(
-                            decoration: InputDecoration(
-                                hintText: 'search',
-                                hintStyle: TextStyle(color: Colors.black),
-                                border: InputBorder.none),
-                          )
-                        : null,
-                  )),
-                  Container(
-                      child: Material(
-                    type: MaterialType.transparency,
-                    child: InkWell(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(_folder ? 32 : 0),
-                          topRight: Radius.circular(32),
-                          bottomLeft: Radius.circular(_folder ? 32 : 0),
-                          bottomRight: Radius.circular(32)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Icon(Icons.search, color: Colors.black),
-                      ),
-                      onTap: () {
-                        setState(() {
-                          _folder = !_folder;
-                        });
-                      },
+            child: Column(
+              children: [
+                Container(
+                  child: AnimatedContainer(
+                    margin: EdgeInsets.only(top: 30),
+                    duration: Duration(milliseconds: 400),
+                    width: _folder ? 30 : 300,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(32),
+                      color: Colors.orange,
                     ),
-                  ))
-                ],
-              ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Container(
+                          padding: EdgeInsets.only(left: 16, top: 0),
+                          child: !_folder
+                              ? TextField(
+                                  decoration: InputDecoration(
+                                      hintText: 'search',
+                                      hintStyle: TextStyle(color: Colors.black),
+                                      border: InputBorder.none),
+                                )
+                              : null,
+                        )),
+                        Container(
+                            child: Material(
+                          type: MaterialType.transparency,
+                          child: InkWell(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(_folder ? 32 : 0),
+                                topRight: Radius.circular(32),
+                                bottomLeft: Radius.circular(_folder ? 32 : 0),
+                                bottomRight: Radius.circular(32)),
+                            child: Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    color: Colors.brown,
+                                    onPressed: () {},
+                                    child: Text(
+                                      "Search",
+                                      style: TextStyle(color: Colors.white),
+                                    ))),
+                            onTap: () {
+                              setState(() {
+                                _folder = !_folder;
+                              });
+                            },
+                          ),
+                        )),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 45, top: 5),
+                      child: Flexible(
+                          flex: 3,
+                          child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              color: Colors.orange,
+                              onPressed: () {},
+                              child: Text(
+                                "Penempatan",
+                                style: TextStyle(color: Colors.white),
+                              ))),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 75, top: 5),
+                      child: Flexible(
+                          flex: 3,
+                          child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              color: Colors.orange,
+                              onPressed: () {},
+                              child: Text(
+                                "Urutkan Gaji",
+                                style: TextStyle(color: Colors.white),
+                              ))),
+                    )
+                  ],
+                )
+              ],
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -71,186 +117,323 @@ class _ExplorePageState extends State<ExplorePage> {
                     bottomRight: Radius.circular(70)),
                 color: Colors.white),
           ),
+          Container(
+            margin: EdgeInsets.only(bottom: 7, top: 5),
+            child: Text(
+              "Highlist List",
+              style: TextStyle(
+                fontFamily: 'saira',
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          Flexible(
+              flex: 2,
+              child: Container(
+                height: 500,
+                margin: EdgeInsets.only(left: 25, right: 25, top: 0),
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                      height: 82,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 0),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Highlight 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 82,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Highlight 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 82,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Highlight 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 82,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Highlight 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              )),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            margin: EdgeInsets.only(bottom: 7),
+            child: Text(
+              "Job List",
+              style: TextStyle(
+                fontFamily: 'saira',
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+          ),
           Flexible(
               flex: 2,
               child: Container(
                 margin: EdgeInsets.only(left: 25, right: 25, top: 0),
+                height: 200,
                 child: ListView(
                   children: <Widget>[
-                    Text(
-                      "Job List",
-                      style: TextStyle(
-                        fontFamily: 'Arial',
-                        decoration: TextDecoration.none,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black,
-                        fontSize: 21,
-                      ),
+                    Container(
+                      height: 75,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 0),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Job 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
                     ),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Highlight 1",
+                    Container(
+                      height: 75,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Job 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
                               style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Highlight 1",
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 75,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Job 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
                               style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Highlight 1",
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 75,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Job 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
                               style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Highlight 1",
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 75,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Job 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
                               style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Job 1",
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 75,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2, color: Colors.black)),
+                          margin: EdgeInsets.only(top: 10),
+                          color: Colors.yellow,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            title: Text("Job 1",
+                                style: TextStyle(
+                                    fontSize: 18, fontFamily: 'saira')),
+                            subtitle: Text(
+                              "Company name",
                               style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Job 1",
-                              style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        margin: EdgeInsets.only(top: 20),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(10),
-                          title: Text("Job 1",
-                              style:
-                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 30,
-                          ),
-                        )),
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            leading: CircularProfileAvatar(
+                              '',
+                              child: Image.asset('assets/white.jpeg'),
+                              borderColor: Colors.black,
+                              borderWidth: 2,
+                              elevation: 2,
+                              radius: 25,
+                            ),
+                          )),
+                    ),
                   ],
                 ),
-              ))
+              )),
         ],
       ),
     );
