@@ -28,14 +28,20 @@ class _MainMenuState extends State<MainMenu> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.explore), title: Text("Explore")),
+              icon: Icon(Icons.explore),
+              title: Text("Explore"),
+              backgroundColor: Colors.orange),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), title: Text("Notification")),
+              icon: Icon(Icons.notifications),
+              title: Text("Notification"),
+              backgroundColor: Colors.orange),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), title: Text("My Profile"))
+              icon: Icon(Icons.account_circle),
+              title: Text("My Profile"),
+              backgroundColor: Colors.orange)
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.orange,
         onTap: _onItemTapped,
       ),
     );

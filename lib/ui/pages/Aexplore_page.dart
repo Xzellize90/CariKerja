@@ -11,32 +11,33 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       body: Column(
         children: [
           Container(
             alignment: Alignment.topCenter,
             margin: EdgeInsets.only(left: 5, right: 5, top: 0),
-            width: 400,
+            width: 385,
             height: 120,
-            child: Center(
-                child: AnimatedContainer(
+            child: AnimatedContainer(
+              margin: EdgeInsets.only(top: 30),
               duration: Duration(milliseconds: 400),
-              width: _folder ? 56 : 200,
-              height: 56,
+              width: _folder ? 35 : 300,
+              height: 35,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  color: Colors.white,
-                  boxShadow: kElevationToShadow[6]),
+                borderRadius: BorderRadius.circular(32),
+                color: Colors.orange,
+              ),
               child: Row(
                 children: [
                   Expanded(
                       child: Container(
-                    padding: EdgeInsets.only(left: 16),
+                    padding: EdgeInsets.only(left: 16, top: 0),
                     child: !_folder
                         ? TextField(
                             decoration: InputDecoration(
                                 hintText: 'search',
-                                hintStyle: TextStyle(color: Colors.blue),
+                                hintStyle: TextStyle(color: Colors.black),
                                 border: InputBorder.none),
                           )
                         : null,
@@ -51,8 +52,8 @@ class _ExplorePageState extends State<ExplorePage> {
                           bottomLeft: Radius.circular(_folder ? 32 : 0),
                           bottomRight: Radius.circular(32)),
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Icon(Icons.search, color: Colors.blue),
+                        padding: const EdgeInsets.all(0),
+                        child: Icon(Icons.search, color: Colors.black),
                       ),
                       onTap: () {
                         setState(() {
@@ -63,24 +64,17 @@ class _ExplorePageState extends State<ExplorePage> {
                   ))
                 ],
               ),
-            )),
+            ),
             decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      offset: Offset(0, 6),
-                      blurRadius: 5,
-                      spreadRadius: 5)
-                ],
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(70),
                     bottomRight: Radius.circular(70)),
-                color: Colors.blue[400]),
+                color: Colors.white),
           ),
           Flexible(
-              flex: 1,
+              flex: 2,
               child: Container(
-                margin: EdgeInsets.only(left: 25, right: 10, top: 20),
+                margin: EdgeInsets.only(left: 25, right: 25, top: 0),
                 child: ListView(
                   children: <Widget>[
                     Text(
@@ -90,88 +84,168 @@ class _ExplorePageState extends State<ExplorePage> {
                         decoration: TextDecoration.none,
                         fontWeight: FontWeight.normal,
                         color: Colors.black,
-                        fontSize: 17,
+                        fontSize: 21,
                       ),
                     ),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
                           title: Text("Highlight 1",
-                              style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
                           title: Text("Highlight 1",
-                              style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
                           title: Text("Highlight 1",
-                              style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
                           title: Text("Highlight 1",
-                              style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
-                          title: Text("Job 1", style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                          title: Text("Job 1",
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
-                          title: Text("Job 1", style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                          title: Text("Job 1",
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                     Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
                         margin: EdgeInsets.only(top: 20),
-                        color: Colors.white,
+                        color: Colors.yellow,
                         child: ListTile(
                           contentPadding: EdgeInsets.all(10),
-                          title: Text("Job 1", style: TextStyle(fontSize: 20)),
-                          subtitle: Text("Company name"),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.blue[400],
+                          title: Text("Job 1",
+                              style:
+                                  TextStyle(fontSize: 20, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 18),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 30,
                           ),
                         )),
                   ],
