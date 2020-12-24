@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -7,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'Amainmenu.dart';
 part 'opening_page.dart';
@@ -17,3 +17,5 @@ part 'signin_C_page.dart';
 part 'Aprofile_page.dart';
 part 'Aexplore_page.dart';
 part 'Anotif_page.dart';
+part 'Aresult.dart';
+part 'Ajob.dart';

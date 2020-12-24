@@ -11,7 +11,7 @@ class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Color(0xFFEEA20F),
       body: Column(
         children: [
           Container(
@@ -25,7 +25,7 @@ class _ExplorePageState extends State<ExplorePage> {
                   child: AnimatedContainer(
                     margin: EdgeInsets.only(top: 30),
                     duration: Duration(milliseconds: 400),
-                    width: _folder ? 30 : 300,
+                    width: 300,
                     height: 30,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(32),
@@ -35,44 +35,43 @@ class _ExplorePageState extends State<ExplorePage> {
                       children: [
                         Expanded(
                             child: Container(
-                          padding: EdgeInsets.only(left: 16, top: 0),
-                          child: !_folder
-                              ? TextField(
-                                  decoration: InputDecoration(
-                                      hintText: 'search',
-                                      hintStyle: TextStyle(color: Colors.black),
-                                      border: InputBorder.none),
-                                )
-                              : null,
+                          padding: EdgeInsets.only(left: 16, top: 13),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                hintText: 'search',
+                                hintStyle: TextStyle(color: Colors.black),
+                                border: InputBorder.none),
+                          ),
                         )),
                         Container(
-                            child: Material(
-                          type: MaterialType.transparency,
-                          child: InkWell(
-                            borderRadius: BorderRadius.only(
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: InkWell(
+                              borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(_folder ? 32 : 0),
                                 topRight: Radius.circular(32),
                                 bottomLeft: Radius.circular(_folder ? 32 : 0),
-                                bottomRight: Radius.circular(32)),
-                            child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: RaisedButton(
+                                bottomRight: Radius.circular(32),
+                              ),
+                              child: Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: RaisedButton(
+                                    color: Colors.brown,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(20)),
-                                    color: Colors.brown,
+                                            BorderRadius.circular(25)),
                                     onPressed: () {},
-                                    child: Text(
-                                      "Search",
-                                      style: TextStyle(color: Colors.white),
-                                    ))),
-                            onTap: () {
-                              setState(() {
-                                _folder = !_folder;
-                              });
-                            },
+                                    child: Text("Cari",
+                                        style: TextStyle(color: Colors.white)),
+                                  )),
+                              onTap: () {
+                                setState(() {
+                                  _folder = !_folder;
+                                });
+                              },
+                            ),
                           ),
-                        )),
+                        ),
                       ],
                     ),
                   ),
@@ -118,30 +117,51 @@ class _ExplorePageState extends State<ExplorePage> {
                 color: Colors.white),
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 7, top: 5),
+            margin: EdgeInsets.only(bottom: 10, top: 10),
             child: Text(
               "Highlist List",
               style: TextStyle(
                 fontFamily: 'saira',
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
               ),
             ),
           ),
           Flexible(
-              flex: 2,
+              flex: 3,
               child: Container(
-                height: 500,
+                height: 200,
                 margin: EdgeInsets.only(left: 25, right: 25, top: 0),
                 child: ListView(
                   children: <Widget>[
+                    Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 2, color: Colors.black)),
+                        color: Colors.yellow,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.only(left: 10),
+                          title: Text("Highlight 1",
+                              style:
+                                  TextStyle(fontSize: 18, fontFamily: 'saira')),
+                          subtitle: Text(
+                            "Company name",
+                            style: TextStyle(fontFamily: 'saira', fontSize: 15),
+                          ),
+                          leading: CircularProfileAvatar(
+                            '',
+                            child: Image.asset('assets/white.jpeg'),
+                            borderColor: Colors.black,
+                            borderWidth: 2,
+                            elevation: 2,
+                            radius: 25,
+                          ),
+                        )),
                     Container(
                       height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 0),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -168,7 +188,6 @@ class _ExplorePageState extends State<ExplorePage> {
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -195,34 +214,6 @@ class _ExplorePageState extends State<ExplorePage> {
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Highlight 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -257,24 +248,23 @@ class _ExplorePageState extends State<ExplorePage> {
               style: TextStyle(
                 fontFamily: 'saira',
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
               ),
             ),
           ),
           Flexible(
-              flex: 2,
+              flex: 3,
               child: Container(
                 margin: EdgeInsets.only(left: 25, right: 25, top: 0),
                 height: 200,
                 child: ListView(
                   children: <Widget>[
                     Container(
-                      height: 75,
+                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 0),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -297,11 +287,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 75,
+                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -324,11 +313,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 75,
+                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -351,11 +339,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 75,
+                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -378,11 +365,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 75,
+                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -405,11 +391,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 75,
+                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
-                          margin: EdgeInsets.only(top: 10),
                           color: Colors.yellow,
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 10),
@@ -434,6 +419,56 @@ class _ExplorePageState extends State<ExplorePage> {
                   ],
                 ),
               )),
+          Flexible(
+              flex: 2,
+              child: Container(
+                width: 325,
+                height: 150,
+                child: Row(
+                  children: [
+                    Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/white.jpeg"),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    ),
+                    Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/white.jpeg"),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    ),
+                    Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/white.jpeg"),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    ),
+                    Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/white.jpeg"),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    )
+                  ],
+                ),
+              ))
         ],
       ),
     );
