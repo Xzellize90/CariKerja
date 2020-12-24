@@ -65,7 +65,7 @@ class _OpeningState extends State<Opening> {
             Flexible(
               flex: 1,
               child: Container(
-                padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
                 width: double.infinity,
                   height:double.infinity,
                   child: ListView(
@@ -85,15 +85,15 @@ class _OpeningState extends State<Opening> {
             Flexible(
               flex: 0,
               child: RaisedButton(
-                child: Text('Pekerja'
+                child: Text('PEKERJA'
                 ,style: TextStyle(
                   color: Colors.black,
-                  fontSize: 28,
+                  fontSize: 34,
                 ),
                 ),
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)
+                  borderRadius: BorderRadius.circular(50.0)
                 ),
                 padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
                 onPressed: () {
@@ -103,18 +103,19 @@ class _OpeningState extends State<Opening> {
                 },
               ),
             ),
+            SizedBox(height: 20),
             Flexible(
               flex: 1,
               child: RaisedButton(
-                child: Text('Perusahaan'
+                child: Text('PERUSAHAAN'
                 ,style: TextStyle(
                   color: Colors.black,
-                  fontSize: 28,
+                  fontSize: 34,
                 ),
                 ),
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)
+                  borderRadius: BorderRadius.circular(50.0)
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
