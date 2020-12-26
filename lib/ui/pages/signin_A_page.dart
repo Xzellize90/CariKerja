@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'pageA.dart';
 
 class SignInApplicant extends StatefulWidget {
   @override
@@ -115,7 +115,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
                           setState(() {
                             isLoading = true;   
                           });
-                          String result = "";//await AuthServices.signIn(ctrlEmailA.text, ctrlPasswordA.text);
+                          String result = await AuthAServices.signIn(ctrlEmailA.text, ctrlPasswordA.text);
                           if(result=="success"){
                             Fluttertoast.showToast(
                               msg: "Success",

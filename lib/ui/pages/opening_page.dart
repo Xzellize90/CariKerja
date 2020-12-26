@@ -1,4 +1,9 @@
-part of 'page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'package:carikerja/ui/pages/pageA.dart';
+import 'package:carikerja/ui/pages/pageC.dart';
+
 class Splash extends StatefulWidget {
   @override
   _SplashState createState() => _SplashState();

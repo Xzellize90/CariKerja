@@ -1,3 +1,4 @@
+import 'package:carikerja/services/servicesA.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -9,11 +10,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'Amainmenu.dart';
-part 'opening_page.dart';
 part 'signup_A_page.dart';
 part 'signin_A_page.dart';
-part 'signup_C_page.dart';
-part 'signin_C_page.dart';
 part 'Aprofile_page.dart';
 part 'Aexplore_page.dart';
 part 'Anotif_page.dart';

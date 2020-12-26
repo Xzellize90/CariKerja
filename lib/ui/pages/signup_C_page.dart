@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'pageC.dart';
 
 class SignUpCompany extends StatefulWidget {
   @override
@@ -112,7 +112,7 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: "Password",
+                        hintText: "Password (Minimal 6 characters)",
                         hintStyle: TextStyle(fontSize: 18),
                         contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                         border: OutlineInputBorder(
@@ -158,7 +158,9 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                       onPressed: () async{
                         if(ctrlName.text == "" || 
                           ctrlEmail.text == "" || 
-                          ctrlPassword.text == ""){
+                          ctrlPassword.text == ""||
+                          ctrlLokasi.text == ""
+                          ){
                             Fluttertoast.showToast(
                               msg: "Please fill all fields !",
                               toastLength: Toast.LENGTH_SHORT,
@@ -171,7 +173,7 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                           setState(() {
                             isLoading = true;
                           });
-                          String result = "";//await AuthServices.signUp(ctrlEmail.text, ctrlPassword.text, ctrlName.text);
+                          String result = await AuthCServices.signUp(ctrlEmail.text, ctrlPassword.text, ctrlName.text, ctrlLokasi.text);
                           if(result=="success"){
                             Fluttertoast.showToast(
                               msg: "Success",
@@ -183,7 +185,9 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                             );
                             setState(() {
                             isLoading = false;
-                            clearForm();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => SignInCompany())
+                            );
                           });
                           }
                           else{
@@ -197,6 +201,9 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                             );
                             setState(() {
                             isLoading = false;
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => SignInCompany())
+                            );
                             clearForm();
                           });
                           }

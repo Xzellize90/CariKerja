@@ -1,6 +1,6 @@
-part of 'services.dart';
+part of 'servicesC.dart';
 
-class UserServices{
+class UserCServices{
 
   static CollectionReference userCollection = FirebaseFirestore.instance.collection("userC");
   static DocumentReference userCDoc;

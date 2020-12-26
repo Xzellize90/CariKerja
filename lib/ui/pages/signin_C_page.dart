@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'pageC.dart';
 
 class SignInCompany extends StatefulWidget {
   @override
@@ -115,7 +115,7 @@ class _SignInCompanyState extends State<SignInCompany> {
                           setState(() {
                             isLoading = true;   
                           });
-                          String result = "";//await AuthServices.signIn(ctrlEmailA.text, ctrlPasswordA.text);
+                          String result = await AuthCServices.signIn(ctrlEmailA.text, ctrlPasswordA.text);
                           if(result=="success"){
                             Fluttertoast.showToast(
                               msg: "Success",
@@ -128,9 +128,9 @@ class _SignInCompanyState extends State<SignInCompany> {
                             setState(() {
                             isLoading = false;   
                           });
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                              return MainMenu();
-                            }));
+                            //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                              //return MainMenu();
+                            //}));
                           }else{
                             Fluttertoast.showToast(
                               msg: result,

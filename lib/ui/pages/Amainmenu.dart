@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'pageA.dart';
 
 class MainMenu extends StatefulWidget {
   @override

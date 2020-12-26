@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'pageA.dart';
 
 class SignUpApplicant extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
   final ctrlEmail = TextEditingController();
   final ctrlPassword = TextEditingController();
   final ctrlLokasi = TextEditingController();
-  final ctrlTTLahir = TextEditingController();
+  final ctrlttLahir = TextEditingController();
   final ctrlAgama = TextEditingController();
   final ctrlHobby = TextEditingController();
   final ctrlSPenddidikan = TextEditingController();
@@ -24,7 +24,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
     ctrlEmail.dispose();
     ctrlPassword.dispose();
     ctrlLokasi.dispose();
-    ctrlTTLahir.dispose();
+    ctrlttLahir.dispose();
     ctrlAgama.dispose();
     ctrlHobby.dispose();
     ctrlSPenddidikan.dispose();
@@ -38,7 +38,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
     ctrlEmail.clear();
     ctrlPassword.clear();
     ctrlLokasi.clear();
-    ctrlTTLahir.clear();
+    ctrlttLahir.clear();
     ctrlAgama.clear();
     ctrlHobby.clear();
     ctrlSPenddidikan.clear();
@@ -171,7 +171,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                       ),
                     ),
                     TextFormField(
-                      controller: ctrlTTLahir,
+                      controller: ctrlttLahir,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -327,7 +327,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                           setState(() {
                             isLoading = true;
                           });
-                          String result = "";//await AuthServices.signUp(ctrlEmail.text, ctrlPassword.text, ctrlName.text);
+                          String result = await AuthAServices.signUp(ctrlEmail.text, ctrlPassword.text, ctrlName.text, ctrlLokasi.text, ctrlttLahir.text, ctrlAgama.text, ctrlHobby.text, ctrlSPenddidikan.text, ctrlSkills.text, ctrlPBekerja.text);
                           if(result=="success"){
                             Fluttertoast.showToast(
                               msg: "Success",
@@ -340,6 +340,9 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                             setState(() {
                             isLoading = false;
                             clearForm();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => SignInApplicant())
+                            );
                           });
                           }
                           else{
@@ -354,6 +357,9 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                             setState(() {
                             isLoading = false;
                             clearForm();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => SignInApplicant())
+                            );
                           });
                           }
                         }

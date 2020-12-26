@@ -1,4 +1,5 @@
-part of 'services.dart';
+
+part of 'servicesC.dart';
 
 class AuthCServices{
 
@@ -12,10 +13,10 @@ class AuthCServices{
     try{
       UserCredential result = await auth.createUserWithEmailAndPassword(email: email, password: password);
 
-      UserC userC = result.user.convertToUser();
+      UserC userC = result.user.convertToUser(namaC: namaC, lokasi: lokasi);
 
       auth.signOut();
-      await UserServices.updateUser(userC);
+      await UserCServices.updateUser(userC);
       msg = "success";
 
     }catch(e){
@@ -23,6 +24,25 @@ class AuthCServices{
     }
 
     return msg;
+  }
+
+  static Future<String> signIn(String email, String password) async{
+    await Firebase.initializeApp();
+    String msg = "Success";
+    try{
+      await auth.signInWithEmailAndPassword(email: email, password: password).whenComplete(() => msg = "success",);
+    }catch(e){
+      msg=e.toString();
+    }
+    return msg;
+  }
+
+  static Future<bool> signout() async{
+    bool result = false;
+    await auth.signOut().whenComplete(() => 
+      result = true,
+    );
+    return result;
   }
 
 }

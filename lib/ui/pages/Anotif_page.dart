@@ -1,4 +1,4 @@
-part of 'page.dart';
+part of 'pageA.dart';
 
 class NotifPage extends StatefulWidget {
   @override
