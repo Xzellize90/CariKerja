@@ -1,6 +1,8 @@
 part of 'pageA.dart';
 
 class ProfileApp extends StatefulWidget {
+  ProfileApp({this.user});
+  final UserA user;
   @override
   _ProfileAppState createState() => _ProfileAppState();
 }
@@ -14,7 +16,7 @@ class _ProfileAppState extends State<ProfileApp> {
 
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection("userA");
-  String name, email, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
+  String id, name, email, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
 
   var ctrlName = TextEditingController();
   var ctrlPrice = TextEditingController();
@@ -32,6 +34,7 @@ class _ProfileAppState extends State<ProfileApp> {
 
   void getUserUpdate() async {
     userCollection.doc(_auth.uid).snapshots().listen((event) {
+      id = event.data()['uid'];
       name = event.data()['namaA'];
       email = event.data()['email'];
       lokai = event.data()['lokasi'];
@@ -113,12 +116,13 @@ class _ProfileAppState extends State<ProfileApp> {
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
+                    controller: ctrlName =
+                        TextEditingController(text: name ?? ''),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: name ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -131,7 +135,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -149,7 +152,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -167,7 +169,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -185,7 +186,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -203,7 +203,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -221,7 +220,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -239,7 +237,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -257,7 +254,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -288,7 +284,54 @@ class _ProfileAppState extends State<ProfileApp> {
                           "Update",
                           style: TextStyle(fontFamily: 'saira', fontSize: 25),
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await UserAServices.editProduct(_auth.uid, name ?? '')
+                          if (ctrlName.text == "") {
+                            Fluttertoast.showToast(
+                              msg: "Please fill all fields!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0,
+                            );
+                          } else {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            UserA user = UserA(
+                              ctrlId.text,
+                              ctrlName.text,
+                            );
+                            bool result = await UserAServices.editProduct(user);
+                            if (result == true) {
+                              Fluttertoast.showToast(
+                                msg: "Add product succesful!",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
+                              setState(() {
+                                isLoading = false;
+                              });
+                              Navigator.pop(context);
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: "Failed! Try again",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
+                              setState(() {
+                                isLoading = false;
+                              });
+                            }
+                          }
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
                       ),
