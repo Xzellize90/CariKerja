@@ -6,8 +6,15 @@ class ProfileApp extends StatefulWidget {
 }
 
 class _ProfileAppState extends State<ProfileApp> {
+  bool isLoading = false;
+
   TextEditingController controllerName;
   TextEditingController controllerPrice;
+  User _auth = FirebaseAuth.instance.currentUser;
+
+  CollectionReference userCollection =
+      FirebaseFirestore.instance.collection("userA");
+  String name, email, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
 
   var ctrlName = TextEditingController();
   var ctrlPrice = TextEditingController();
@@ -21,6 +28,27 @@ class _ProfileAppState extends State<ProfileApp> {
     setState(() {
       imageFile = selectedImage;
     });
+  }
+
+  void getUserUpdate() async {
+    userCollection.doc(_auth.uid).snapshots().listen((event) {
+      name = event.data()['namaA'];
+      email = event.data()['email'];
+      lokai = event.data()['lokasi'];
+      ttl = event.data()['ttlahir'];
+      agama = event.data()['agama'];
+      hobby = event.data()['hobby'];
+      pendidikan = event.data()['spendidikan'];
+      skill = event.data()['skills'];
+      kerja = event.data()['pbekerja'];
+
+      setState(() {});
+    });
+  }
+
+  void initState() {
+    getUserUpdate();
+    super.initState();
   }
 
   @override
@@ -86,12 +114,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    controller: ctrlName,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: name ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -109,7 +136,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: email ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -127,7 +154,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: lokai ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -145,7 +172,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: ttl ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -163,7 +190,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: agama ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -181,7 +208,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: hobby ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -199,7 +226,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: pendidikan ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -217,7 +244,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: skill ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -235,7 +262,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Email',
+                        labelText: kerja ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -274,7 +301,49 @@ class _ProfileAppState extends State<ProfileApp> {
                           "Sign Out",
                           style: TextStyle(fontFamily: 'saira', fontSize: 25),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Signout Confirmation"),
+                                  content: Text("Are you sure to signout?"),
+                                  actions: [
+                                    FlatButton(
+                                      onPressed: () async {
+                                        setState(() {
+                                          isLoading = true;
+                                        });
+                                        await AuthAServices.signout()
+                                            .then((value) {
+                                          if (value) {
+                                            Navigator.pushReplacement(context,
+                                                MaterialPageRoute(
+                                                    builder: (context) {
+                                              return SignInApplicant();
+                                            }));
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                          }
+                                        });
+                                      },
+                                      child: Text("Yes"),
+                                    ),
+                                    FlatButton(
+                                      child: Text("No"),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
                       ),
