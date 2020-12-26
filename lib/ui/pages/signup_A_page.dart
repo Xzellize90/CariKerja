@@ -70,7 +70,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                     SizedBox(height: 25),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Nama Perusahaan",
+                      child: Text("Nama Lengkap Anda",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18
@@ -82,7 +82,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: "Nama Perusahaan",
+                        hintText: "Nama Lengkap Anda",
                         hintStyle: TextStyle(fontSize: 18),
                         contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                         border: OutlineInputBorder(
