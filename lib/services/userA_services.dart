@@ -28,6 +28,14 @@ class UserAServices {
     await Firebase.initializeApp();
     await userAollection.doc(user.uid).update({
       'namaA': user.namaA,
+      'email': user.email,
+      'lokasi': user.lokasi,
+      'ttlahir': user.ttlahir,
+      'agama': user.agama,
+      'hobby': user.hobby,
+      'spendidikan': user.spendidikan,
+      'skills': user.skills,
+      'pbekerja': user.pbekerja
     });
     return true;
   }

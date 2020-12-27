@@ -11,7 +11,15 @@ class _ProfileAppState extends State<ProfileApp> {
   bool isLoading;
 
   TextEditingController controllerName;
-  TextEditingController controllerPrice;
+  TextEditingController controllerEmail;
+  TextEditingController controllerLokasi;
+  TextEditingController controllerLahir;
+  TextEditingController controllerAgama;
+  TextEditingController controllerHobby;
+  TextEditingController controllerPend;
+  TextEditingController controllerSkill;
+  TextEditingController controllerKerja;
+
   User _auth = FirebaseAuth.instance.currentUser;
 
   CollectionReference userCollection =
@@ -19,7 +27,15 @@ class _ProfileAppState extends State<ProfileApp> {
   String id, name, email, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
 
   var ctrlName = TextEditingController();
-  var ctrlPrice = TextEditingController();
+  var ctrlEmail = TextEditingController();
+  var ctrlLokasi = TextEditingController();
+  var ctrlLahir = TextEditingController();
+  var ctrlAgama = TextEditingController();
+  var ctrlHobby = TextEditingController();
+  var ctrlPend = TextEditingController();
+  var ctrlSkill = TextEditingController();
+  var ctrlKerja = TextEditingController();
+
   var ctrlId = TextEditingController();
 
   PickedFile imageFile;
@@ -133,8 +149,7 @@ class _ProfileAppState extends State<ProfileApp> {
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
-                    controller: ctrlPrice =
-                        TextEditingController(text: email ?? ''),
+                    controller: ctrlEmail = TextEditingController(text: email),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
@@ -152,11 +167,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlLokasi = TextEditingController(text: lokai),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: lokai ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -169,11 +184,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlLahir = TextEditingController(text: ttl),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: ttl ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -186,11 +201,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlAgama = TextEditingController(text: agama),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: agama ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -203,11 +218,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlHobby = TextEditingController(text: hobby),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: hobby ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -220,11 +235,12 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlPend =
+                        TextEditingController(text: pendidikan),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: pendidikan ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -237,11 +253,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlSkill = TextEditingController(text: skill),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: skill ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -254,11 +270,11 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    controller: ctrlKerja = TextEditingController(text: kerja),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: kerja ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -286,7 +302,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         ),
                         onPressed: () async {
                           ctrlId = TextEditingController(text: id);
-                          if (ctrlName.text == "") {
+                          if (ctrlName.text == "" || ctrlEmail.text == "") {
                             Fluttertoast.showToast(
                               msg: "Please fill all fields!",
                               toastLength: Toast.LENGTH_SHORT,
@@ -300,9 +316,16 @@ class _ProfileAppState extends State<ProfileApp> {
                               isLoading = true;
                             });
                             UserA user = UserA(
-                              ctrlId.text,
-                              ctrlName.text,
-                            );
+                                ctrlId.text,
+                                ctrlName.text,
+                                ctrlEmail.text,
+                                ctrlLokasi.text,
+                                ctrlLahir.text,
+                                ctrlAgama.text,
+                                ctrlHobby.text,
+                                ctrlPend.text,
+                                ctrlSkill.text,
+                                ctrlKerja.text);
                             bool result = await UserAServices.editProduct(user);
                             if (result == true) {
                               Fluttertoast.showToast(
@@ -316,7 +339,6 @@ class _ProfileAppState extends State<ProfileApp> {
                               setState(() {
                                 isLoading = false;
                               });
-                              Navigator.pop(context);
                             } else {
                               Fluttertoast.showToast(
                                 msg: "Failed! Try again",
