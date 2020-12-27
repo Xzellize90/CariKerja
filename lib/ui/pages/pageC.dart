@@ -7,6 +7,16 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'dart:math';
+import 'package:carikerja/models/models.dart';
+import 'package:carikerja/main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../models/models.dart';
 part 'signup_C_page.dart';
 part 'signin_C_page.dart';
+part 'Cmainmenu.dart';
+part 'Cadd_page.dart';
