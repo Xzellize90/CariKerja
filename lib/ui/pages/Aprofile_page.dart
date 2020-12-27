@@ -8,7 +8,7 @@ class ProfileApp extends StatefulWidget {
 }
 
 class _ProfileAppState extends State<ProfileApp> {
-  bool isLoading = false;
+  bool isLoading;
 
   TextEditingController controllerName;
   TextEditingController controllerPrice;
@@ -116,8 +116,7 @@ class _ProfileAppState extends State<ProfileApp> {
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
-                    controller: ctrlName =
-                        TextEditingController(text: name ?? ''),
+                    controller: ctrlName = TextEditingController(text: name),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
@@ -134,12 +133,13 @@ class _ProfileAppState extends State<ProfileApp> {
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
+                    controller: ctrlPrice =
+                        TextEditingController(text: email ?? ''),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: email ?? '',
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Write your email",
                         hintStyle: TextStyle(fontSize: 10),
@@ -285,7 +285,7 @@ class _ProfileAppState extends State<ProfileApp> {
                           style: TextStyle(fontFamily: 'saira', fontSize: 25),
                         ),
                         onPressed: () async {
-                          await UserAServices.editProduct(_auth.uid, name ?? '')
+                          ctrlId = TextEditingController(text: id);
                           if (ctrlName.text == "") {
                             Fluttertoast.showToast(
                               msg: "Please fill all fields!",
@@ -306,7 +306,7 @@ class _ProfileAppState extends State<ProfileApp> {
                             bool result = await UserAServices.editProduct(user);
                             if (result == true) {
                               Fluttertoast.showToast(
-                                msg: "Add product succesful!",
+                                msg: "Edit product succesful!",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.green,
