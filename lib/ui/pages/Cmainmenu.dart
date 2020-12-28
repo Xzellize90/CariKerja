@@ -28,16 +28,16 @@ class _CompanyMainState extends State<CompanyMain> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              title: Text("Explore"),
+              icon: Icon(Icons.add_box),
+              title: Text("Add Job"),
               backgroundColor: Colors.orange),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications),
-              title: Text("Notification"),
+              icon: Icon(Icons.list_alt_outlined),
+              title: Text("Job List"),
               backgroundColor: Colors.orange),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
-              title: Text("My Profile"),
+              title: Text("Profile"),
               backgroundColor: Colors.orange)
         ],
         currentIndex: _selectedIndex,
