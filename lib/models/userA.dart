@@ -14,9 +14,16 @@ class UserA extends Equatable {
   final String pbekerja;
   final String profileApplicant;
 
-  UserA(this.uid, this.namaA, this.email, this.lokasi, this.ttlahir, this.agama,
-      this.hobby, this.spendidikan, this.skills, this.pbekerja,
-      {this.profileApplicant});
+  UserA(this.uid, this.email,
+      {this.namaA,
+      this.lokasi,
+      this.ttlahir,
+      this.agama,
+      this.hobby,
+      this.spendidikan,
+      this.skills,
+      this.pbekerja,
+      this.profileApplicant});
 
   @override
   List<Object> get props => [

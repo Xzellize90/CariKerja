@@ -32,7 +32,7 @@ class _CompanyMainState extends State<CompanyMain> {
               title: Text("Add Job"),
               backgroundColor: Colors.orange),
           BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt_outlined),
+              icon: Icon(Icons.list),
               title: Text("Job List"),
               backgroundColor: Colors.orange),
           BottomNavigationBarItem(

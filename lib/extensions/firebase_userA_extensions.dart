@@ -11,16 +11,13 @@ extension FirebaseUserAExtension on User {
           String spndidikan = "No Data",
           String skills = "No Data",
           String pbekerja = "No Data"}) =>
-      UserA(
-        this.uid,
-        this.email,
-        this.displayName,
-        this.displayName,
-        this.displayName,
-        this.displayName,
-        this.displayName,
-        this.displayName,
-        this.displayName,
-        this.displayName,
-      );
+      UserA(this.uid, this.email,
+          namaA: namaA,
+          lokasi: lokasi,
+          ttlahir: ttlahir,
+          agama: agama,
+          hobby: hobby,
+          spendidikan: spndidikan,
+          skills: skills,
+          pbekerja: pbekerja);
 }

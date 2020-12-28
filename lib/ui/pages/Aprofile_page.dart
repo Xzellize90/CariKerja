@@ -302,7 +302,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         ),
                         onPressed: () async {
                           ctrlId = TextEditingController(text: id);
-                          if (ctrlName.text == "" || ctrlEmail.text == "") {
+                          if (ctrlName.text == "") {
                             Fluttertoast.showToast(
                               msg: "Please fill all fields!",
                               toastLength: Toast.LENGTH_SHORT,
@@ -315,17 +315,7 @@ class _ProfileAppState extends State<ProfileApp> {
                             setState(() {
                               isLoading = true;
                             });
-                            UserA user = UserA(
-                                ctrlId.text,
-                                ctrlName.text,
-                                ctrlEmail.text,
-                                ctrlLokasi.text,
-                                ctrlLahir.text,
-                                ctrlAgama.text,
-                                ctrlHobby.text,
-                                ctrlPend.text,
-                                ctrlSkill.text,
-                                ctrlKerja.text);
+                            UserA user = UserA(ctrlId.text, ctrlName.text);
                             bool result = await UserAServices.editProduct(user);
                             if (result == true) {
                               Fluttertoast.showToast(
