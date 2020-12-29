@@ -79,60 +79,68 @@ class _ProfileAppState extends State<ProfileApp> {
         height: 1000,
         child: Column(
           children: <Widget>[
-            Center(
-              child: Container(
-                margin: EdgeInsets.only(top: 50),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.white),
-                width: 270,
-                height: 170,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text("Gambar Profile",
-                style: TextStyle(color: Colors.white, fontFamily: 'saira')),
-            imageFile == null
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RaisedButton.icon(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        onPressed: () {
-                          chooseImage();
-                        },
-                        icon: Icon(Icons.image_aspect_ratio),
-                        label: Text("Pilih gambar",
-                            style: TextStyle(
-                              fontFamily: 'saira',
-                            )),
-                        color: Colors.white,
-                      ),
-                    ],
-                  )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RaisedButton.icon(
-                          onPressed: () {
-                            chooseImage();
-                          },
-                          icon: Icon(Icons.image_aspect_ratio),
-                          label: Text("Rechoose from gallery")),
-                    ],
-                  ),
             Container(
               width: 400,
-              height: 240,
+              height: 550,
               child: ListView(
                 children: [
+                  SizedBox(
+                    height: 0,
+                  ),
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 50),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white),
+                      width: 270,
+                      height: 170,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Center(
+                      child: Container(
+                    child: Text("Gambar Profile",
+                        style: TextStyle(
+                            color: Colors.white, fontFamily: 'saira')),
+                  )),
+                  imageFile == null
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RaisedButton.icon(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              onPressed: () {
+                                chooseImage();
+                              },
+                              icon: Icon(Icons.image_aspect_ratio),
+                              label: Text("Pilih gambar",
+                                  style: TextStyle(
+                                    fontFamily: 'saira',
+                                  )),
+                              color: Colors.white,
+                            ),
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RaisedButton.icon(
+                                onPressed: () {
+                                  chooseImage();
+                                },
+                                icon: Icon(Icons.image_aspect_ratio),
+                                label: Text("Rechoose from gallery")),
+                          ],
+                        ),
                   SizedBox(height: 10),
                   Text("Nama Lengkap",
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     controller: ctrlName = TextEditingController(text: name),
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -144,26 +152,17 @@ class _ProfileAppState extends State<ProfileApp> {
                             borderRadius: BorderRadius.circular(20.0))),
                   ),
                   SizedBox(height: 10),
-                  Text("Email",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: 'saira')),
-                  TextFormField(
-                    controller: ctrlEmail = TextEditingController(text: email),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(5),
-                        filled: true,
-                        fillColor: Colors.white,
-                        labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
-                        hintStyle: TextStyle(fontSize: 10),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0))),
-                  ),
+                  Text(email ?? '',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'saira',
+                          fontSize: 20)),
                   SizedBox(height: 10),
                   Text("Lokasi",
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: ctrlLokasi = TextEditingController(text: lokai),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
@@ -228,72 +227,69 @@ class _ProfileAppState extends State<ProfileApp> {
                   ),
                   SizedBox(height: 10),
                   Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Sejarah Pendidikan",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Sejarah Pendidikan",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                    TextFormField(
-                      controller: ctrlPend = TextEditingController(text: pendidikan),
-                      decoration: InputDecoration(
+                  ),
+                  TextFormField(
+                    controller: ctrlPend =
+                        TextEditingController(text: pendidikan),
+                    decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
                         hintText: "Sejarah Pendidikan",
                         hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                        contentPadding: new EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 10.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
-                        )
-                      ),
-                      obscureText: false,
-                      maxLines: 8,
-                    ),
+                        )),
+                    obscureText: false,
+                    maxLines: 8,
+                  ),
                   Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Skills",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Skills",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                    TextFormField(
-                      controller: ctrlSkill = TextEditingController(text: skill),
-                      decoration: InputDecoration(
+                  ),
+                  TextFormField(
+                    controller: ctrlSkill = TextEditingController(text: skill),
+                    decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
                         hintText: "Skills",
                         hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                        contentPadding: new EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 10.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
-                        )
-                      ),
-                      obscureText: false,
-                      maxLines: 8,
-                    ),
+                        )),
+                    obscureText: false,
+                    maxLines: 8,
+                  ),
                   SizedBox(height: 10),
                   Text("Pengalaman Bekerja",
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
-                      controller: ctrlKerja = TextEditingController(text: kerja),
-                      decoration: InputDecoration(
+                    controller: ctrlKerja = TextEditingController(text: kerja),
+                    decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
                         hintText: "Pengalaman Bekerja",
                         hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                        contentPadding: new EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 10.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
-                        )
-                      ),
-                      obscureText: false,
-                      maxLines: 8,
-                    ),
+                        )),
+                    obscureText: false,
+                    maxLines: 8,
+                  ),
                 ],
               ),
             ),
@@ -329,7 +325,16 @@ class _ProfileAppState extends State<ProfileApp> {
                               isLoading = true;
                             });
                             UserA user = UserA(
-                                ctrlId.text, ctrlEmail.text, ctrlName.text, ctrlLokasi.text, ctrlLahir.text, ctrlAgama.text, ctrlHobby.text, ctrlPend.text, ctrlSkill.text, ctrlKerja.text);
+                                ctrlId.text,
+                                ctrlName.text,
+                                ctrlEmail.text,
+                                ctrlLokasi.text,
+                                ctrlLahir.text,
+                                ctrlAgama.text,
+                                ctrlHobby.text,
+                                ctrlPend.text,
+                                ctrlSkill.text,
+                                ctrlKerja.text);
                             bool result = await UserAServices.editProduct(user);
                             if (result == true) {
                               Fluttertoast.showToast(
