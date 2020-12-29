@@ -20,7 +20,7 @@ class UserAServices {
       'spendidikan': userA.spendidikan,
       'skills': userA.skills,
       'pbekerja': userA.pbekerja,
-      'profileApplicant': userA.profileApplicant ?? ""
+      'profileApplicant': userA.profileApplicant
     });
   }
 
@@ -28,23 +28,24 @@ class UserAServices {
     await Firebase.initializeApp();
     await userAollection.doc(user.uid).update({
       'namaA': user.namaA,
-      'email': user.email,
       'lokasi': user.lokasi,
       'ttlahir': user.ttlahir,
       'agama': user.agama,
       'hobby': user.hobby,
       'spendidikan': user.spendidikan,
       'skills': user.skills,
-      'pbekerja': user.pbekerja
+      'pbekerja': user.pbekerja,
+      'profileApplicant': user.profileApplicant ?? "",
     });
     return true;
   }
 
   static Future updateProfileCompany(String uid, PickedFile imageFile) async {
     String fileName = uid + ".png";
+
     ref = FirebaseStorage.instance
         .ref()
-        .child('assets/profileCompany')
+        .child('assets/profileApplicant')
         .child(fileName);
     uploadTask = ref.putFile(File(imageFile.path));
     await uploadTask.whenComplete(
@@ -52,7 +53,7 @@ class UserAServices {
     return userAollection
         .doc(uid)
         .update({
-          'profileCompany': imageUrl,
+          'profileApplicant': imageUrl,
         })
         .then((value) => true)
         .catchError((onError) => false);

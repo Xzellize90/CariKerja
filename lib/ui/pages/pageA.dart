@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:io';
 
 import 'package:carikerja/models/modelsA.dart';
 import 'package:carikerja/services/servicesA.dart';
@@ -10,6 +10,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:splashscreen/splashscreen.dart';
