@@ -139,8 +139,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                       textColor: Colors.black,
                       color: Colors.white,
                       onPressed: () async{
-                        if(ctrlName.text == "" || 
-                          ctrlEmail.text == "" || 
+                        if( ctrlEmail.text == "" || 
                           ctrlPassword.text == ""){
                             Fluttertoast.showToast(
                               msg: "Please fill all fields !",
