@@ -1,10 +1,9 @@
-part of 'models.dart';
+part of 'modelsA.dart';
 
 class UserA extends Equatable {
   final String uid;
   final String namaA;
   final String email;
-
   final String lokasi;
   final String ttlahir;
   final String agama;
@@ -15,14 +14,14 @@ class UserA extends Equatable {
   final String profileApplicant;
 
   UserA(this.uid, this.email, this.namaA,
-      {this.lokasi,
+      this.lokasi,
       this.ttlahir,
       this.agama,
       this.hobby,
       this.spendidikan,
       this.skills,
       this.pbekerja,
-      this.profileApplicant});
+      {this.profileApplicant});
 
   @override
   List<Object> get props => [

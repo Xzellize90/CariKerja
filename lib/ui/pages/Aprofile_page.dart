@@ -24,10 +24,10 @@ class _ProfileAppState extends State<ProfileApp> {
 
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection("userA");
-  String id, name, email, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
+  String id, email, name, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
 
-  var ctrlName = TextEditingController();
   var ctrlEmail = TextEditingController();
+  var ctrlName = TextEditingController();
   var ctrlLokasi = TextEditingController();
   var ctrlLahir = TextEditingController();
   var ctrlAgama = TextEditingController();
@@ -133,7 +133,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     controller: ctrlName = TextEditingController(text: name),
-                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -150,7 +149,6 @@ class _ProfileAppState extends State<ProfileApp> {
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
                     controller: ctrlEmail = TextEditingController(text: email),
-                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,
@@ -166,7 +164,6 @@ class _ProfileAppState extends State<ProfileApp> {
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
-                    keyboardType: TextInputType.emailAddress,
                     controller: ctrlLokasi = TextEditingController(text: lokai),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
@@ -230,57 +227,73 @@ class _ProfileAppState extends State<ProfileApp> {
                             borderRadius: BorderRadius.circular(20.0))),
                   ),
                   SizedBox(height: 10),
-                  Text("Riwayat Pendidikan",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: 'saira')),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: ctrlPend =
-                        TextEditingController(text: pendidikan),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(5),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Sejarah Pendidikan",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18
+                      ),
+                      ),
+                    ),
+                    TextFormField(
+                      controller: ctrlPend = TextEditingController(text: pendidikan),
+                      decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
-                        hintStyle: TextStyle(fontSize: 10),
+                        hintText: "Sejarah Pendidikan",
+                        hintStyle: TextStyle(fontSize: 18),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0))),
-                  ),
-                  SizedBox(height: 10),
-                  Text("Skills",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: 'saira')),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: ctrlSkill = TextEditingController(text: skill),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(5),
+                          borderRadius: BorderRadius.circular(30.0),
+                        )
+                      ),
+                      obscureText: false,
+                      maxLines: 8,
+                    ),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Skills",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18
+                      ),
+                      ),
+                    ),
+                    TextFormField(
+                      controller: ctrlSkill = TextEditingController(text: skill),
+                      decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
-                        hintStyle: TextStyle(fontSize: 10),
+                        hintText: "Skills",
+                        hintStyle: TextStyle(fontSize: 18),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0))),
-                  ),
+                          borderRadius: BorderRadius.circular(30.0),
+                        )
+                      ),
+                      obscureText: false,
+                      maxLines: 8,
+                    ),
                   SizedBox(height: 10),
                   Text("Pengalaman Bekerja",
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: ctrlKerja = TextEditingController(text: kerja),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(5),
+                      controller: ctrlKerja = TextEditingController(text: kerja),
+                      decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
-                        hintStyle: TextStyle(fontSize: 10),
+                        hintText: "Pengalaman Bekerja",
+                        hintStyle: TextStyle(fontSize: 18),
+                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0))),
-                  ),
+                          borderRadius: BorderRadius.circular(30.0),
+                        )
+                      ),
+                      obscureText: false,
+                      maxLines: 8,
+                    ),
                 ],
               ),
             ),
@@ -316,7 +329,7 @@ class _ProfileAppState extends State<ProfileApp> {
                               isLoading = true;
                             });
                             UserA user = UserA(
-                                ctrlId.text, ctrlName.text, ctrlEmail.text);
+                                ctrlId.text, ctrlEmail.text, ctrlName.text, ctrlLokasi.text, ctrlLahir.text, ctrlAgama.text, ctrlHobby.text, ctrlPend.text, ctrlSkill.text, ctrlKerja.text);
                             bool result = await UserAServices.editProduct(user);
                             if (result == true) {
                               Fluttertoast.showToast(

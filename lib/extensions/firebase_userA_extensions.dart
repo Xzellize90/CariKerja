@@ -1,4 +1,4 @@
-import 'package:carikerja/models/models.dart';
+import 'package:carikerja/models/modelsA.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirebaseUserAExtension on User {
@@ -12,11 +12,11 @@ extension FirebaseUserAExtension on User {
           String skills = "No Data",
           String pbekerja = "No Data"}) =>
       UserA(this.uid, this.email, this.displayName,
-          lokasi: lokasi,
-          ttlahir: ttlahir,
-          agama: agama,
-          hobby: hobby,
-          spendidikan: spndidikan,
-          skills: skills,
-          pbekerja: pbekerja);
+          this.displayName,
+          this.displayName,
+          this.displayName,
+          this.displayName,
+          this.displayName,
+          this.displayName,
+          this.displayName);
 }

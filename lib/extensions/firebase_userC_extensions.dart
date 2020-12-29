@@ -1,4 +1,4 @@
-import 'package:carikerja/models/models.dart';
+import 'package:carikerja/models/modelsC.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirebaseUserCExtension on User{

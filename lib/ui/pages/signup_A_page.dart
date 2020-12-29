@@ -67,29 +67,6 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                       fontSize: 65
                     ),
                     ),
-                    SizedBox(height: 25),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Nama Lengkap Anda",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlName,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Nama Lengkap Anda",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        )
-                      ),
-                    ),
                     SizedBox(height: 10),
                     Align(
                       alignment: Alignment.centerLeft,
@@ -138,168 +115,18 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                         )
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 25),
                     Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Lokasi",
+                      alignment: Alignment.center,
+                      child: Text("Mohon Untuk Melengkapi Profile Setelah Login, Profile Akan Di Gunakan Untuk CV Anda",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18
                       ),
+                      textAlign: TextAlign.center,
                       ),
                     ),
-                    TextFormField(
-                      controller: ctrlLokasi,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Lokasi",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        )
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Tempat/Tanggal Lahir",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlttLahir,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Tempat/Tanggal Lahir",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        )
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Agama",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlAgama,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Agama",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        )
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Hobby",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlHobby,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Hobby",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        )
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Sejarah Pendidikan",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlSPenddidikan,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Sejarah Pendidikan",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        )
-                      ),
-                      obscureText: false,
-                      maxLines: 8,
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Skills",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlSkills,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Skills",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        )
-                      ),
-                      obscureText: false,
-                      maxLines: 8,
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Pengalaman Bekerja",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
-                    ),
-                    TextFormField(
-                      controller: ctrlPBekerja,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Pengalaman Bekerja",
-                        hintStyle: TextStyle(fontSize: 18),
-                        contentPadding: new EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        )
-                      ),
-                      obscureText: false,
-                      maxLines: 8,
-                    ),
-                    SizedBox(height: 70),
+                    SizedBox(height: 90),
                     RaisedButton.icon(
                       shape: RoundedRectangleBorder(
                         borderRadius:

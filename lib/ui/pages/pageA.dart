@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:carikerja/models/models.dart';
+import 'package:carikerja/models/modelsA.dart';
 import 'package:carikerja/services/servicesA.dart';
 import 'package:carikerja/main.dart';
 

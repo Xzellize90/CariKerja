@@ -1,4 +1,4 @@
-part of 'models.dart';
+part of 'modelsC.dart';
 
 class UserC extends Equatable{
 
