@@ -14,9 +14,8 @@ class UserA extends Equatable {
   final String pbekerja;
   final String profileApplicant;
 
-  UserA(this.uid, this.email,
-      {this.namaA,
-      this.lokasi,
+  UserA(this.uid, this.email, this.namaA,
+      {this.lokasi,
       this.ttlahir,
       this.agama,
       this.hobby,

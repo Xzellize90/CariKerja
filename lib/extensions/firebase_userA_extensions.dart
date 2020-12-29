@@ -11,8 +11,7 @@ extension FirebaseUserAExtension on User {
           String spndidikan = "No Data",
           String skills = "No Data",
           String pbekerja = "No Data"}) =>
-      UserA(this.uid, this.email,
-          namaA: namaA,
+      UserA(this.uid, this.email, this.displayName,
           lokasi: lokasi,
           ttlahir: ttlahir,
           agama: agama,

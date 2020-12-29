@@ -315,7 +315,8 @@ class _ProfileAppState extends State<ProfileApp> {
                             setState(() {
                               isLoading = true;
                             });
-                            UserA user = UserA(ctrlId.text, ctrlName.text);
+                            UserA user = UserA(
+                                ctrlId.text, ctrlName.text, ctrlEmail.text);
                             bool result = await UserAServices.editProduct(user);
                             if (result == true) {
                               Fluttertoast.showToast(
