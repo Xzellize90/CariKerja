@@ -9,8 +9,8 @@ class _CompanyMainState extends State<CompanyMain> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     CompanyAdd(),
-    NotifPage(),
-    CompanyProfileApp()
+    CompanyJobList(),
+    CompanyProfileApp(),
   ];
 
   void _onItemTapped(int index) {
