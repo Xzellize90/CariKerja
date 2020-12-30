@@ -10,7 +10,7 @@ class _CompanyMainState extends State<CompanyMain> {
   static List<Widget> _widgetOptions = <Widget>[
     CompanyAdd(),
     NotifPage(),
-    ProfileApp()
+    CompanyProfileApp()
   ];
 
   void _onItemTapped(int index) {

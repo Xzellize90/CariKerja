@@ -15,3 +15,4 @@ part 'signup_C_page.dart';
 part 'signin_C_page.dart';
 part 'Cmainmenu.dart';
 part 'Cadd_page.dart';
+part 'Cprofile_page.dart';
