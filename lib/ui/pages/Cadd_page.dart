@@ -1,8 +1,6 @@
 part of 'pageC.dart';
 
 class CompanyAdd extends StatefulWidget {
-  CompanyAdd({this.user});
-  final UserC user;
   @override
   _CompanyAddState createState() => _CompanyAddState();
 }
@@ -20,26 +18,18 @@ class _CompanyAddState extends State<CompanyAdd> {
   TextEditingController controllerSkill;
   TextEditingController controllerKerja;
 
-  User _auth = FirebaseAuth.instance.currentUser;
-
-  CollectionReference userCollection =
-      FirebaseFirestore.instance.collection("userC");
-  String id, name, email, hobby, lokai, agama, kerja, pendidikan, ttl, skill;
-
-  var ctrlName = TextEditingController();
-  var ctrlEmail = TextEditingController();
-  var ctrlLokasi = TextEditingController();
-  var ctrlLahir = TextEditingController();
-  var ctrlAgama = TextEditingController();
-  var ctrlHobby = TextEditingController();
-  var ctrlPend = TextEditingController();
-  var ctrlSkill = TextEditingController();
-  var ctrlKerja = TextEditingController();
-
-  var ctrlId = TextEditingController();
+  var ctrlJudul = TextEditingController();
+  var ctrlDeskripsi = TextEditingController();
+  var ctrlKontak = TextEditingController();
+  var ctrlGaji = TextEditingController();
+  var ctrlPenempatan = "";
 
   PickedFile imageFile;
   final ImagePicker imagePicker = ImagePicker();
+  bool _ditekan1 = false;
+  bool _ditekan2 = false;
+  bool _ditekan3 = false;
+
   Future chooseImage() async {
     final selectedImage = await imagePicker.getImage(
         source: ImageSource.gallery, imageQuality: 50);
@@ -48,8 +38,17 @@ class _CompanyAddState extends State<CompanyAdd> {
     });
   }
 
-  void initState() {
-    super.initState();
+  void clearForm() {
+    ctrlJudul.clear();
+    ctrlDeskripsi.clear();
+    ctrlKontak.clear();
+    ctrlGaji.clear();
+    _ditekan1 = false;
+    _ditekan2 = false;
+    _ditekan3 = false;
+    setState(() {
+      imageFile = null;
+    });
   }
 
   @override
@@ -73,7 +72,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                         style: TextStyle(
                             color: Colors.white, fontFamily: 'saira')),
                     TextFormField(
-                      controller: ctrlName = TextEditingController(text: name),
+                      controller: ctrlJudul,
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
                           filled: true,
@@ -90,8 +89,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                             color: Colors.white, fontFamily: 'saira')),
                     TextFormField(
                       maxLines: 5,
-                      controller: ctrlEmail =
-                          TextEditingController(text: email),
+                      controller: ctrlDeskripsi,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
@@ -107,9 +105,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                             color: Colors.white, fontFamily: 'saira')),
                     TextFormField(
                       maxLines: 5,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: ctrlLokasi =
-                          TextEditingController(text: lokai),
+                      controller: ctrlKontak,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
@@ -125,8 +121,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                         style: TextStyle(
                             color: Colors.white, fontFamily: 'saira')),
                     TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: ctrlLahir = TextEditingController(text: ttl),
+                      controller: ctrlGaji,
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(5),
                           filled: true,
@@ -150,13 +145,21 @@ class _CompanyAddState extends State<CompanyAdd> {
                             flex: 1,
                             child: Container(
                               child: RaisedButton(
-                                color: Colors.white,
+                                color: _ditekan1 ? Colors.orange : Colors.white,
                                 child: Text(
                                   "Lapangan",
                                   style: TextStyle(
                                       fontFamily: 'saira', fontSize: 20),
                                 ),
-                                onPressed: () async {},
+                                onPressed: () {
+                                  ctrlPenempatan = "";
+                                  setState(() {
+                                    _ditekan2 = false;
+                                    _ditekan3 = false;
+                                    _ditekan1 = !_ditekan1;
+                                    ctrlPenempatan = "Lapangan";
+                                  });
+                                },
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
                               ),
@@ -166,13 +169,22 @@ class _CompanyAddState extends State<CompanyAdd> {
                             flex: 1,
                             child: Container(
                               child: RaisedButton(
-                                color: Colors.white,
+                                color: _ditekan2 ? Colors.orange : Colors.white,
                                 child: Text(
                                   "Kantor",
                                   style: TextStyle(
                                       fontFamily: 'saira', fontSize: 20),
                                 ),
-                                onPressed: () async {},
+                                onPressed: () {
+                                  setState(() {
+                                    ctrlPenempatan = "";
+                                    _ditekan1 = false;
+                                    _ditekan3 = false;
+                                    _ditekan2 = !_ditekan2;
+
+                                    ctrlPenempatan = "Kantor";
+                                  });
+                                },
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
                               ),
@@ -182,13 +194,21 @@ class _CompanyAddState extends State<CompanyAdd> {
                             flex: 1,
                             child: Container(
                               child: RaisedButton(
-                                color: Colors.white,
+                                color: _ditekan3 ? Colors.orange : Colors.white,
                                 child: Text(
                                   "Rumah",
                                   style: TextStyle(
                                       fontFamily: 'saira', fontSize: 20),
                                 ),
-                                onPressed: () async {},
+                                onPressed: () {
+                                  setState(() {
+                                    ctrlPenempatan = "";
+                                    _ditekan1 = false;
+                                    _ditekan2 = false;
+                                    _ditekan3 = !_ditekan3;
+                                    ctrlPenempatan = "Rumah";
+                                  });
+                                },
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
                               ),
@@ -200,16 +220,48 @@ class _CompanyAddState extends State<CompanyAdd> {
                     Text("Gambar",
                         style: TextStyle(
                             color: Colors.white, fontFamily: 'saira')),
-                    RaisedButton(
-                      color: Colors.white,
-                      child: Text(
-                        "Pilih Gambar",
-                        style: TextStyle(fontFamily: 'saira', fontSize: 15),
-                      ),
-                      onPressed: () async {},
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
-                    ),
+                    imageFile == null
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              RaisedButton(
+                                color: Colors.white,
+                                child: Text(
+                                  "Pilih Gambar",
+                                  style: TextStyle(
+                                      fontFamily: 'saira', fontSize: 15),
+                                ),
+                                onPressed: () async {
+                                  chooseImage();
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                              ),
+                              Text("File not found"),
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              RaisedButton(
+                                color: Colors.white,
+                                child: Text(
+                                  "Pilih Gambar",
+                                  style: TextStyle(
+                                      fontFamily: 'saira', fontSize: 15),
+                                ),
+                                onPressed: () async {
+                                  chooseImage();
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                              ),
+                              Semantics(
+                                child: Image.file(File(imageFile.path),
+                                    width: 100),
+                              )
+                            ],
+                          ),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -230,7 +282,63 @@ class _CompanyAddState extends State<CompanyAdd> {
                             "Add Job",
                             style: TextStyle(fontFamily: 'saira', fontSize: 25),
                           ),
-                          onPressed: () async {}, //MBEK
+                          onPressed: () async {
+                            if (ctrlJudul.text == "" ||
+                                ctrlDeskripsi.text == "" ||
+                                ctrlKontak.text == "" ||
+                                ctrlGaji.text == "" ||
+                                ctrlPenempatan == "" ||
+                                imageFile == null) {
+                              Fluttertoast.showToast(
+                                msg: "Please choose and fill all fields!",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
+                            } else {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              Joblist joblist = Joblist(
+                                  "",
+                                  ctrlJudul.text,
+                                  ctrlDeskripsi.text,
+                                  ctrlKontak.text,
+                                  ctrlGaji.text,
+                                  ctrlPenempatan,
+                                  "");
+                              bool result = await JobServices.addjoblist(
+                                  joblist, imageFile);
+                              if (result == true) {
+                                Fluttertoast.showToast(
+                                  msg: "Add product succesful!",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  backgroundColor: Colors.green,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0,
+                                );
+                                clearForm();
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              } else {
+                                Fluttertoast.showToast(
+                                  msg: "Failed! Try again",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0,
+                                );
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              }
+                            }
+                          },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
                         ),
