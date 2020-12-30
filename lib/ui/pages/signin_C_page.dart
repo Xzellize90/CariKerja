@@ -135,9 +135,6 @@ class _SignInCompanyState extends State<SignInCompany> {
                               setState(() {
                                 isLoading = false;
                               });
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                              return CompanyMain();
-                            }));
                             }
                           }
                         },
