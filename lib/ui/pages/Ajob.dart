@@ -82,7 +82,10 @@ class _JobAState extends State<JobA> {
             Text(widget.joblist.judul,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 22)),
-            Text(widget.joblist.gaji,
+            Text(
+                NumberFormat.currency(
+                        locale: 'id', decimalDigits: 0, symbol: 'Rp')
+                    .format(int.parse(widget.joblist.gaji)),
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Text(widget.joblist.penempatan,
