@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:carikerja/models/modelsC.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +15,8 @@ class JobServices {
   static Reference ref;
   static UploadTask uploadTask;
 
+  final uid = FirebaseAuth.instance.currentUser.uid;
+
   static String imgUrl;
 
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
@@ -22,6 +25,7 @@ class JobServices {
     productDoc = await productCollection.add(
       {
         'id': "",
+        'owner': FirebaseAuth.instance.currentUser.displayName,
         'judul': joblist.judul,
         'deskripsi': joblist.deskripsi,
         'kontak': joblist.kontak,

@@ -12,7 +12,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:splashscreen/splashscreen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/widgets.dart';
 part 'signup_C_page.dart';

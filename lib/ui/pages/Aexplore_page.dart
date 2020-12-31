@@ -1,11 +1,46 @@
 part of 'pageA.dart';
 
 class ExplorePage extends StatefulWidget {
+  final Joblist joblist;
+  ExplorePage({this.joblist});
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
 
 class _ExplorePageState extends State<ExplorePage> {
+  CollectionReference productCollection =
+      FirebaseFirestore.instance.collection("joblist");
+
+  String id,
+      email,
+      name,
+      hobby,
+      lokai,
+      agama,
+      kerja,
+      pendidikan,
+      ttl,
+      skill,
+      images;
+
+  void getUserUpdate() async {
+    productCollection.doc().snapshots().listen((event) {
+      id = event.data()['judul'];
+      email = event.data()['deskripsi'];
+      images = event.data()['gaji'];
+      name = event.data()['image'];
+      lokai = event.data()['kontak'];
+      ttl = event.data()['penempatan'];
+
+      setState(() {});
+    });
+  }
+
+  void initState() {
+    getUserUpdate();
+    super.initState();
+  }
+
   bool _folder = true;
 
   @override
@@ -258,165 +293,40 @@ class _ExplorePageState extends State<ExplorePage> {
               child: Container(
                 margin: EdgeInsets.only(left: 25, right: 25, top: 0),
                 height: 200,
-                child: ListView(
-                  children: <Widget>[
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Job 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Job 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Job 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Job 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Job 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      height: 82,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Job 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                  ],
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: productCollection.snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return Text("Failed to get products data!");
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return SpinKitFadingCircle(
+                          size: 50,
+                          color: Colors.blue,
+                        );
+                      }
+
+                      return ListView(
+                        children:
+                            snapshot.data.docs.map((DocumentSnapshot doc) {
+                          return JoblistCardA(
+                              joblist: Joblist(
+                                  doc.data()['id'],
+                                  doc.data()['judul'],
+                                  doc.data()['deskripsi'],
+                                  doc.data()['kontak'],
+                                  doc.data()['gaji'],
+                                  doc.data()['penempatan'],
+                                  doc.data()['image']));
+                        }).toList(),
+                      );
+                    },
+                  ),
                 ),
               )),
           Flexible(

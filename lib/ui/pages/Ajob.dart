@@ -1,6 +1,8 @@
 part of 'pageA.dart';
 
 class JobA extends StatefulWidget {
+  JobA({this.joblist});
+  final Joblist joblist;
   @override
   _JobAState createState() => _JobAState();
 }
@@ -8,6 +10,37 @@ class JobA extends StatefulWidget {
 class _JobAState extends State<JobA> {
   TextEditingController controllerName;
   TextEditingController controllerPrice;
+  CollectionReference userCollection =
+      FirebaseFirestore.instance.collection("joblist");
+  String id,
+      email,
+      name,
+      hobby,
+      lokai,
+      agama,
+      kerja,
+      pendidikan,
+      ttl,
+      skill,
+      images;
+
+  void getUserUpdate() async {
+    userCollection.doc().snapshots().listen((event) {
+      id = event.data()['judul'];
+      email = event.data()['deskripsi'];
+      images = event.data()['kontak'];
+      name = event.data()['gaji'];
+      lokai = event.data()['penempatan'];
+      ttl = event.data()['image'];
+
+      setState(() {});
+    });
+  }
+
+  void initState() {
+    getUserUpdate();
+    super.initState();
+  }
 
   var ctrlName = TextEditingController();
   var ctrlPrice = TextEditingController();
@@ -36,6 +69,9 @@ class _JobAState extends State<JobA> {
               child: Container(
                 margin: EdgeInsets.only(top: 50),
                 decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(widget.joblist.image ?? ""),
+                        fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(30),
                     color: Colors.white),
                 width: 270,
@@ -43,16 +79,13 @@ class _JobAState extends State<JobA> {
               ),
             ),
             SizedBox(height: 10),
-            Text("Sekretaris",
+            Text(widget.joblist.judul,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 22)),
-            Text("Gaji : Rp.6.000.000",
+            Text(widget.joblist.gaji,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
-            Text("Kantor",
-                style: TextStyle(
-                    color: Colors.black, fontFamily: 'saira', fontSize: 17)),
-            Text("diterima",
+            Text(widget.joblist.penempatan,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Container(
@@ -62,12 +95,7 @@ class _JobAState extends State<JobA> {
               child: ListView(
                 children: [
                   Text(
-                    "         Dicari seorang sekrretaris, 8 jam kerja, mulai jam 8 pagi hingga jam 4 sore, kecuali tanggal merah dan hari sabtu, berlokasi di kantor mall pondok indah Jakarta, Indonesia",
-                    style: TextStyle(fontFamily: 'saira', fontSize: 16),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Persyaratan utama adalah berumur max 25 tahun, lulusan SMA keatas, berdomisili di jakarta dan sekitarnya",
+                    widget.joblist.deskripsi,
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                   SizedBox(height: 10),
@@ -76,15 +104,7 @@ class _JobAState extends State<JobA> {
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                   Text(
-                    "+6285123296352 ",
-                    style: TextStyle(fontFamily: 'saira', fontSize: 16),
-                  ),
-                  Text(
-                    "ZSolution.space@gmail.com ",
-                    style: TextStyle(fontFamily: 'saira', fontSize: 16),
-                  ),
-                  Text(
-                    "Note : Mohon hubungi email atau nomor telfon dalam durasi maksimal 2 * 24 jam ",
+                    widget.joblist.kontak,
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                 ],

@@ -1,8 +1,13 @@
 import 'dart:io';
 
 import 'package:carikerja/models/modelsA.dart';
+import 'package:carikerja/models/modelsC.dart';
+import 'package:carikerja/services/job_services.dart';
+
 import 'package:carikerja/services/servicesA.dart';
-import 'package:carikerja/main.dart';
+import 'package:carikerja/widgets/joblistA.dart';
+
+import 'package:carikerja/widgets/joblistcard.dart';
 
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,9 +18,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:splashscreen/splashscreen.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 part 'Amainmenu.dart';
 part 'signup_A_page.dart';

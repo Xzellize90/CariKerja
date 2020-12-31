@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/ui/pages/pageC.dart';
+import 'package:carikerja/ui/pages/pageA.dart';
+
 import 'package:carikerja/services/servicesC.dart';
 
 class JoblistCard extends StatelessWidget {
