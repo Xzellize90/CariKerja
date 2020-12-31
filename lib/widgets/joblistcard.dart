@@ -2,11 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carikerja/models/modelsC.dart';
-import 'package:carikerja/ui/pages/pageC.dart';
-import 'package:carikerja/ui/pages/pageA.dart';
+//import 'package:carikerja/ui/pages/pageC.dart';
+//import 'package:carikerja/ui/pages/pageA.dart';
 
-import 'package:carikerja/services/servicesC.dart';
+//import 'package:carikerja/services/servicesC.dart';
 
+// ignore: must_be_immutable
 class JoblistCard extends StatelessWidget {
   User _auth = FirebaseAuth.instance.currentUser;
   final UserC userC;

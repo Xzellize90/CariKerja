@@ -1,13 +1,13 @@
-import 'dart:io';
+//import 'dart:io';
 
 import 'package:carikerja/models/modelsA.dart';
 import 'package:carikerja/models/modelsC.dart';
-import 'package:carikerja/services/job_services.dart';
+//import 'package:carikerja/services/job_services.dart';
 
 import 'package:carikerja/services/servicesA.dart';
 import 'package:carikerja/widgets/joblistA.dart';
 
-import 'package:carikerja/widgets/joblistcard.dart';
+//import 'package:carikerja/widgets/joblistcard.dart';
 
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
