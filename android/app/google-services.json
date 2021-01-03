@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "570903754701",
+    "firebase_url": "https://carikerja-49dd8-default-rtdb.firebaseio.com",
     "project_id": "carikerja-49dd8",
     "storage_bucket": "carikerja-49dd8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:570903754701:android:51dd320618f5ca21613684",
+        "mobilesdk_app_id": "1:570903754701:android:ba3e0c205d94e842613684",
         "android_client_info": {
           "package_name": "com.example.carikerja"
         }
