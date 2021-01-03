@@ -1,3 +1,4 @@
+import 'package:carikerja/widgets/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,16 @@ import 'package:carikerja/models/modelsC.dart';
 
 // ignore: must_be_immutable
 class JoblistCard extends StatelessWidget {
+  Stream<QuerySnapshot> getUsersTripsStreamSnapshots(
+      BuildContext context) async* {
+    final uid = await Provider.of(context).auth.getCurrentUID();
+    yield* FirebaseFirestore.instance
+        .collection('joblist')
+        .doc(uid)
+        .collection('trips')
+        .snapshots();
+  }
+
   User _auth = FirebaseAuth.instance.currentUser;
   final UserC userC;
   final Joblist joblist;

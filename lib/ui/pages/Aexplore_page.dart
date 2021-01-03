@@ -8,8 +8,10 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
+  final uid = FirebaseAuth.instance.currentUser.uid;
+
   CollectionReference productCollection =
-      FirebaseFirestore.instance.collection("joblist");
+      FirebaseFirestore.instance.collection("userC");
 
   String id,
       email,

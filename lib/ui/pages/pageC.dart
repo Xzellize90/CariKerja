@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:carikerja/widgets/provider.dart';
+
 import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/services/job_services.dart';
 import 'package:carikerja/services/servicesC.dart';
@@ -14,6 +16,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/widgets.dart';
+
 part 'signup_C_page.dart';
 part 'signin_C_page.dart';
 part 'Cmainmenu.dart';
