@@ -8,6 +8,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 class JobServices {
+  final db = FirebaseFirestore.instance;
+
   static CollectionReference productCollection =
       FirebaseFirestore.instance.collection("joblist");
   static DocumentReference productDoc;
@@ -53,10 +55,8 @@ class JobServices {
 
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
-    final db = FirebaseFirestore.instance;
-    final uid = FirebaseAuth.instance.currentUser.uid;
 
-    await db.collection('userC').doc(uid).collection('joblist').add(
+    productDoc = await productCollection.add(
       {
         'id': "",
         'owner': FirebaseAuth.instance.currentUser.uid,
