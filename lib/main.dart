@@ -1,7 +1,6 @@
 import 'package:carikerja/ui/pages/opening_page.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
