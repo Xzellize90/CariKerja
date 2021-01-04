@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:carikerja/widgets/provider.dart';
+//import 'package:carikerja/widgets/provider.dart';
 
 import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/services/job_services.dart';

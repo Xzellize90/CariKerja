@@ -11,7 +11,7 @@ class _ExplorePageState extends State<ExplorePage> {
   final uid = FirebaseAuth.instance.currentUser.uid;
 
   CollectionReference productCollection =
-      FirebaseFirestore.instance.collection("userC");
+      FirebaseFirestore.instance.collection("joblist");
 
   String id,
       email,
