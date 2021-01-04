@@ -19,6 +19,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
     FirebaseFirestore.instance
         .collection('joblist')
         .where('owner', isEqualTo: id);
+        print(id);
   }
 
   @override
@@ -33,6 +34,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
             child: StreamBuilder<QuerySnapshot>(
               stream: joblistCollection.snapshots(),
               builder: (context, snapshot) {
+                print(context);
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
                 }
@@ -45,7 +47,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
                 }
 
                 return ListView(
-                  children: snapshot.data.docs.map((DocumentSnapshot doc) {
+                  children: snapshot.data.docs.map((DocumentSnapshot doc){
                     return JoblistCard(
                         joblist: Joblist(
                       doc.data()['id'],

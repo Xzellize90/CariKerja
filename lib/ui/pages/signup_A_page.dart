@@ -52,7 +52,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
       theme: ThemeData(fontFamily: 'Saira'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.orange,
+        backgroundColor:  Color(0xFFEEA20F),
         body: Stack(
                   children: [Container(
             margin: EdgeInsets.all(18),
