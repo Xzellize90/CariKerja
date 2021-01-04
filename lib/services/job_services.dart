@@ -59,13 +59,13 @@ class JobServices {
     productDoc = await productCollection.add(
       {
         'id': "",
-        'owner': FirebaseAuth.instance.currentUser.uid,
         'judul': joblist.judul,
         'deskripsi': joblist.deskripsi,
         'kontak': joblist.kontak,
         'gaji': joblist.gaji,
         'penempatan': joblist.penempatan,
         'image': "",
+        'owner': FirebaseAuth.instance.currentUser.uid,
       },
     );
 

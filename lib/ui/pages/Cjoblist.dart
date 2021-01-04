@@ -10,7 +10,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
   //DocumentReference jobRef = FirebaseFirestorellection('joblist').document({});
   final id = AuthCServices().getCurrentUID();
 
-  CollectionReference productCollection =
+  CollectionReference joblistCollection =
       FirebaseFirestore.instance.collection("joblist");
 
   Stream<QuerySnapshot> getUsersPastTripsStreamSnapshots(
@@ -30,8 +30,8 @@ class _CompanyJobListState extends State<CompanyJobList> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            child: StreamBuilder(
-              stream: getUsersPastTripsStreamSnapshots(context),
+            child: StreamBuilder<QuerySnapshot>(
+              stream: joblistCollection.snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
@@ -48,13 +48,15 @@ class _CompanyJobListState extends State<CompanyJobList> {
                   children: snapshot.data.docs.map((DocumentSnapshot doc) {
                     return JoblistCard(
                         joblist: Joblist(
-                            doc.data()['id'],
-                            doc.data()['judul'],
-                            doc.data()['deskripsi'],
-                            doc.data()['kontak'],
-                            doc.data()['gaji'],
-                            doc.data()['penempatan'],
-                            doc.data()['image']));
+                      doc.data()['id'],
+                      doc.data()['judul'],
+                      doc.data()['deskripsi'],
+                      doc.data()['kontak'],
+                      doc.data()['gaji'],
+                      doc.data()['penempatan'],
+                      doc.data()['image'],
+                      doc.data()['owner'],
+                    ));
                   }).toList(),
                 );
               },

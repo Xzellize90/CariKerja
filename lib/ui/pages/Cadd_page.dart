@@ -308,6 +308,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                                   ctrlKontak.text,
                                   ctrlGaji.text,
                                   ctrlPenempatan,
+                                  "",
                                   "");
                               bool result = await JobServices.addjoblist(
                                   joblist, imageFile);
