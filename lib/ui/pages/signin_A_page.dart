@@ -23,7 +23,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
       theme: ThemeData(fontFamily: 'Saira'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.orange,
+        backgroundColor:  Color(0xFFEEA20F),
         body: Stack(
           children: [
             Container(

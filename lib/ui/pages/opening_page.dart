@@ -34,7 +34,7 @@ class _OpeningState extends State<Opening> {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Saira'),
       home: Scaffold(
-        backgroundColor: Colors.orange,
+        backgroundColor:  Color(0xFFEEA20F),
         body: Container(
           child: Column(
             children: <Widget>[
