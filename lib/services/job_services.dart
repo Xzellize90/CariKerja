@@ -53,6 +53,20 @@ class JobServices {
 
   static String imgUrl;
 
+  static Future<bool> editProduct(Joblist product) async {
+    await Firebase.initializeApp();
+
+    await productCollection.doc(product.id).update(
+      {
+        'judul': product.judul,
+        'deskripsi': product.deskripsi,
+        'gaji': product.gaji
+      },
+    );
+
+    return true;
+  }
+
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
 
@@ -60,9 +74,9 @@ class JobServices {
       {
         'id': "",
         'judul': joblist.judul,
+        'gaji': joblist.gaji,
         'deskripsi': joblist.deskripsi,
         'kontak': joblist.kontak,
-        'gaji': joblist.gaji,
         'penempatan': joblist.penempatan,
         'image': "",
         'owner': FirebaseAuth.instance.currentUser.uid,

@@ -19,7 +19,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
     FirebaseFirestore.instance
         .collection('joblist')
         .where('owner', isEqualTo: id);
-        print(id);
+    print(id);
   }
 
   @override
@@ -47,17 +47,14 @@ class _CompanyJobListState extends State<CompanyJobList> {
                 }
 
                 return ListView(
-                  children: snapshot.data.docs.map((DocumentSnapshot doc){
+                  children: snapshot.data.docs.map((DocumentSnapshot doc) {
                     return JoblistCard(
                         joblist: Joblist(
-                      doc.data()['id'],
                       doc.data()['judul'],
                       doc.data()['deskripsi'],
-                      doc.data()['kontak'],
                       doc.data()['gaji'],
                       doc.data()['penempatan'],
                       doc.data()['image'],
-                      doc.data()['owner'],
                     ));
                   }).toList(),
                 );

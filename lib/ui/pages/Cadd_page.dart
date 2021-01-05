@@ -302,14 +302,12 @@ class _CompanyAddState extends State<CompanyAdd> {
                                 isLoading = true;
                               });
                               Joblist joblist = Joblist(
-                                  "",
-                                  ctrlJudul.text,
-                                  ctrlDeskripsi.text,
-                                  ctrlKontak.text,
-                                  ctrlGaji.text,
-                                  ctrlPenempatan,
-                                  "",
-                                  "");
+                                ctrlJudul.text,
+                                ctrlDeskripsi.text,
+                                ctrlKontak.text,
+                                ctrlGaji.text,
+                                ctrlPenempatan,
+                              );
                               bool result = await JobServices.addjoblist(
                                   joblist, imageFile);
                               if (result == true) {

@@ -10,7 +10,19 @@ class DetailJob extends StatefulWidget {
 class _DetailJobState extends State<DetailJob> {
   bool isLoading;
   TextEditingController controllerName;
+  TextEditingController controllerGaji;
+  TextEditingController controllerDesc;
+  TextEditingController controllerKontak;
+  TextEditingController controllerPenempatan;
+
   var ctrlName = TextEditingController();
+  var ctrlkontak = TextEditingController();
+  var ctrlPenempatan = TextEditingController();
+
+  var ctrlGaji = TextEditingController();
+  var ctrlDesc = TextEditingController();
+
+  var ctrlId = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +97,7 @@ class _DetailJobState extends State<DetailJob> {
                                             width: 170,
                                             height: 30,
                                             child: TextFormField(
-                                              controller: ctrlName =
+                                              controller: ctrlGaji =
                                                   TextEditingController(
                                                       text:
                                                           widget.joblist.gaji),
@@ -142,7 +154,7 @@ class _DetailJobState extends State<DetailJob> {
                         ),
                         SizedBox(height: 10),
                         TextFormField(
-                          controller: ctrlName = TextEditingController(
+                          controller: ctrlDesc = TextEditingController(
                               text: widget.joblist.deskripsi),
                           decoration: InputDecoration(
                               filled: true,
@@ -180,7 +192,61 @@ class _DetailJobState extends State<DetailJob> {
                                         style: TextStyle(
                                             fontFamily: 'saira', fontSize: 35),
                                       ),
-                                      onPressed: () async {},
+                                      onPressed: () async {
+                                        ctrlId = TextEditingController(
+                                            text: widget.joblist.id);
+                                        if (ctrlName.text == "" ||
+                                            ctrlGaji.text == "" ||
+                                            ctrlDesc.text == "") {
+                                          Fluttertoast.showToast(
+                                            msg: "Please fill all fields!",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            backgroundColor: Colors.red,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0,
+                                          );
+                                        } else {
+                                          setState(() {
+                                            isLoading = true;
+                                          });
+                                          Joblist product = Joblist(
+                                              ctrlId.text,
+                                              ctrlName.text,
+                                              ctrlGaji.text,
+                                              ctrlDesc.text,
+                                              "");
+                                          bool result =
+                                              await JobServices.editProduct(
+                                                  product);
+                                          if (result == true) {
+                                            Fluttertoast.showToast(
+                                              msg: "Add product succesful!",
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.BOTTOM,
+                                              backgroundColor: Colors.green,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0,
+                                            );
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                            Navigator.pop(context);
+                                          } else {
+                                            Fluttertoast.showToast(
+                                              msg: "Failed! Try again",
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.BOTTOM,
+                                              backgroundColor: Colors.red,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0,
+                                            );
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                          }
+                                        }
+                                      },
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(50),
