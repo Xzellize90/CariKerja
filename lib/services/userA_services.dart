@@ -20,11 +20,12 @@ class UserAServices {
       'spendidikan': userA.spendidikan,
       'skills': userA.skills,
       'pbekerja': userA.pbekerja,
-      'profileApplicant': userA.profileApplicant
+      'profileApplicant': userA.profileApplicant,
+      'status' : userA.status,
     });
   }
 
-  static Future<bool> editProduct(UserA user) async {
+  static Future<bool> editApplicant(UserA user) async {
     await Firebase.initializeApp();
     await userAollection.doc(user.uid).update({
       'namaA': user.namaA,
@@ -40,7 +41,7 @@ class UserAServices {
     return true;
   }
 
-  static Future updateProfileCompany(String uid, PickedFile imageFile) async {
+  static Future updateProfileApplicant(String uid, PickedFile imageFile) async {
     String fileName = uid + ".png";
 
     ref = FirebaseStorage.instance

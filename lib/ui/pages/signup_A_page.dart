@@ -16,6 +16,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
   final ctrlSPenddidikan = TextEditingController();
   final ctrlSkills = TextEditingController();
   final ctrlPBekerja = TextEditingController();
+  final ctrlStatus = TextEditingController(text : "Applicant");
   bool isLoading = false;
 
   @override

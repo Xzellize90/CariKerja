@@ -14,6 +14,7 @@ class UserCServices {
       'email': userC.email,
       'namaC': userC.namaC,
       'lokasi': userC.lokasi,
+      'status': userC.status,
       'profileCompany': userC.profileCompany ?? ""
     });
   }

@@ -31,10 +31,11 @@ class _ProfileAppState extends State<ProfileApp> {
       hobby,
       lokai,
       agama,
-      kerja,
       pendidikan,
       ttl,
       skill,
+      kerja,
+      status,
       images;
 
   var ctrlEmail = TextEditingController();
@@ -46,6 +47,7 @@ class _ProfileAppState extends State<ProfileApp> {
   var ctrlPend = TextEditingController();
   var ctrlSkill = TextEditingController();
   var ctrlKerja = TextEditingController();
+  var ctrlStatus = TextEditingController( text: "applicant");
 
   var ctrlId = TextEditingController();
 
@@ -118,7 +120,7 @@ class _ProfileAppState extends State<ProfileApp> {
                   RaisedButton.icon(
                       onPressed: () async {
                         await chooseImage();
-                        await UserAServices.updateProfileCompany(
+                        await UserAServices.updateProfileApplicant(
                                 _auth.uid, imageFile)
                             .then((value) {
                           if (value) {
@@ -277,9 +279,13 @@ class _ProfileAppState extends State<ProfileApp> {
                     maxLines: 8,
                   ),
                   SizedBox(height: 10),
-                  Text("Pengalaman Bekerja",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: 'saira')),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Pengalaman Bekerja",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
                   TextFormField(
                     controller: ctrlKerja = TextEditingController(text: kerja),
                     decoration: InputDecoration(
@@ -340,10 +346,10 @@ class _ProfileAppState extends State<ProfileApp> {
                                       ctrlKerja.text,
                                       "");
                                   bool result =
-                                      await UserAServices.editProduct(user);
+                                      await UserAServices.editApplicant(user);
                                   if (result == true) {
                                     Fluttertoast.showToast(
-                                      msg: "Edit product succesful!",
+                                      msg: "Edit succesful!",
                                       toastLength: Toast.LENGTH_SHORT,
                                       gravity: ToastGravity.BOTTOM,
                                       backgroundColor: Colors.green,

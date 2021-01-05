@@ -12,7 +12,7 @@ class AuthAServices{
     try{
       UserCredential result = await auth.createUserWithEmailAndPassword(email: email, password: password);
 
-      UserA userA = result.user.convertToUser(namaA: namaA, lokasi: lokasi, ttlahir: ttlahir, agama: agama, hobby: hobby, spndidikan: spendidikan, skills: skills, pbekerja: pbekerja);
+      UserA userA = result.user.convertToUser(namaA: namaA, lokasi: lokasi, ttlahir: ttlahir, agama: agama, hobby: hobby, spndidikan: spendidikan, skills: skills, pbekerja: pbekerja, status: "Applicant");
 
       auth.signOut();
       await UserAServices.updateUser(userA);

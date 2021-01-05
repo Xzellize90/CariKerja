@@ -17,7 +17,7 @@ class AuthCServices {
       UserCredential result = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
-      UserC userC = result.user.convertToUser(namaC: namaC, lokasi: lokasi);
+      UserC userC = result.user.convertToUser(namaC: namaC, lokasi: lokasi, status: "Company");
 
       auth.signOut();
       await UserCServices.updateUser(userC);

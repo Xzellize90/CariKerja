@@ -11,6 +11,7 @@ class UserA extends Equatable {
   final String spendidikan;
   final String skills;
   final String pbekerja;
+  final String status;
   final String profileApplicant;
 
   UserA(
@@ -24,7 +25,8 @@ class UserA extends Equatable {
       this.spendidikan,
       this.skills,
       this.pbekerja,
-      this.profileApplicant);
+      this.profileApplicant,
+      {this.status});
 
   @override
   List<Object> get props => [
@@ -38,6 +40,7 @@ class UserA extends Equatable {
         spendidikan,
         skills,
         pbekerja,
+        status,
         profileApplicant
       ];
 }

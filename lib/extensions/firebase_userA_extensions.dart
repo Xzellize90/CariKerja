@@ -11,6 +11,7 @@ extension FirebaseUserAExtension on User {
           String spndidikan = "No Data",
           String skills = "No Data",
           String pbekerja = "No Data",
+          String status = "Applicant",
           String images = "No image"}) =>
       UserA(
           this.uid,
@@ -23,5 +24,7 @@ extension FirebaseUserAExtension on User {
           this.displayName,
           this.displayName,
           this.displayName,
-          this.displayName);
+          this.displayName,
+          status: status,
+          );
 }
