@@ -1,3 +1,4 @@
+import 'package:carikerja/ui/pages/pageC.dart';
 import 'package:flutter/material.dart';
 import 'package:carikerja/models/modelsC.dart';
 //import 'package:carikerja/ui/pages/pageC.dart';
@@ -17,7 +18,10 @@ class JoblistCard extends StatelessWidget {
       margin: EdgeInsets.only(top: 20, left: 20, right: 20),
       child: ListTile(
         contentPadding: EdgeInsets.only(left: 20, right: 20),
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => DetailJob(joblist: joblist)));
+        },
         title: Text(joblist.judul ?? '', style: TextStyle(fontFamily: 'saira')),
         subtitle: Text(
           "Waiting :",
