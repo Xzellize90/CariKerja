@@ -10,6 +10,8 @@ class _CompanyJobListState extends State<CompanyJobList> {
   //DocumentReference jobRef = FirebaseFirestorellection('joblist').document({});
   var id = AuthCServices().getCurrentUID();
 
+  CollectionReference productCollection =
+      FirebaseFirestore.instance.collection("joblist");
   Stream<QuerySnapshot> getUsersPastTripsStreamSnapshots(
       BuildContext context) async* {
     //final uid = await Provider.of(context).auth.getCurrentUID();
@@ -31,9 +33,11 @@ class _CompanyJobListState extends State<CompanyJobList> {
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("joblist")
-                  .where('owner', isEqualTo: AuthCServices().getCurrentUID())
+                  .where("owner",
+                      isEqualTo: FirebaseAuth.instance.currentUser.uid)
                   .snapshots(),
-              builder: (context, snapshot) {
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
                 print(context);
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
