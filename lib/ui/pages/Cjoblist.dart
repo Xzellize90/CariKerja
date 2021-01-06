@@ -6,9 +6,21 @@ class CompanyJobList extends StatefulWidget {
 }
 
 class _CompanyJobListState extends State<CompanyJobList> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //DocumentReference jobRef = FirebaseFirestorellection('joblist').document({});
+  var id = AuthCServices().getCurrentUID();
+
+  Stream<QuerySnapshot> getUsersPastTripsStreamSnapshots(
+      BuildContext context) async* {
+    //final uid = await Provider.of(context).auth.getCurrentUID();
+    FirebaseFirestore.instance
+        .collection('joblist')
+        .where('owner', isEqualTo: id);
+    print(id);
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(FirebaseAuth.instance.currentUser.uid);
     return Scaffold(
       backgroundColor: Color(0xFFEEA20F),
       body: Stack(
@@ -19,13 +31,14 @@ class _CompanyJobListState extends State<CompanyJobList> {
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("joblist")
-                  .where("owner",
-                      isEqualTo: FirebaseAuth.instance.currentUser.uid)
+                  .where('owner', isEqualTo: AuthCServices().getCurrentUID())
                   .snapshots(),
               builder: (context, snapshot) {
+                print(context);
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
                 }
+
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return SpinKitFadingCircle(
                     size: 50,

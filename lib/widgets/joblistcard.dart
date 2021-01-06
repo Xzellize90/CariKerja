@@ -35,7 +35,7 @@ class JoblistCard extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          joblist.owner ?? 'bye',
+          'bye',
           style: TextStyle(fontFamily: 'saira'),
         ),
       ),

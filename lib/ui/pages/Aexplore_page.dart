@@ -13,36 +13,6 @@ class _ExplorePageState extends State<ExplorePage> {
   CollectionReference productCollection =
       FirebaseFirestore.instance.collection("joblist");
 
-  String id,
-      email,
-      name,
-      hobby,
-      lokai,
-      agama,
-      kerja,
-      pendidikan,
-      ttl,
-      skill,
-      images;
-
-  void getUserUpdate() async {
-    productCollection.doc().snapshots().listen((event) {
-      id = event.data()['judul'];
-      email = event.data()['deskripsi'];
-      images = event.data()['gaji'];
-      name = event.data()['image'];
-      lokai = event.data()['kontak'];
-      ttl = event.data()['penempatan'];
-
-      setState(() {});
-    });
-  }
-
-  void initState() {
-    getUserUpdate();
-    super.initState();
-  }
-
   bool _folder = true;
 
   @override

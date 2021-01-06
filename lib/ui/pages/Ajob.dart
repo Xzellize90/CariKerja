@@ -79,16 +79,13 @@ class _JobAState extends State<JobA> {
               ),
             ),
             SizedBox(height: 10),
-            Text(widget.joblist.judul,
+            Text(widget.joblist.judul ?? '',
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 22)),
-            Text(
-                NumberFormat.currency(
-                        locale: 'id', decimalDigits: 0, symbol: 'Rp')
-                    .format(int.parse(widget.joblist.gaji)),
+            Text(widget.joblist.gaji ?? '',
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
-            Text(widget.joblist.penempatan,
+            Text(widget.joblist.penempatan ?? '',
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Container(
@@ -98,7 +95,7 @@ class _JobAState extends State<JobA> {
               child: ListView(
                 children: [
                   Text(
-                    widget.joblist.deskripsi,
+                    widget.joblist.deskripsi ?? '',
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                   SizedBox(height: 10),
@@ -107,7 +104,7 @@ class _JobAState extends State<JobA> {
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                   Text(
-                    widget.joblist.kontak,
+                    widget.joblist.kontak ?? '',
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                 ],

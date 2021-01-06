@@ -25,20 +25,17 @@ class JoblistCardA extends StatelessWidget {
                       joblist: joblist,
                     )));
           },
-          title: Text(joblist.judul,
+          title: Text(joblist.judul ?? '',
               style: TextStyle(fontSize: 18, fontFamily: 'saira')),
           subtitle: Text(
-            "Gaji : " +
-                NumberFormat.currency(
-                        locale: 'id', decimalDigits: 0, symbol: 'Rp')
-                    .format(int.parse(joblist.gaji)),
+            joblist.gaji ?? '',
             style: TextStyle(fontFamily: 'saira', fontSize: 15),
           ),
           leading: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 25,
             backgroundImage: NetworkImage(
-              joblist.image,
+              joblist.image ?? '',
               scale: 40,
             ),
           ),
