@@ -8,10 +8,11 @@ class CompanyJobList extends StatefulWidget {
 class _CompanyJobListState extends State<CompanyJobList> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   //DocumentReference jobRef = FirebaseFirestorellection('joblist').document({});
-  final id = AuthCServices().getCurrentUID();
+  var id = AuthCServices().getCurrentUID();
 
-  CollectionReference joblistCollection =
-      FirebaseFirestore.instance.collection("joblist");
+  CollectionReference joblistCollection = FirebaseFirestore.instance
+      .collection("joblist")
+      .where('owner', isEqualTo: AuthCServices().getCurrentUID());
 
   Stream<QuerySnapshot> getUsersPastTripsStreamSnapshots(
       BuildContext context) async* {
