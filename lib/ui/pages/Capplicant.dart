@@ -11,11 +11,25 @@ class _CapplicantState extends State<Capplicant> {
     return Scaffold(
       backgroundColor: Color(0xFFEEA20F),
       body: Container(
-        child: Text(
-          "APPLICANT",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold),
+        child: ListView(
+          children: <Widget>[
+            Text(
+              "APPLICANT",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "KERJA RODI DI BAYAR ROTI",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
       ),
     );
