@@ -1,15 +1,16 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:carikerja/models/modelsA.dart';
 import 'package:flutter/material.dart';
-import 'package:carikerja/models/modelsC.dart';
-import 'package:carikerja/ui/pages/pageA.dart';
+//import 'package:carikerja/models/modelsC.dart';
+//import 'package:carikerja/ui/pages/pageA.dart';
 //import 'package:carikerja/services/job_services.dart';
 
 //import 'package:intl/intl.dart';
 
 class Applicantcard extends StatelessWidget {
-  final Joblist joblist;
-  Applicantcard({this.joblist});
+  final UserA user;
+  Applicantcard({this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -19,23 +20,18 @@ class Applicantcard extends StatelessWidget {
         color: Colors.yellow,
         child: ListTile(
           contentPadding: EdgeInsets.all(10),
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => JobA(
-                      joblist: joblist,
-                    )));
-          },
-          title: Text(joblist.judul ?? '',
+          onTap: () {},
+          title: Text(user.namaA ?? '',
               style: TextStyle(fontSize: 18, fontFamily: 'saira')),
           subtitle: Text(
-            joblist.gaji ?? '',
+            user.lokasi ?? '',
             style: TextStyle(fontFamily: 'saira', fontSize: 15),
           ),
           leading: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 25,
             backgroundImage: NetworkImage(
-              joblist.image ?? '',
+              user.profileApplicant ?? '',
               scale: 40,
             ),
           ),
