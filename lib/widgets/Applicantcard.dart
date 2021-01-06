@@ -7,9 +7,9 @@ import 'package:carikerja/ui/pages/pageA.dart';
 
 //import 'package:intl/intl.dart';
 
-class JoblistCardA extends StatelessWidget {
+class Applicantcard extends StatelessWidget {
   final Joblist joblist;
-  JoblistCardA({this.joblist});
+  Applicantcard({this.joblist});
 
   @override
   Widget build(BuildContext context) {

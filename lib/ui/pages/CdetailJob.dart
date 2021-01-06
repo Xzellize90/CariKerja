@@ -129,7 +129,13 @@ class _DetailJobState extends State<DetailJob> {
                                                 fontFamily: 'saira',
                                                 fontSize: 35),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushReplacement(context,
+                                                MaterialPageRoute(
+                                                    builder: (context) {
+                                              return Capplicant();
+                                            }));
+                                          },
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(50)),
