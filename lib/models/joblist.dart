@@ -11,8 +11,8 @@ class Joblist extends Equatable {
   final String image;
   final String owner;
 
-  Joblist(this.id, this.judul, this.gaji, this.deskripsi, this.image,
-      {this.kontak, this.penempatan, this.owner});
+  Joblist(this.id, this.judul, this.deskripsi, this.kontak, this.gaji,
+      this.penempatan, this.image, this.owner);
 
   @override
   List<Object> get props =>

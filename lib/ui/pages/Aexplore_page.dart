@@ -318,11 +318,14 @@ class _ExplorePageState extends State<ExplorePage> {
                             snapshot.data.docs.map((DocumentSnapshot doc) {
                           return JoblistCardA(
                               joblist: Joblist(
+                            doc.data()['id'],
                             doc.data()['judul'],
                             doc.data()['deskripsi'],
+                            doc.data()['kontak'],
                             doc.data()['gaji'],
                             doc.data()['penempatan'],
                             doc.data()['image'],
+                            doc.data()['owner'],
                           ));
                         }).toList(),
                       );

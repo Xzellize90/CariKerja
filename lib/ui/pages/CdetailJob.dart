@@ -211,11 +211,15 @@ class _DetailJobState extends State<DetailJob> {
                                             isLoading = true;
                                           });
                                           Joblist product = Joblist(
-                                              ctrlId.text,
-                                              ctrlName.text,
-                                              ctrlGaji.text,
-                                              ctrlDesc.text,
-                                              "");
+                                            ctrlId.text,
+                                            ctrlName.text,
+                                            ctrlDesc.text,
+                                            '',
+                                            ctrlGaji.text,
+                                            '',
+                                            "",
+                                            '',
+                                          );
                                           bool result =
                                               await JobServices.editProduct(
                                                   product);

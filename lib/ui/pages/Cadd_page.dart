@@ -30,6 +30,7 @@ class _CompanyAddState extends State<CompanyAdd> {
   bool _ditekan2 = false;
   bool _ditekan3 = false;
 
+  var id = AuthCServices().getCurrentUID().toString();
   Future chooseImage() async {
     final selectedImage = await imagePicker.getImage(
         source: ImageSource.gallery, imageQuality: 50);
@@ -53,6 +54,7 @@ class _CompanyAddState extends State<CompanyAdd> {
 
   @override
   Widget build(BuildContext context) {
+    print(id);
     return Scaffold(
       backgroundColor: Color(0xFFEEA20F),
       body: Container(
@@ -302,11 +304,14 @@ class _CompanyAddState extends State<CompanyAdd> {
                                 isLoading = true;
                               });
                               Joblist joblist = Joblist(
+                                '',
                                 ctrlJudul.text,
                                 ctrlDeskripsi.text,
                                 ctrlKontak.text,
                                 ctrlGaji.text,
                                 ctrlPenempatan,
+                                '',
+                                '',
                               );
                               bool result = await JobServices.addjoblist(
                                   joblist, imageFile);
