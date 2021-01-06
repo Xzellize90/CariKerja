@@ -12,17 +12,22 @@ class _CompanyJobListState extends State<CompanyJobList> {
 
   CollectionReference joblistCollection = FirebaseFirestore.instance
       .collection("joblist")
-      .where('owner', isEqualTo: AuthCServices().getCurrentUID());
+      .where("owner", isEqualTo: AuthCServices().getCurrentUID());
 
-  Stream<QuerySnapshot> getUsersPastTripsStreamSnapshots(
-      BuildContext context) async* {
+  Stream<QuerySnapshot> getUsersPastTripsStreamSnapshots() async* {
     //final uid = await Provider.of(context).auth.getCurrentUID();
     FirebaseFirestore.instance
         .collection('joblist')
-        .where('owner', isEqualTo: id);
+        .where('owner', isEqualTo: AuthCServices().getCurrentUID())
+        .snapshots();
     print(id);
   }
 
+  /*List<DocumentSnapshot> docs;
+    await FirebaseFirestore.instance
+        .collection("joblist")
+        .where("owner", isEqualTo: AuthCServices().getCurrentUID()).get().then((value) => docs=value.docs);
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +38,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
             width: double.infinity,
             height: double.infinity,
             child: StreamBuilder<QuerySnapshot>(
-              stream: joblistCollection.snapshots(),
+              stream: getUsersPastTripsStreamSnapshots(),
               builder: (context, snapshot) {
                 print(context);
                 if (snapshot.hasError) {
