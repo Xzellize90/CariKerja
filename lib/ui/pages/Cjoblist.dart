@@ -49,22 +49,29 @@ class _CompanyJobListState extends State<CompanyJobList> {
                     color: Colors.blue,
                   );
                 }
-
-                return ListView(
-                  children: snapshot.data.docs.map((DocumentSnapshot doc) {
-                    return JoblistCard(
-                        joblist: Joblist(
-                      doc.data()['id'],
-                      doc.data()['judul'],
-                      doc.data()['deskripsi'],
-                      doc.data()['kontak'],
-                      doc.data()['gaji'],
-                      doc.data()['penempatan'],
-                      doc.data()['image'],
-                      doc.data()['owner'],
-                    ));
-                  }).toList(),
-                );
+                if (snapshot.data == null) {
+                  return Container(
+                    child: Center(
+                      child: Text("Data Tidak Ada"),
+                    ),
+                  );
+                } else {
+                  return ListView(
+                    children: snapshot.data.docs.map((DocumentSnapshot doc) {
+                      return JoblistCard(
+                          joblist: Joblist(
+                        doc.data()['id'],
+                        doc.data()['judul'],
+                        doc.data()['deskripsi'],
+                        doc.data()['kontak'],
+                        doc.data()['gaji'],
+                        doc.data()['penempatan'],
+                        doc.data()['image'],
+                        doc.data()['owner'],
+                      ));
+                    }).toList(),
+                  );
+                }
               },
             ),
           ),

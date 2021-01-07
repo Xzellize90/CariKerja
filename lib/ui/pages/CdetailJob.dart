@@ -231,7 +231,7 @@ class _DetailJobState extends State<DetailJob> {
                                                   product);
                                           if (result == true) {
                                             Fluttertoast.showToast(
-                                              msg: "Add product succesful!",
+                                              msg: "Update Product Succesful!",
                                               toastLength: Toast.LENGTH_SHORT,
                                               gravity: ToastGravity.BOTTOM,
                                               backgroundColor: Colors.green,

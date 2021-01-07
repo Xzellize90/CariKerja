@@ -36,4 +36,12 @@ class UserCServices {
         .then((value) => true)
         .catchError((onError) => false);
   }
+
+  static Future<bool> deleteProduct(Joblist joblist) async {
+    await Firebase.initializeApp();
+
+    await userCollection.doc(joblist.id).delete();
+
+    return true;
+  }
 }

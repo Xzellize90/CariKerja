@@ -31,7 +31,7 @@ class _CompanyProfileAppState extends State<CompanyProfileApp> {
     userCollection.doc(_auth.uid).snapshots().listen((event) {
       id = event.data()['uid'];
       email = event.data()['email'];
-      images = event.data()['CompanyProfileApplicant'];
+      images = event.data()['profileCompany'];
       name = event.data()['namaC'];
       lokai = event.data()['lokasi'];
 
@@ -61,7 +61,8 @@ class _CompanyProfileAppState extends State<CompanyProfileApp> {
                       margin: EdgeInsets.only(top: 50),
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(images ?? ""),
+                              image: NetworkImage(images ??
+                                  "https://firebasestorage.googleapis.com/v0/b/carikerja-49dd8.appspot.com/o/blankProfile%2Fblank-profile-picture-973460_1280.png?alt=media&token=74f8e1a1-50bc-4158-b3b2-a4d80c9ce2fa"),
                               fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(30),
                           color: Colors.greenAccent),
