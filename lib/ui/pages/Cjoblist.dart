@@ -49,6 +49,7 @@ class _CompanyJobListState extends State<CompanyJobList> {
                     color: Colors.blue,
                   );
                 }
+                print(snapshot.data);
                 if (snapshot.data == null) {
                   return Container(
                     child: Center(

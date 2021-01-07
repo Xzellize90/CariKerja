@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 class JobServices {
   final db = FirebaseFirestore.instance;
 
-  static CollectionReference productCollection =
+  static CollectionReference joblistCollection =
       FirebaseFirestore.instance.collection("joblist");
   static DocumentReference productDoc;
 
@@ -56,7 +56,7 @@ class JobServices {
   static Future<bool> editProduct(Joblist product) async {
     await Firebase.initializeApp();
 
-    await productCollection.doc(product.id).update(
+    await joblistCollection.doc(product.id).update(
       {
         'judul': product.judul,
         'deskripsi': product.deskripsi,
@@ -70,7 +70,7 @@ class JobServices {
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
 
-    productDoc = await productCollection.add(
+    productDoc = await joblistCollection.add(
       {
         'id': "",
         'judul': joblist.judul,
@@ -97,7 +97,7 @@ class JobServices {
             ),
       );
 
-      productCollection.doc(productDoc.id).update({
+      joblistCollection.doc(productDoc.id).update({
         'id': productDoc.id,
         'image': imgUrl,
       });
@@ -106,5 +106,13 @@ class JobServices {
     } else {
       return false;
     }
+  }
+
+  static Future<bool> deleteJoblist(Joblist joblist) async {
+    await Firebase.initializeApp();
+
+    await joblistCollection.doc(joblist.id).delete();
+
+    return true;
   }
 }

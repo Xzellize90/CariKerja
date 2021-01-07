@@ -8,7 +8,7 @@ class DetailJob extends StatefulWidget {
 }
 
 class _DetailJobState extends State<DetailJob> {
-  bool isLoading;
+  bool isLoading = false;
   TextEditingController controllerName;
   TextEditingController controllerGaji;
   TextEditingController controllerDesc;
@@ -27,8 +27,9 @@ class _DetailJobState extends State<DetailJob> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFEEA20F),
-        body: Stack(children: [
+      backgroundColor: Color(0xFFEEA20F),
+      body: Stack(
+        children: [
           Container(
             child: Container(
               child: ListView(
@@ -284,7 +285,70 @@ class _DetailJobState extends State<DetailJob> {
                                       style: TextStyle(
                                           fontFamily: 'saira', fontSize: 35),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      ctrlId = TextEditingController(
+                                          text: widget.joblist.id);
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text("Confirmation"),
+                                              content: Text(
+                                                  "Are you sure want to delete?"),
+                                              actions: [
+                                                FlatButton(
+                                                  child: Text("Yes"),
+                                                  onPressed: () async {
+                                                    setState(() {
+                                                      isLoading = true;
+                                                    });
+                                                    Joblist joblist = Joblist(
+                                                        ctrlId.text,
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "",
+                                                        "");
+                                                    bool result =
+                                                        await JobServices
+                                                            .deleteJoblist(
+                                                                joblist);
+                                                    if (result == true) {
+                                                      Fluttertoast.showToast(
+                                                        msg:
+                                                            "Delete product succesful!",
+                                                        toastLength:
+                                                            Toast.LENGTH_SHORT,
+                                                        gravity:
+                                                            ToastGravity.BOTTOM,
+                                                        backgroundColor:
+                                                            Colors.green,
+                                                        textColor: Colors.white,
+                                                        fontSize: 16.0,
+                                                      );
+                                                      setState(
+                                                        () {
+                                                          isLoading = false;
+                                                        },
+                                                      );
+
+                                                      Navigator.pop(context);
+                                                      Navigator.pop(context);
+                                                    }
+                                                  },
+                                                ),
+                                                FlatButton(
+                                                  child: Text("no"),
+                                                  onPressed: () async {
+                                                    Navigator.pop(context);
+                                                  },
+                                                )
+                                              ],
+                                            );
+                                          });
+                                    },
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(50),
@@ -315,6 +379,8 @@ class _DetailJobState extends State<DetailJob> {
                   ),
                 )
               : Container()
-        ]));
+        ],
+      ),
+    );
   }
 }
