@@ -47,7 +47,7 @@ class _ProfileAppState extends State<ProfileApp> {
   var ctrlPend = TextEditingController();
   var ctrlSkill = TextEditingController();
   var ctrlKerja = TextEditingController();
-  var ctrlStatus = TextEditingController( text: "applicant");
+  var ctrlStatus = TextEditingController(text: "applicant");
 
   var ctrlId = TextEditingController();
 
@@ -102,7 +102,8 @@ class _ProfileAppState extends State<ProfileApp> {
                       margin: EdgeInsets.only(top: 50),
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(images ?? ""),
+                              image: NetworkImage(images ??
+                                  "https://i.pinimg.com/originals/54/95/41/549541f8cf16e4a9e6d822c9819a6c84.jpg"),
                               fit: BoxFit.cover),
                           borderRadius: BorderRadius.circular(30),
                           color: Colors.white),
