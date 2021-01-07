@@ -31,7 +31,16 @@ class Opening extends StatefulWidget {
 class _OpeningState extends State<Opening> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context){
+          return Splash();
+        })
+        );
+      },
+
+    child: MaterialApp(
       theme: ThemeData(fontFamily: 'Saira'),
       home: Scaffold(
         backgroundColor:  Color(0xFFEEA20F),
@@ -133,6 +142,6 @@ class _OpeningState extends State<Opening> {
           )
         ),
       )
-    );
+    ));
   }
 }
