@@ -12,8 +12,15 @@ class _CapplicantState extends State<Capplicant> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEEA20F),
-      body: Container(
-        child: Container(
+      body: Stack(
+        children: <Widget>[
+          Container(
+                      child: Container(
+                    child: Text("Kiki Sexy",
+                        style: TextStyle(
+                            color: Colors.black, fontFamily: 'saira', fontSize: 48)),
+                  )),
+          Container(
           width: double.infinity,
           height: double.infinity,
           child: StreamBuilder<QuerySnapshot>(
@@ -42,12 +49,6 @@ class _CapplicantState extends State<Capplicant> {
                   ),
                 );
               } else {
-                Center(
-                    child: Container(
-                  child: Text("Gambar Profile",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: 'saira')),
-                ));
                 return Container(
                   margin: EdgeInsets.only(top: 50),
                   child: ListView(
@@ -73,6 +74,7 @@ class _CapplicantState extends State<Capplicant> {
             },
           ),
         ),
+        ],
       ),
     );
   }
