@@ -6,6 +6,7 @@ import 'package:carikerja/models/modelsA.dart';
 import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/services/job_services.dart';
 import 'package:carikerja/services/servicesC.dart';
+import 'package:carikerja/ui/pages/opening_page.dart';
 import 'package:carikerja/widgets/ApplicantCard.dart';
 import 'package:carikerja/widgets/joblistcard.dart';
 //import 'package:circular_profile_avatar/circular_profile_avatar.dart';

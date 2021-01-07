@@ -5,6 +5,7 @@ import 'package:carikerja/models/modelsC.dart';
 //import 'package:carikerja/services/job_services.dart';
 
 import 'package:carikerja/services/servicesA.dart';
+import 'package:carikerja/ui/pages/opening_page.dart';
 import 'package:carikerja/widgets/joblistA.dart';
 //import 'package:carikerja/widgets/joblistcard.dart';
 

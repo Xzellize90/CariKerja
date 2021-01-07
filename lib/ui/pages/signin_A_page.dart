@@ -19,7 +19,16 @@ class _SignInApplicantState extends State<SignInApplicant> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context){
+          return Opening();
+        })
+        );
+      },
+
+    child: MaterialApp(
       theme: ThemeData(fontFamily: 'Saira'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -167,6 +176,6 @@ class _SignInApplicantState extends State<SignInApplicant> {
                   ]
         )
       ),
-    );
+    ));
   }
 }

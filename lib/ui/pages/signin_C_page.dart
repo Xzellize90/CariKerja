@@ -19,7 +19,16 @@ class _SignInCompanyState extends State<SignInCompany> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context){
+          return Opening();
+        })
+        );
+      },
+
+    child: MaterialApp(
       theme: ThemeData(fontFamily: 'Saira'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -156,6 +165,6 @@ class _SignInCompanyState extends State<SignInCompany> {
                   )
                 : Container()
           ])),
-    );
+    ));
   }
 }
