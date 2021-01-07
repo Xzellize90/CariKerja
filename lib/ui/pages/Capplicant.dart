@@ -32,21 +32,30 @@ class _CapplicantState extends State<Capplicant> {
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
-                print(context);
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
                 }
-
+                print("uhuy");
+                print(snapshot.data.docs.length);
+                print("ahoy");
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return SpinKitFadingCircle(
                     size: 50,
                     color: Colors.blue,
                   );
                 }
-                if (snapshot.data == null) {
+                if (FirebaseFirestore.instance
+                        .collection("joblist")
+                        .doc(widget.joblist.id)
+                        .collection("Appliance")
+                        .snapshots() ==
+                    null) {
                   return Container(
                     child: Center(
-                      child: Text("Data Tidak Ada"),
+                      child: Text(
+                        "Data Tidak Ada",
+                        style: TextStyle(fontSize: 50),
+                      ),
                     ),
                   );
                 } else {

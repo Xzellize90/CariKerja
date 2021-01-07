@@ -34,7 +34,8 @@ class Applicantcard extends StatelessWidget {
             backgroundColor: Colors.white,
             radius: 25,
             backgroundImage: NetworkImage(
-              user.profileApplicant ?? '',
+              user.profileApplicant ??
+                  "https://firebasestorage.googleapis.com/v0/b/carikerja-49dd8.appspot.com/o/blankProfile%2Fblank-profile-picture-973460_1280.png?alt=media&token=74f8e1a1-50bc-4158-b3b2-a4d80c9ce2fa",
               scale: 40,
             ),
           ),

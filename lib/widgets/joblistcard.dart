@@ -1,4 +1,5 @@
 import 'package:carikerja/ui/pages/pageC.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carikerja/models/modelsC.dart';
 //import 'package:carikerja/ui/pages/pageC.dart';
@@ -23,14 +24,22 @@ class JoblistCard extends StatelessWidget {
               builder: (context) => DetailJob(joblist: joblist)));
         },
         title: Text(joblist.judul ?? '', style: TextStyle(fontFamily: 'saira')),
-        subtitle: Text(
-          "Waiting :",
-          style: TextStyle(fontFamily: 'saira'),
+        subtitle: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection("joblist")
+              .doc(joblist.id)
+              .collection("Appliance")
+              .snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            return Text("Waiting = " + snapshot.data.docs.length.toString());
+          },
         ),
         leading: CircleAvatar(
           backgroundColor: Colors.white,
           backgroundImage: NetworkImage(
-            joblist.image ?? '',
+            joblist.image ??
+                "https://firebasestorage.googleapis.com/v0/b/carikerja-49dd8.appspot.com/o/blankProfile%2Fblank-profile-picture-973460_1280.png?alt=media&token=74f8e1a1-50bc-4158-b3b2-a4d80c9ce2fa",
             scale: 40,
           ),
         ),
