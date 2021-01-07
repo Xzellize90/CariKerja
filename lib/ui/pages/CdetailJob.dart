@@ -131,11 +131,13 @@ class _DetailJobState extends State<DetailJob> {
                                                 fontSize: 35),
                                           ),
                                           onPressed: () {
-                                            Navigator.pushReplacement(context,
+                                            Navigator.of(context).push(
                                                 MaterialPageRoute(
-                                                    builder: (context) {
-                                              return Capplicant();
-                                            }));
+                                                    builder: (context) =>
+                                                        Capplicant(
+                                                          joblist:
+                                                              widget.joblist,
+                                                        )));
                                           },
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
