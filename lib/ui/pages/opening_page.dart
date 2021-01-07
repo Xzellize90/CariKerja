@@ -32,116 +32,106 @@ class _OpeningState extends State<Opening> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context){
-          return Splash();
-        })
-        );
-      },
-
-    child: MaterialApp(
-      theme: ThemeData(fontFamily: 'Saira'),
-      home: Scaffold(
-        backgroundColor:  Color(0xFFEEA20F),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Flexible(
-              flex: 2,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                width: double.infinity,
-                  height:double.infinity,
-                  child: ListView(
-                    children: <Widget>[
-                      Text(
-                    "CARI",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 80,
-                      fontWeight: FontWeight.bold
-                        ),
+        // ignore: missing_return
+        onWillPop: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) {
+            return Splash();
+          }));
+        },
+        child: MaterialApp(
+            theme: ThemeData(fontFamily: 'Saira'),
+            home: Scaffold(
+              backgroundColor: Color(0xFFEEA20F),
+              body: Container(
+                  child: Column(children: <Widget>[
+                Flexible(
+                    flex: 2,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: ListView(
+                        children: <Widget>[
+                          Text(
+                            "CARI",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 80,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "KERJA",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 80,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "KERJA",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 80,
-                          fontWeight: FontWeight.bold
-                        ),
+                    )),
+                Flexible(
+                    flex: 1,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: ListView(
+                        children: <Widget>[
+                          Text(
+                            "Siapa Anda ?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                    ],
+                    )),
+                Flexible(
+                  flex: 0,
+                  child: RaisedButton(
+                    child: Text(
+                      'PEKERJA',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 34,
+                      ),
+                    ),
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0)),
+                    padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SignInApplicant()));
+                    },
                   ),
-            )),
-            Flexible(
-              flex: 1,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
-                width: double.infinity,
-                  height:double.infinity,
-                  child: ListView(
-                    children: <Widget>[
-                      Text(
-                    "Siapa Anda ?",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold
-                        ),
+                ),
+                SizedBox(height: 20),
+                Flexible(
+                  flex: 1,
+                  child: RaisedButton(
+                    child: Text(
+                      'PERUSAHAAN',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 34,
                       ),
-                    ],
+                    ),
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0)),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SignInCompany()));
+                    },
                   ),
-            )),
-            Flexible(
-              flex: 0,
-              child: RaisedButton(
-                child: Text('PEKERJA'
-                ,style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 34,
                 ),
-                ),
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0)
-                ),
-                padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SignInApplicant())
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 20),
-            Flexible(
-              flex: 1,
-              child: RaisedButton(
-                child: Text('PERUSAHAAN'
-                ,style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 34,
-                ),
-                ),
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0)
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SignInCompany())
-                  );
-                },
-              ),
-            ),
-            ]
-          )
-        ),
-      )
-    ));
+              ])),
+            )));
   }
 }
