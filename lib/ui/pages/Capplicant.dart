@@ -15,15 +15,12 @@ class _CapplicantState extends State<Capplicant> {
       body: Stack(
         children: <Widget>[
           Container(
-              height: 90,
-              margin: EdgeInsets.only(top: 45),
-              child: Center(
-                child: Text("Kiki Sexy",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'saira',
-                        fontSize: 48)),
-              )),
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(top: 45),
+            child: Text("APPLICANT",
+                style: TextStyle(
+                    color: Colors.white, fontFamily: 'saira', fontSize: 48)),
+          ),
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -54,7 +51,7 @@ class _CapplicantState extends State<Capplicant> {
                   );
                 } else {
                   return Container(
-                    margin: EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 100),
                     child: ListView(
                       children: snapshot.data.docs.map((DocumentSnapshot doc) {
                         return Applicantcard(
