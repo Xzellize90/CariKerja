@@ -32,6 +32,8 @@ class JoblistCard extends StatelessWidget {
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.data == null) return CircularProgressIndicator();
+
             return Text("Waiting = " + snapshot.data.docs.length.toString());
           },
         ),

@@ -38,7 +38,6 @@ class _CompanyJobListState extends State<CompanyJobList> {
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
-                print(context);
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
                 }
@@ -49,7 +48,6 @@ class _CompanyJobListState extends State<CompanyJobList> {
                     color: Colors.blue,
                   );
                 }
-                print(snapshot.data);
                 if (snapshot.data == null) {
                   return Container(
                     child: Center(
