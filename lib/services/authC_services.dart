@@ -31,6 +31,12 @@ class AuthCServices {
 
   static Future<String> signIn(String email, String password) async {
     await Firebase.initializeApp();
+
+    FirebaseFirestore.instance
+      .collection("userA")
+      .where("status",
+          isEqualTo: "Applicant");
+
     String msg = "Success";
     try {
       await auth

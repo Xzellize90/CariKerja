@@ -306,8 +306,7 @@ class _ExplorePageState extends State<ExplorePage> {
           Flexible(
               flex: 2,
               child: Container(
-                width: 325,
-                height: 150,
+                height: 100,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [

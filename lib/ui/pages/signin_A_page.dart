@@ -1,6 +1,8 @@
 part of 'pageA.dart';
 
 class SignInApplicant extends StatefulWidget {
+  SignInApplicant({this.userA});
+  final UserA userA;
   @override
   _SignInApplicantState createState() => _SignInApplicantState();
 }
@@ -9,6 +11,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
   final ctrlEmailA = TextEditingController();
   final ctrlPasswordA = TextEditingController();
   bool isLoading = false;
+  bool isworking = false;
 
   @override
   void dispose() {
@@ -99,9 +102,9 @@ class _SignInApplicantState extends State<SignInApplicant> {
                             ),
                             textColor: Colors.black,
                             color: Colors.lightGreen,
-                            onPressed: () async {
-                              if (ctrlEmailA.text == "" ||
-                                  ctrlPasswordA.text == "") {
+                            onPressed: () async {                            
+                            if (ctrlEmailA.text == "" ||
+                                ctrlPasswordA.text == "") {
                                 Fluttertoast.showToast(
                                   msg: "Please fill all fields !",
                                   toastLength: Toast.LENGTH_SHORT,
@@ -147,6 +150,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                 }
                               }
                             },
+                            
                           ),
                         ],
                       ),
