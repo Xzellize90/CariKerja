@@ -35,9 +35,6 @@ class _CapplicantState extends State<Capplicant> {
                 if (snapshot.hasError) {
                   return Text("Failed to get products data!");
                 }
-                print("uhuy");
-                print(snapshot.data.docs.length);
-                print("ahoy");
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return SpinKitFadingCircle(
                     size: 50,

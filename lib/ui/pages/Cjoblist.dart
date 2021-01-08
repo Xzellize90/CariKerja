@@ -48,10 +48,11 @@ class _CompanyJobListState extends State<CompanyJobList> {
                     color: Colors.blue,
                   );
                 }
-                if (snapshot.data == null) {
+                if (snapshot.data.docs.length == 0) {
                   return Container(
                     child: Center(
-                      child: Text("Data Tidak Ada"),
+                      child: Text("Data Tidak Ada",
+                          style: TextStyle(fontFamily: 'saira')),
                     ),
                   );
                 } else {
