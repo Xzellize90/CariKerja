@@ -27,6 +27,11 @@ class AuthAServices{
 
   static Future<String> signIn(String email, String password) async{
     await Firebase.initializeApp();
+
+    FirebaseFirestore.instance
+      .collection("userA")
+      .where("status",
+          isEqualTo: "Applicant");
     
     String msg = "Success";
     try{
@@ -35,13 +40,6 @@ class AuthAServices{
       msg=e.toString();
     }
     return msg;
-  }
-
-  authorizeAccess(BuildContext context) {
-    FirebaseFirestore.instance
-      .collection("userA")
-      .where("status",
-          isEqualTo: "Applicant");
   }
 
   static Future<bool> signout() async{

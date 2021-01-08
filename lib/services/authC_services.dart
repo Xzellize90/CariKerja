@@ -35,7 +35,7 @@ class AuthCServices {
     FirebaseFirestore.instance
       .collection("userA")
       .where("status",
-          isEqualTo: "Applicant");
+          isEqualTo: "Company");
 
     String msg = "Success";
     try {
