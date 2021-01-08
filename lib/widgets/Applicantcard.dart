@@ -1,6 +1,7 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carikerja/models/modelsA.dart';
+import 'package:carikerja/ui/pages/pageC.dart';
 import 'package:flutter/material.dart';
 //import 'package:carikerja/ui/pages/pageC.dart';
 //import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class Applicantcard extends StatelessWidget {
         color: Colors.yellow,
         child: ListTile(
           contentPadding: EdgeInsets.all(10),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Csv(user: user)));
+          },
           title: Text(user.namaA ?? '',
               style: TextStyle(fontSize: 18, fontFamily: 'saira')),
           subtitle: Text(

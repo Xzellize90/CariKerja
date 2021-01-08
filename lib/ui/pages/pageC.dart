@@ -28,3 +28,4 @@ part 'Cprofile_page.dart';
 part 'Cjoblist.dart';
 part 'CdetailJob.dart';
 part 'Capplicant.dart';
+part 'Csv.dart';
