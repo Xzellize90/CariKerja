@@ -3,6 +3,7 @@ part of 'pageC.dart';
 class Capplicant extends StatefulWidget {
   Capplicant({this.joblist});
   final Joblist joblist;
+
   @override
   _CapplicantState createState() => _CapplicantState();
 }
@@ -41,6 +42,7 @@ class _CapplicantState extends State<Capplicant> {
                     color: Colors.blue,
                   );
                 }
+
                 if (FirebaseFirestore.instance
                         .collection("joblist")
                         .doc(widget.joblist.id)
@@ -55,25 +57,28 @@ class _CapplicantState extends State<Capplicant> {
                       ),
                     ),
                   );
+                  //^ WINNER MOHON UNTUK INGATKAN DIRI SENDIRI KERJAKAN INI, ATAU SIAPAPUN YG LIAT TULISAN INI INGATKAN GW KERJAKAN INI^
                 } else {
                   return Container(
                     margin: EdgeInsets.only(top: 120),
                     child: ListView(
                       children: snapshot.data.docs.map((DocumentSnapshot doc) {
                         return Applicantcard(
-                            user: UserA(
-                          doc.data()['id'],
-                          doc.data()['email'],
-                          doc.data()['namaA'],
-                          doc.data()['lokasi'],
-                          doc.data()['ttlahir'],
-                          doc.data()['agama'],
-                          doc.data()['hobby'],
-                          doc.data()['spendidikan'],
-                          doc.data()['skills'],
-                          doc.data()['pbekerja'],
-                          doc.data()['profileApplicant'],
-                        ));
+                          user: UserA(
+                            doc.data()['id'],
+                            doc.data()['email'],
+                            doc.data()['namaA'],
+                            doc.data()['lokasi'],
+                            doc.data()['ttlahir'],
+                            doc.data()['agama'],
+                            doc.data()['hobby'],
+                            doc.data()['spendidikan'],
+                            doc.data()['skills'],
+                            doc.data()['pbekerja'],
+                            doc.data()['profileApplicant'],
+                          ),
+                          joblist: widget.joblist,
+                        );
                       }).toList(),
                     ),
                   );

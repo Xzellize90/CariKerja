@@ -1,6 +1,7 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carikerja/models/modelsA.dart';
+import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/ui/pages/pageC.dart';
 import 'package:flutter/material.dart';
 //import 'package:carikerja/ui/pages/pageC.dart';
@@ -14,7 +15,8 @@ import 'package:flutter/material.dart';
 
 class Applicantcard extends StatelessWidget {
   final UserA user;
-  Applicantcard({this.user});
+  final Joblist joblist;
+  Applicantcard({this.user, this.joblist});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,11 @@ class Applicantcard extends StatelessWidget {
         child: ListTile(
           contentPadding: EdgeInsets.all(10),
           onTap: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Csv(user: user)));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => Csv(
+                      user: user,
+                      joblist: joblist,
+                    )));
           },
           title: Text(user.namaA ?? '',
               style: TextStyle(fontSize: 18, fontFamily: 'saira')),

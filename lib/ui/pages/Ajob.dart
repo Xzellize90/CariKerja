@@ -17,6 +17,8 @@ class _JobAState extends State<JobA> {
   CollectionReference productCollection =
       FirebaseFirestore.instance.collection("userA");
 
+  static DocumentReference productDoc;
+
   String id,
       email,
       name,
@@ -142,15 +144,15 @@ class _JobAState extends State<JobA> {
                           style: TextStyle(fontFamily: 'saira', fontSize: 30),
                         ),
                         onPressed: () {
-                          if (name == "" ||
-                              agama == "" ||
-                              email == "" ||
-                              hobby == "" ||
-                              lokai == "" ||
-                              kerja == "" ||
-                              skill == "" ||
-                              pendidikan == "" ||
-                              ttlahir == "") {
+                          if (name == null ||
+                              agama == null ||
+                              email == null ||
+                              hobby == null ||
+                              lokai == null ||
+                              kerja == null ||
+                              skill == null ||
+                              pendidikan == null ||
+                              ttlahir == null) {
                             Fluttertoast.showToast(
                                 msg: "Mohon lengkapi profil",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -176,7 +178,7 @@ class _JobAState extends State<JobA> {
                               'pbekerja': kerja ?? '',
                               'skill': skill ?? '',
                               'spendidikan': pendidikan ?? '',
-                              'ttlahir': ttlahir ?? ''
+                              'ttlahir': ttlahir ?? '',
                             });
                             Fluttertoast.showToast(
                                 msg: "Successfull",

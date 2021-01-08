@@ -61,7 +61,7 @@ class _CsvState extends State<Csv> {
                   )),
                   Center(
                       child: Container(
-                    child: Text(widget.user.lokasi,
+                    child: Text(widget.user.ttlahir,
                         style: TextStyle(
                             color: Colors.black,
                             fontFamily: 'saira',

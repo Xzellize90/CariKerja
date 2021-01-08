@@ -124,7 +124,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 color: Colors.white),
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 10, top: 10),
+            margin: EdgeInsets.only(bottom: 5, top: 5),
             child: Text(
               "Highlist List",
               style: TextStyle(
@@ -139,7 +139,7 @@ class _ExplorePageState extends State<ExplorePage> {
               flex: 3,
               child: Container(
                 height: 200,
-                margin: EdgeInsets.only(left: 25, right: 25, top: 0),
+                margin: EdgeInsets.only(left: 25, right: 25),
                 child: ListView(
                   children: <Widget>[
                     Card(
@@ -165,7 +165,6 @@ class _ExplorePageState extends State<ExplorePage> {
                           ),
                         )),
                     Container(
-                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
@@ -191,7 +190,6 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
@@ -217,7 +215,6 @@ class _ExplorePageState extends State<ExplorePage> {
                           )),
                     ),
                     Container(
-                      height: 82,
                       child: Card(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(width: 2, color: Colors.black)),
@@ -246,7 +243,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 ),
               )),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Container(
             margin: EdgeInsets.only(bottom: 7),
@@ -263,7 +260,7 @@ class _ExplorePageState extends State<ExplorePage> {
           Flexible(
               flex: 3,
               child: Container(
-                margin: EdgeInsets.only(left: 25, right: 25, top: 0),
+                margin: EdgeInsets.only(left: 25, right: 25),
                 height: 200,
                 child: Container(
                   width: double.infinity,
