@@ -57,7 +57,7 @@ class _CapplicantState extends State<Capplicant> {
                   );
                 } else {
                   return Container(
-                    margin: EdgeInsets.only(top: 100),
+                    margin: EdgeInsets.only(top: 120),
                     child: ListView(
                       children: snapshot.data.docs.map((DocumentSnapshot doc) {
                         return Applicantcard(

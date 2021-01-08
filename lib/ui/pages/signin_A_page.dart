@@ -102,9 +102,9 @@ class _SignInApplicantState extends State<SignInApplicant> {
                             ),
                             textColor: Colors.black,
                             color: Colors.lightGreen,
-                            onPressed: () async {                            
-                            if (ctrlEmailA.text == "" ||
-                                ctrlPasswordA.text == "") {
+                            onPressed: () async {
+                              if (ctrlEmailA.text == "" ||
+                                  ctrlPasswordA.text == "") {
                                 Fluttertoast.showToast(
                                   msg: "Please fill all fields !",
                                   toastLength: Toast.LENGTH_SHORT,
@@ -150,7 +150,6 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                 }
                               }
                             },
-                            
                           ),
                         ],
                       ),
