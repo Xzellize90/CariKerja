@@ -25,7 +25,7 @@ class _JobAState extends State<JobA> {
       agama,
       kerja,
       pendidikan,
-      ttl,
+      ttlahir,
       skill,
       images;
 
@@ -36,7 +36,7 @@ class _JobAState extends State<JobA> {
       images = event.data()['profileApplicant'];
       name = event.data()['namaA'];
       lokai = event.data()['lokasi'];
-      ttl = event.data()['ttlahir'];
+      ttlahir = event.data()['ttlahir'];
       agama = event.data()['agama'];
       hobby = event.data()['hobby'];
       pendidikan = event.data()['spendidikan'];
@@ -142,36 +142,54 @@ class _JobAState extends State<JobA> {
                           style: TextStyle(fontFamily: 'saira', fontSize: 30),
                         ),
                         onPressed: () {
-                          ctrlId =
-                              TextEditingController(text: widget.joblist.id);
-                          FirebaseFirestore.instance
-                              .collection("joblist")
-                              .doc(widget.joblist.id)
-                              .collection("Appliance")
-                              .add({
-                            'appliance_id':
-                                FirebaseAuth.instance.currentUser.uid,
-                            'agama': agama ?? '',
-                            'email': email ?? '',
-                            'hobby': hobby ?? '',
-                            'lokasi': lokai ?? '',
-                            'namaA': name ?? '',
-                            'pbekerja': kerja ?? '',
-                            'skill': skill ?? '',
-                            'spendidikan': pendidikan ?? '',
-                            'ttl': ttl ?? ''
-                          });
-                          Fluttertoast.showToast(
-                              msg: "Successfull",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.green,
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                          Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                            return MainMenu();
-                          }));
+                          if (name == "" ||
+                              agama == "" ||
+                              email == "" ||
+                              hobby == "" ||
+                              lokai == "" ||
+                              kerja == "" ||
+                              skill == "" ||
+                              pendidikan == "" ||
+                              ttlahir == "") {
+                            Fluttertoast.showToast(
+                                msg: "Mohon lengkapi profil",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else {
+                            ctrlId =
+                                TextEditingController(text: widget.joblist.id);
+                            FirebaseFirestore.instance
+                                .collection("joblist")
+                                .doc(widget.joblist.id)
+                                .collection("Appliance")
+                                .add({
+                              'appliance_id':
+                                  FirebaseAuth.instance.currentUser.uid,
+                              'agama': agama ?? '',
+                              'email': email ?? '',
+                              'hobby': hobby ?? '',
+                              'lokasi': lokai ?? '',
+                              'namaA': name ?? '',
+                              'pbekerja': kerja ?? '',
+                              'skill': skill ?? '',
+                              'spendidikan': pendidikan ?? '',
+                              'ttlahir': ttlahir ?? ''
+                            });
+                            Fluttertoast.showToast(
+                                msg: "Successfull",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return MainMenu();
+                            }));
+                          }
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),

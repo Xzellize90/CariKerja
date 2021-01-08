@@ -26,9 +26,13 @@ class _CsvState extends State<Csv> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Text("CV",
+                      style: TextStyle(
+                          fontFamily: 'saira',
+                          color: Colors.white,
+                          fontSize: 70)),
                   Center(
                     child: Container(
-                      margin: EdgeInsets.only(top: 50),
                       child: CircleAvatar(
                         radius: 100,
                         backgroundImage: NetworkImage(

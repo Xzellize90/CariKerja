@@ -17,7 +17,7 @@ class _CapplicantState extends State<Capplicant> {
           Container(
             alignment: Alignment.topCenter,
             margin: EdgeInsets.only(top: 45),
-            child: Text("APPLICANT",
+            child: Text("Applicant",
                 style: TextStyle(
                     color: Colors.white, fontFamily: 'saira', fontSize: 48)),
           ),
