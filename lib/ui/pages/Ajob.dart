@@ -162,12 +162,16 @@ class _JobAState extends State<JobA> {
                             'ttl': ttl ?? ''
                           });
                           Fluttertoast.showToast(
-                              msg: "Add product successful.",
+                              msg: "Successfull",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
                               backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 16.0);
+                          Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                            return MainMenu();
+                          }));
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),

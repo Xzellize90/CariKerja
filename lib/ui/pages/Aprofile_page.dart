@@ -165,7 +165,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         filled: true,
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
+                        hintText: "Nama Lengkap Anda",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
@@ -180,7 +180,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         filled: true,
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
+                        hintText: "Lokasi Anda",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
@@ -196,7 +196,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         filled: true,
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
+                        hintText: "Tempat / Tanggal Lahir",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
@@ -212,7 +212,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         filled: true,
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
+                        hintText: "Agama anda",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
@@ -228,7 +228,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         filled: true,
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Write your email",
+                        hintText: "Hobby anda",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
