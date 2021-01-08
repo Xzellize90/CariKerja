@@ -63,15 +63,15 @@ class _CapplicantState extends State<Capplicant> {
                         return Applicantcard(
                             user: UserA(
                           doc.data()['id'],
-                          doc.data()['agama'],
                           doc.data()['email'],
-                          doc.data()['hobby'],
-                          doc.data()['lokasi'],
                           doc.data()['namaA'],
-                          doc.data()['pbekerja'],
-                          doc.data()['skills'],
-                          doc.data()['spendidikan'],
+                          doc.data()['lokasi'],
                           doc.data()['ttlahir'],
+                          doc.data()['agama'],
+                          doc.data()['hobby'],
+                          doc.data()['spendidikan'],
+                          doc.data()['skills'],
+                          doc.data()['pbekerja'],
                           doc.data()['profileApplicant'],
                         ));
                       }).toList(),
