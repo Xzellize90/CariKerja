@@ -183,22 +183,32 @@ class _HighlightsState extends State<Highlights> {
                       style: TextStyle(fontFamily: 'saira', fontSize: 30),
                     ),
                     onPressed: () async {
-                      ctrlId = TextEditingController(text: widget.joblist.id);
-                      productdoc = await FirebaseFirestore.instance
-                          .collection("highlight")
-                          .add({
-                        'jobName': widget.joblist.judul,
-                        'code': hlcode.text,
-                        'id': '',
-                      });
+                      if (hlcode.text == "") {
+                        Fluttertoast.showToast(
+                            msg: "Please fill your code",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      } else {
+                        ctrlId = TextEditingController(text: widget.joblist.id);
+                        productdoc = await FirebaseFirestore.instance
+                            .collection("highlight")
+                            .add({
+                          'jobName': widget.joblist.judul,
+                          'code': hlcode.text,
+                          'id': '',
+                        });
 
-                      Fluttertoast.showToast(
-                          msg: "Successfull",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.BOTTOM,
-                          backgroundColor: Colors.green,
-                          textColor: Colors.white,
-                          fontSize: 16.0);
+                        Fluttertoast.showToast(
+                            msg: "Successfull",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      }
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
