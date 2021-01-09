@@ -15,19 +15,36 @@ class Astatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 2, color: Colors.black)),
-        color: Colors.yellow,
-        child: ListTile(
-          contentPadding: EdgeInsets.all(10),
-          onTap: () {},
-          title: Text(status.posisi ?? '',
-              style: TextStyle(fontSize: 18, fontFamily: 'saira')),
-          subtitle: Text(
-            status.status ?? '',
-            style: TextStyle(fontFamily: 'saira', fontSize: 15),
-          ),
-        ));
+    if (status.status == "1") {
+      return Card(
+          shape: RoundedRectangleBorder(
+              side: BorderSide(width: 2, color: Colors.black)),
+          color: Colors.yellow,
+          child: ListTile(
+            contentPadding: EdgeInsets.all(10),
+            onTap: () {},
+            title: Text(status.posisi ?? '',
+                style: TextStyle(fontSize: 18, fontFamily: 'saira')),
+            subtitle: Text(
+              'Diterima',
+              style: TextStyle(fontFamily: 'saira', fontSize: 15),
+            ),
+          ));
+    } else {
+      return Card(
+          shape: RoundedRectangleBorder(
+              side: BorderSide(width: 2, color: Colors.black)),
+          color: Colors.yellow,
+          child: ListTile(
+            contentPadding: EdgeInsets.all(10),
+            onTap: () {},
+            title: Text(status.posisi ?? '',
+                style: TextStyle(fontSize: 18, fontFamily: 'saira')),
+            subtitle: Text(
+              'ANDA DITOLAAKHH',
+              style: TextStyle(fontFamily: 'saira', fontSize: 15),
+            ),
+          ));
+    }
   }
 }

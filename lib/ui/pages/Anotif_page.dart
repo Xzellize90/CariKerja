@@ -23,7 +23,6 @@ class _NotifPageState extends State<NotifPage> {
     userCollection.doc(_auth.uid).snapshots().listen((event) {
       id = event.data()['uid'];
       name = event.data()['namaA'];
-
       setState(() {});
     });
   }
@@ -45,7 +44,7 @@ class _NotifPageState extends State<NotifPage> {
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("accept")
-                  .where("appliance_id", isEqualTo: name ?? '')
+                  .where("appliance_id", isEqualTo: id)
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {

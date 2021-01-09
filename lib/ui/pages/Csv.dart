@@ -13,8 +13,27 @@ class _CsvState extends State<Csv> {
   var ctrlId = TextEditingController();
 
   var ctrlJudul = "";
+  var appliance_id = "";
 
   static DocumentReference productdoc;
+
+  void getUserUpdate() async {
+    FirebaseFirestore.instance
+        .collection('joblist')
+        .doc(widget.joblist.id)
+        .collection('Appliance')
+        .doc(widget.user.uid)
+        .snapshots()
+        .listen((event) {
+      appliance_id = event.data()['appliance_id'];
+      setState(() {});
+    });
+  }
+
+  void initState() {
+    getUserUpdate();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +148,7 @@ class _CsvState extends State<Csv> {
                             productdoc = await FirebaseFirestore.instance
                                 .collection("accept")
                                 .add({
-                              'appliance_id': widget.user.uid,
+                              'appliance_id': appliance_id,
                               'status': ctrlJudul,
                               'posisi': widget.joblist.judul,
                               'id': '',
@@ -166,7 +185,7 @@ class _CsvState extends State<Csv> {
                             "Reject",
                             style: TextStyle(fontFamily: 'saira', fontSize: 20),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             ctrlId =
                                 TextEditingController(text: widget.user.uid);
                             setState(() {
@@ -174,21 +193,29 @@ class _CsvState extends State<Csv> {
 
                               ctrlJudul = "0";
                             });
-                            FirebaseFirestore.instance
+                            productdoc = await FirebaseFirestore.instance
                                 .collection("accept")
                                 .add({
-                              'appliance_id':
-                                  FirebaseAuth.instance.currentUser.uid,
-                              'Status': ctrlJudul
+                              'appliance_id': appliance_id,
+                              'status': ctrlJudul,
+                              'posisi': widget.joblist.judul,
+                              'id': '',
                             });
+                            if (productdoc.id != null) {
+                              FirebaseFirestore.instance
+                                  .collection("accept")
+                                  .doc(productdoc.id)
+                                  .update({
+                                'id': productdoc.id,
+                              });
+                            }
                             Fluttertoast.showToast(
-                                msg: "Berhasil Ditolak",
+                                msg: "Berhasil Diterima",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.green,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-
                             Navigator.of(context).pop(MaterialPageRoute(
                                 builder: (context) => Capplicant()));
                           },
