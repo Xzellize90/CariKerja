@@ -129,8 +129,9 @@ class _CsvState extends State<Csv> {
                             productdoc = await FirebaseFirestore.instance
                                 .collection("accept")
                                 .add({
-                              'appliance_id': widget.user.uid,
+                              'appliance_id': widget.user.namaA,
                               'status': ctrlJudul,
+                              'posisi': widget.joblist.judul,
                               'id': '',
                             });
                             if (productdoc.id != null) {

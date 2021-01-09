@@ -1,161 +1,88 @@
 part of 'pageA.dart';
 
 class NotifPage extends StatefulWidget {
+  final Status status;
+  NotifPage({this.status, this.user});
+
+  final UserA user;
   @override
   _NotifPageState createState() => _NotifPageState();
 }
 
 class _NotifPageState extends State<NotifPage> {
+  CollectionReference statusCol =
+      FirebaseFirestore.instance.collection("status");
+
+  User _auth = FirebaseAuth.instance.currentUser;
+
+  CollectionReference userCollection =
+      FirebaseFirestore.instance.collection("userA");
+  String id, email, name;
+
+  void getUserUpdate() async {
+    userCollection.doc(_auth.uid).snapshots().listen((event) {
+      id = event.data()['uid'];
+      name = event.data()['namaA'];
+
+      setState(() {});
+    });
+  }
+
+  void initState() {
+    getUserUpdate();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEEA20F),
-      body: Container(
-        child: Column(
-          children: [
-            Flexible(
-                flex: 15,
-                child: Container(
-                  height: 3000,
-                  margin: EdgeInsets.only(left: 25, right: 25, top: 0),
-                  child: ListView(
-                    children: <Widget>[
-                      Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Posisi 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Status : Diterima",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                      Container(
-                        height: 82,
-                        child: Card(
-                            shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(width: 2, color: Colors.black)),
-                            color: Colors.yellow,
-                            child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 10),
-                              title: Text("Posisi 1",
-                                  style: TextStyle(
-                                      fontSize: 18, fontFamily: 'saira')),
-                              subtitle: Text(
-                                "Status: Ditolak",
-                                style: TextStyle(
-                                    fontFamily: 'saira', fontSize: 15),
-                              ),
-                              leading: CircularProfileAvatar(
-                                '',
-                                child: Image.asset('assets/white.jpeg'),
-                                borderColor: Colors.black,
-                                borderWidth: 2,
-                                elevation: 2,
-                                radius: 25,
-                              ),
-                            )),
-                      ),
-                      Container(
-                        height: 82,
-                        child: Card(
-                            shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(width: 2, color: Colors.black)),
-                            color: Colors.yellow,
-                            child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 10),
-                              title: Text("Posisi 1",
-                                  style: TextStyle(
-                                      fontSize: 18, fontFamily: 'saira')),
-                              subtitle: Text(
-                                "Status: Ditolak",
-                                style: TextStyle(
-                                    fontFamily: 'saira', fontSize: 15),
-                              ),
-                              leading: CircularProfileAvatar(
-                                '',
-                                child: Image.asset('assets/white.jpeg'),
-                                borderColor: Colors.black,
-                                borderWidth: 2,
-                                elevation: 2,
-                                radius: 25,
-                              ),
-                            )),
-                      ),
-                      Container(
-                        height: 82,
-                        child: Card(
-                            shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(width: 2, color: Colors.black)),
-                            color: Colors.yellow,
-                            child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 10),
-                              title: Text("Posisi 1",
-                                  style: TextStyle(
-                                      fontSize: 18, fontFamily: 'saira')),
-                              subtitle: Text(
-                                "Status: Ditolak",
-                                style: TextStyle(
-                                    fontFamily: 'saira', fontSize: 15),
-                              ),
-                              leading: CircularProfileAvatar(
-                                '',
-                                child: Image.asset('assets/white.jpeg'),
-                                borderColor: Colors.black,
-                                borderWidth: 2,
-                                elevation: 2,
-                                radius: 25,
-                              ),
-                            )),
-                      ),
-                      Container(
-                        height: 82,
-                        child: Card(
-                            shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(width: 2, color: Colors.black)),
-                            color: Colors.yellow,
-                            child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 10),
-                              title: Text("Posisi 1",
-                                  style: TextStyle(
-                                      fontSize: 18, fontFamily: 'saira')),
-                              subtitle: Text(
-                                "Status: Ditolak",
-                                style: TextStyle(
-                                    fontFamily: 'saira', fontSize: 15),
-                              ),
-                              leading: CircularProfileAvatar(
-                                '',
-                                child: Image.asset('assets/white.jpeg'),
-                                borderColor: Colors.black,
-                                borderWidth: 2,
-                                elevation: 2,
-                                radius: 25,
-                              ),
-                            )),
-                      ),
-                    ],
-                  ),
-                )),
-          ],
-        ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection("accept")
+                  .where("appliance_id", isEqualTo: name ?? '')
+                  .snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text("Failed to get products data!");
+                }
+
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return SpinKitFadingCircle(
+                    size: 50,
+                    color: Colors.blue,
+                  );
+                }
+                if (snapshot.data.docs.length == 0) {
+                  return Container(
+                    child: Center(
+                      child: Text("Data Tidak Ada",
+                          style: TextStyle(fontFamily: 'saira')),
+                    ),
+                  );
+                } else {
+                  return ListView(
+                    children: snapshot.data.docs.map((DocumentSnapshot doc) {
+                      return Astatus(
+                          status: Status(
+                        doc.data()['appliance_id'],
+                        doc.data()['id'],
+                        doc.data()['posisi'],
+                        doc.data()['status'],
+                      ));
+                    }).toList(),
+                  );
+                }
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

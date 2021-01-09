@@ -9,6 +9,8 @@ import 'package:carikerja/services/servicesA.dart';
 import 'package:carikerja/ui/pages/opening_page.dart';
 import 'package:carikerja/widgets/adsCard.dart';
 import 'package:carikerja/widgets/joblistA.dart';
+import 'package:carikerja/widgets/Astatus.dart';
+
 //import 'package:carikerja/widgets/joblistcard.dart';
 
 //import 'package:carikerja/widgets/joblistcard.dart';
