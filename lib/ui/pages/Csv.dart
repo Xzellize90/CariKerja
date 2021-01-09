@@ -210,7 +210,7 @@ class _CsvState extends State<Csv> {
                               });
                             }
                             Fluttertoast.showToast(
-                                msg: "Berhasil Diterima",
+                                msg: "Berhasil Ditolak",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.green,
