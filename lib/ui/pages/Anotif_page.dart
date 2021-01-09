@@ -45,7 +45,7 @@ class _NotifPageState extends State<NotifPage> {
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("accept")
-                  .where("appliance_id", isEqualTo: name ?? '')
+                  .where("appliance_id", isEqualTo: id ?? '')
                   .snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {

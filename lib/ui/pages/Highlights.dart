@@ -166,11 +166,12 @@ class _HighlightsState extends State<Highlights> {
             ),
             onPressed: () async {
               ctrlId = TextEditingController(text: widget.joblist.id);
-              productdoc = await FirebaseFirestore.instance
-                  .collection("joblist")
-                  .doc(widget.joblist.id)
-                  .collection("Highlight")
-                  .add({'uid': "", 'code': hlcode.text});
+              productdoc =
+                  await FirebaseFirestore.instance.collection("highlight").add({
+                'jobName': widget.joblist.judul,
+                'code': hlcode.text,
+                'id': '',
+              });
 
               Fluttertoast.showToast(
                   msg: "Successfull",
