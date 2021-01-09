@@ -143,7 +143,7 @@ class _JobAState extends State<JobA> {
                           "Apply",
                           style: TextStyle(fontFamily: 'saira', fontSize: 30),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (name == null ||
                               agama == null ||
                               email == null ||
@@ -163,7 +163,7 @@ class _JobAState extends State<JobA> {
                           } else {
                             ctrlId =
                                 TextEditingController(text: widget.joblist.id);
-                            FirebaseFirestore.instance
+                            productDoc = await FirebaseFirestore.instance
                                 .collection("joblist")
                                 .doc(widget.joblist.id)
                                 .collection("Appliance")
@@ -179,6 +179,7 @@ class _JobAState extends State<JobA> {
                               'skill': skill ?? '',
                               'spendidikan': pendidikan ?? '',
                               'ttlahir': ttlahir ?? '',
+                              'uid': productDoc.id ?? '',
                             });
                             Fluttertoast.showToast(
                                 msg: "Successfull",
