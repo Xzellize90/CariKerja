@@ -9,7 +9,19 @@ class Highlights extends StatefulWidget {
 }
 
 class _HighlightsState extends State<Highlights> {
+  final hlcode = TextEditingController();
+  bool isLoading = false;
   @override
+  void dispose() {
+    hlcode.dispose();
+    super.dispose();
+  }
+
+  void clearForm() {
+    hlcode.clear();
+    hlcode.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEEA20F),
@@ -24,11 +36,20 @@ class _HighlightsState extends State<Highlights> {
           ),
           Container(
             width: 400,
-            height: 500,
+            height: 265,
             margin: EdgeInsets.only(left: 25, right: 25),
             child: ListView(
               children: [
-                SizedBox(height: 10),
+                SizedBox(height: 20),
+                Text(
+                  "Geser kebawah untuk membaca deskripsi!!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'saira',
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(height: 20),
                 Text(
                   "Fitur Highlight ini berfungsi untuk menampilkan iklan lowongan kerja anda di bagian teratas, sehingga dapat meningkatkan kemungkinan mendapatkan pekerja lebih cepat",
                   textAlign: TextAlign.center,
@@ -102,6 +123,44 @@ class _HighlightsState extends State<Highlights> {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Highlight Code",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                fontFamily: 'saira', fontSize: 16, color: Colors.white),
+          ),
+          TextFormField(
+            controller: hlcode,
+            decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                hintText:
+                    "Masukan Highlight Code anda yang anda tentukan disini",
+                hintStyle: TextStyle(fontSize: 14),
+                contentPadding:
+                    new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                )),
+          ),
+          SizedBox(
+            height: 11,
+          ),
+          RaisedButton.icon(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+            label: Text(
+              "Submit",
+              style: TextStyle(fontSize: 38),
+            ),
+            icon: Icon(Icons.file_upload),
+            textColor: Colors.black,
+            color: Colors.white,
+            onPressed: () {},
           ),
         ],
       ),
