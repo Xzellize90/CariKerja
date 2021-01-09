@@ -179,8 +179,18 @@ class _JobAState extends State<JobA> {
                               'skill': skill ?? '',
                               'spendidikan': pendidikan ?? '',
                               'ttlahir': ttlahir ?? '',
-                              'uid': productDoc.id ?? '',
+                              'uid': "",
                             });
+                            if (productDoc != null) {
+                              FirebaseFirestore.instance
+                                  .collection("joblist")
+                                  .doc(widget.joblist.id)
+                                  .collection("Appliance")
+                                  .doc(productDoc.id)
+                                  .update({
+                                'uid': productDoc.id,
+                              });
+                            }
                             Fluttertoast.showToast(
                                 msg: "Successfull",
                                 toastLength: Toast.LENGTH_SHORT,
