@@ -1,13 +1,6 @@
-import 'dart:io';
+part of 'servicesC.dart';
 
-import 'package:carikerja/models/modelsC.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:image_picker/image_picker.dart';
-
-class JobServices {
+class HighlightsServices {
   static Reference ref;
   static UploadTask uploadTask;
   static String imgUrl;
@@ -57,13 +50,16 @@ class JobServices {
       {
         'judul': joblist.judul,
         'deskripsi': joblist.deskripsi,
-        'gaji': joblist.gaji
+        'gaji': joblist.gaji,
+        'highlights': joblist.highlights,
+        'code': joblist.code
       },
     );
 
     return true;
   }
 
+  // ignore: missing_return
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
 
@@ -81,37 +77,5 @@ class JobServices {
         'code': ""
       },
     );
-
-    if (jobDoc.id != null) {
-      //upload foto
-      ref = FirebaseStorage.instance
-          .ref()
-          .child("images")
-          .child(jobDoc.id + ".png");
-      uploadTask = ref.putFile(File(imgFile.path));
-
-      await uploadTask.whenComplete(
-        () => ref.getDownloadURL().then(
-              (value) => imgUrl = value,
-            ),
-      );
-
-      joblistCollection.doc(jobDoc.id).update({
-        'id': jobDoc.id,
-        'image': imgUrl,
-      });
-
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  static Future<bool> deleteJoblist(Joblist joblist) async {
-    await Firebase.initializeApp();
-
-    await joblistCollection.doc(joblist.id).delete();
-
-    return true;
   }
 }

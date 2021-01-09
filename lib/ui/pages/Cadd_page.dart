@@ -295,7 +295,8 @@ class _CompanyAddState extends State<CompanyAdd> {
                                   ctrlPenempatan == "" ||
                                   imageFile == null) {
                                 Fluttertoast.showToast(
-                                  msg: "Please choose and fill all fields!",
+                                  msg:
+                                      "tolong isi semua bagian yang belum terisi",
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.BOTTOM,
                                   backgroundColor: Colors.red,
@@ -315,12 +316,14 @@ class _CompanyAddState extends State<CompanyAdd> {
                                   ctrlPenempatan,
                                   '',
                                   '',
+                                  '',
+                                  '',
                                 );
                                 bool result = await JobServices.addjoblist(
                                     joblist, imageFile);
                                 if (result == true) {
                                   Fluttertoast.showToast(
-                                    msg: "Add product succesful!",
+                                    msg: "Add job succesful!",
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.BOTTOM,
                                     backgroundColor: Colors.green,

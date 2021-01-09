@@ -226,7 +226,9 @@ class _DetailJobState extends State<DetailJob> {
                                             '',
                                             ctrlGaji.text,
                                             '',
-                                            "",
+                                            '',
+                                            '',
+                                            '',
                                             '',
                                           );
                                           bool result =
@@ -272,11 +274,12 @@ class _DetailJobState extends State<DetailJob> {
                                     child: FloatingActionButton(
                                       backgroundColor: Colors.white,
                                       onPressed: () {
-                                        Navigator.pushReplacement(context,
+                                        Navigator.of(context).push(
                                             MaterialPageRoute(
-                                                builder: (context) {
-                                          return Highlights();
-                                        }));
+                                                builder: (context) =>
+                                                    Highlights(
+                                                        joblist:
+                                                            widget.joblist)));
                                       },
                                       child: Text('Highlight',
                                           style: TextStyle(
@@ -312,6 +315,8 @@ class _DetailJobState extends State<DetailJob> {
                                                     });
                                                     Joblist joblist = Joblist(
                                                         ctrlId.text,
+                                                        "",
+                                                        "",
                                                         "",
                                                         "",
                                                         "",

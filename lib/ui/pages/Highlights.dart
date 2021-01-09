@@ -9,8 +9,11 @@ class Highlights extends StatefulWidget {
 }
 
 class _HighlightsState extends State<Highlights> {
-  final hlcode = TextEditingController();
+  var hlcode = TextEditingController();
+
+  var ctrlId = TextEditingController();
   bool isLoading = false;
+  //static DocumentReference productdoc;
   @override
   void dispose() {
     hlcode.dispose();
@@ -150,17 +153,74 @@ class _HighlightsState extends State<Highlights> {
           SizedBox(
             height: 11,
           ),
-          RaisedButton.icon(
+          RaisedButton(
+            padding: EdgeInsets.only(
+              left: 30,
+              right: 30,
+              top: 0,
+            ),
+            color: Colors.white,
+            child: Text(
+              "SUBMIT",
+              style: TextStyle(fontFamily: 'saira', fontSize: 30),
+            ),
+            onPressed: () async {
+              if (hlcode.text == "") {
+                Fluttertoast.showToast(
+                  msg: "tolong isi code yang anda inginkan",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
+              } else {
+                setState(() {
+                  isLoading = true;
+                });
+                Joblist product = Joblist(
+                  ctrlId.text,
+                  '',
+                  '',
+                  '',
+                  '',
+                  '',
+                  '',
+                  '',
+                  '1',
+                  hlcode.text,
+                );
+                bool result = await JobServices.editJoblist(product);
+                if (result == true) {
+                  Fluttertoast.showToast(
+                    msg: "Update Product Succesful!",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  setState(() {
+                    isLoading = false;
+                  });
+                  Navigator.pop(context);
+                } else {
+                  Fluttertoast.showToast(
+                    msg: "Failed! Try again",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+                  setState(() {
+                    isLoading = false;
+                  });
+                }
+              }
+            },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-            label: Text(
-              "Submit",
-              style: TextStyle(fontSize: 38),
-            ),
-            icon: Icon(Icons.file_upload),
-            textColor: Colors.black,
-            color: Colors.white,
-            onPressed: () {},
           ),
         ],
       ),

@@ -10,3 +10,4 @@ import 'package:image_picker/image_picker.dart';
 
 part 'authC_services.dart';
 part 'userC_services.dart';
+part 'highlights_services.dart';
