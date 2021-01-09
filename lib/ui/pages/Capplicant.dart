@@ -65,7 +65,7 @@ class _CapplicantState extends State<Capplicant> {
                       children: snapshot.data.docs.map((DocumentSnapshot doc) {
                         return Applicantcard(
                           user: UserA(
-                            doc.data()['id'],
+                            doc.data()['uid'],
                             doc.data()['email'],
                             doc.data()['namaA'],
                             doc.data()['lokasi'],
