@@ -13,7 +13,7 @@ class _HighlightsState extends State<Highlights> {
 
   var ctrlId = TextEditingController();
   bool isLoading = false;
-  //static DocumentReference productdoc;
+  static DocumentReference productdoc;
   @override
   void dispose() {
     hlcode.dispose();
@@ -108,7 +108,7 @@ class _HighlightsState extends State<Highlights> {
                 ),
                 SizedBox(height: 15),
                 Text(
-                  "Note: kirimkan bukti transfer melalui email dan sertakan pula highlight code yang anda berikan.",
+                  widget.joblist.judul,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontFamily: 'saira',
@@ -165,59 +165,20 @@ class _HighlightsState extends State<Highlights> {
               style: TextStyle(fontFamily: 'saira', fontSize: 30),
             ),
             onPressed: () async {
-              if (hlcode.text == "") {
-                Fluttertoast.showToast(
-                  msg: "tolong isi code yang anda inginkan",
+              ctrlId = TextEditingController(text: widget.joblist.id);
+              productdoc = await FirebaseFirestore.instance
+                  .collection("joblist")
+                  .doc(widget.joblist.id)
+                  .collection("Highlight")
+                  .add({'uid': "", 'code': hlcode.text});
+
+              Fluttertoast.showToast(
+                  msg: "Successfull",
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.green,
                   textColor: Colors.white,
-                  fontSize: 16.0,
-                );
-              } else {
-                setState(() {
-                  isLoading = true;
-                });
-                Joblist product = Joblist(
-                  ctrlId.text,
-                  '',
-                  '',
-                  '',
-                  '',
-                  '',
-                  '',
-                  '',
-                  '1',
-                  hlcode.text,
-                );
-                bool result = await JobServices.editJoblist(product);
-                if (result == true) {
-                  Fluttertoast.showToast(
-                    msg: "Update Product Succesful!",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    backgroundColor: Colors.green,
-                    textColor: Colors.white,
-                    fontSize: 16.0,
-                  );
-                  setState(() {
-                    isLoading = false;
-                  });
-                  Navigator.pop(context);
-                } else {
-                  Fluttertoast.showToast(
-                    msg: "Failed! Try again",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    backgroundColor: Colors.red,
-                    textColor: Colors.white,
-                    fontSize: 16.0,
-                  );
-                  setState(() {
-                    isLoading = false;
-                  });
-                }
-              }
+                  fontSize: 16.0);
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),

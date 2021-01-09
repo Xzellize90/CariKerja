@@ -296,8 +296,6 @@ class _ExplorePageState extends State<ExplorePage> {
                             doc.data()['penempatan'],
                             doc.data()['image'],
                             doc.data()['owner'],
-                            doc.data()['Highlights'],
-                            doc.data()['code'],
                           ));
                         }).toList(),
                       );

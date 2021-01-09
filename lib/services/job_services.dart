@@ -77,8 +77,6 @@ class JobServices {
         'penempatan': joblist.penempatan,
         'image': "",
         'owner': FirebaseAuth.instance.currentUser.uid,
-        'highlights': "",
-        'code': ""
       },
     );
 

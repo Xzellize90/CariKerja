@@ -42,40 +42,4 @@ class HighlightsServices {
       kerja = event.data()['pbekerja'];
     });
   }
-
-  static Future<bool> editJoblist(Joblist joblist) async {
-    await Firebase.initializeApp();
-
-    await joblistCollection.doc(joblist.id).update(
-      {
-        'judul': joblist.judul,
-        'deskripsi': joblist.deskripsi,
-        'gaji': joblist.gaji,
-        'highlights': joblist.highlights,
-        'code': joblist.code
-      },
-    );
-
-    return true;
-  }
-
-  // ignore: missing_return
-  static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
-    await Firebase.initializeApp();
-
-    jobDoc = await joblistCollection.add(
-      {
-        'id': "",
-        'judul': joblist.judul,
-        'gaji': joblist.gaji,
-        'deskripsi': joblist.deskripsi,
-        'kontak': joblist.kontak,
-        'penempatan': joblist.penempatan,
-        'image': "",
-        'owner': FirebaseAuth.instance.currentUser.uid,
-        'highlights': "",
-        'code': ""
-      },
-    );
-  }
 }

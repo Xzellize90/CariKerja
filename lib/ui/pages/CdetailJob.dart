@@ -226,9 +226,7 @@ class _DetailJobState extends State<DetailJob> {
                                             '',
                                             ctrlGaji.text,
                                             '',
-                                            '',
-                                            '',
-                                            '',
+                                            "",
                                             '',
                                           );
                                           bool result =
@@ -315,8 +313,6 @@ class _DetailJobState extends State<DetailJob> {
                                                     });
                                                     Joblist joblist = Joblist(
                                                         ctrlId.text,
-                                                        "",
-                                                        "",
                                                         "",
                                                         "",
                                                         "",
