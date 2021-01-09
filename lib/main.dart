@@ -1,5 +1,5 @@
 import 'package:carikerja/ui/pages/opening_page.dart';
-import 'package:carikerja/ui/pages/pageC.dart';
+//import 'package:carikerja/ui/pages/pageC.dart';
 import 'package:flutter/material.dart';
 
 void main() {
