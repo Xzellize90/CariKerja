@@ -2,7 +2,9 @@ part of 'pageA.dart';
 
 class ExplorePage extends StatefulWidget {
   final Joblist joblist;
-  ExplorePage({this.joblist});
+  ExplorePage({this.joblist, this.highlight});
+
+  final Highlight highlight;
   @override
   _ExplorePageState createState() => _ExplorePageState();
 }
@@ -12,6 +14,9 @@ class _ExplorePageState extends State<ExplorePage> {
 
   CollectionReference productCollection =
       FirebaseFirestore.instance.collection("joblist");
+
+  CollectionReference highlightCollection =
+      FirebaseFirestore.instance.collection("highlight");
 
   CollectionReference adsCollection =
       FirebaseFirestore.instance.collection("adss");
@@ -127,9 +132,9 @@ class _ExplorePageState extends State<ExplorePage> {
                 color: Colors.white),
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 5, top: 5),
+            margin: EdgeInsets.only(bottom: 7),
             child: Text(
-              "Highlist List",
+              "Highlight Job",
               style: TextStyle(
                 fontFamily: 'saira',
                 fontWeight: FontWeight.bold,
@@ -141,108 +146,44 @@ class _ExplorePageState extends State<ExplorePage> {
           Flexible(
               flex: 3,
               child: Container(
-                height: 200,
                 margin: EdgeInsets.only(left: 25, right: 25),
-                child: ListView(
-                  children: <Widget>[
-                    Card(
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(width: 2, color: Colors.black)),
-                        color: Colors.yellow,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.only(left: 10),
-                          title: Text("Highlight 1",
-                              style:
-                                  TextStyle(fontSize: 18, fontFamily: 'saira')),
-                          subtitle: Text(
-                            "Company name",
-                            style: TextStyle(fontFamily: 'saira', fontSize: 15),
-                          ),
-                          leading: CircularProfileAvatar(
-                            '',
-                            child: Image.asset('assets/white.jpeg'),
-                            borderColor: Colors.black,
-                            borderWidth: 2,
-                            elevation: 2,
-                            radius: 25,
-                          ),
-                        )),
-                    Container(
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Highlight 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Highlight 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                    Container(
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 2, color: Colors.black)),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
-                            title: Text("Highlight 1",
-                                style: TextStyle(
-                                    fontSize: 18, fontFamily: 'saira')),
-                            subtitle: Text(
-                              "Company name",
-                              style:
-                                  TextStyle(fontFamily: 'saira', fontSize: 15),
-                            ),
-                            leading: CircularProfileAvatar(
-                              '',
-                              child: Image.asset('assets/white.jpeg'),
-                              borderColor: Colors.black,
-                              borderWidth: 2,
-                              elevation: 2,
-                              radius: 25,
-                            ),
-                          )),
-                    ),
-                  ],
+                height: 200,
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: highlightCollection.snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return Text("Failed to get products data!");
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return SpinKitFadingCircle(
+                          size: 50,
+                          color: Colors.blue,
+                        );
+                      }
+
+                      return ListView(
+                        children:
+                            snapshot.data.docs.map((DocumentSnapshot doc) {
+                          return HighlightCard(
+                              highlightA: Highlight(
+                            doc.data()['code'],
+                            doc.data()['deskripsi'],
+                            doc.data()['jobName'],
+                            doc.data()['id'],
+                            doc.data()['kontak'],
+                            doc.data()['gaji'],
+                            doc.data()['penempatan'],
+                            doc.data()['image'],
+                          ));
+                        }).toList(),
+                      );
+                    },
+                  ),
                 ),
               )),
           SizedBox(

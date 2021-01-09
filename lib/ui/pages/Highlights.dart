@@ -198,6 +198,11 @@ class _HighlightsState extends State<Highlights> {
                             .add({
                           'jobName': widget.joblist.judul,
                           'code': hlcode.text,
+                          'deskripsi': widget.joblist.deskripsi,
+                          'gaji': widget.joblist.gaji,
+                          'kontak': widget.joblist.kontak,
+                          'penempatan': widget.joblist.penempatan,
+                          'image': widget.joblist.image,
                           'id': '',
                         });
 
