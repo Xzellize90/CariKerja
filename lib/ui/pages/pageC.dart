@@ -30,3 +30,4 @@ part 'Cjoblist.dart';
 part 'CdetailJob.dart';
 part 'Capplicant.dart';
 part 'Csv.dart';
+part 'Highlights.dart';

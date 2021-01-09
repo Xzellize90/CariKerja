@@ -271,7 +271,13 @@ class _DetailJobState extends State<DetailJob> {
                                     height: 85,
                                     child: FloatingActionButton(
                                       backgroundColor: Colors.white,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushReplacement(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return Highlights();
+                                        }));
+                                      },
                                       child: Text('Highlight',
                                           style: TextStyle(
                                               color: Colors.black,
