@@ -1,11 +1,13 @@
 //import 'dart:io';
 
+import 'package:carikerja/models/adslist.dart';
 import 'package:carikerja/models/modelsA.dart';
 import 'package:carikerja/models/modelsC.dart';
 //import 'package:carikerja/services/job_services.dart';
 
 import 'package:carikerja/services/servicesA.dart';
 import 'package:carikerja/ui/pages/opening_page.dart';
+import 'package:carikerja/widgets/adsCard.dart';
 import 'package:carikerja/widgets/joblistA.dart';
 //import 'package:carikerja/widgets/joblistcard.dart';
 
@@ -31,3 +33,5 @@ part 'Aexplore_page.dart';
 part 'Anotif_page.dart';
 part 'Aresult.dart';
 part 'Ajob.dart';
+part 'AdsScene.dart';
+part 'AdsDetail.dart';

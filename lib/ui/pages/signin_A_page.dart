@@ -133,7 +133,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                   });
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return MainMenu();
+                                    return AdsScene();
                                   }));
                                 } else {
                                   Fluttertoast.showToast(

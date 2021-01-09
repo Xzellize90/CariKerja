@@ -154,56 +154,6 @@ class _NotifPageState extends State<NotifPage> {
                     ],
                   ),
                 )),
-            Flexible(
-                flex: 3,
-                child: Container(
-                  width: 325,
-                  height: 100,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 70,
-                        height: 70,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/white.jpeg"),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                      ),
-                      Container(
-                        width: 70,
-                        height: 70,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/white.jpeg"),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                      ),
-                      Container(
-                        width: 70,
-                        height: 70,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/white.jpeg"),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                      ),
-                      Container(
-                        width: 70,
-                        height: 70,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/white.jpeg"),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(10)),
-                        margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                      )
-                    ],
-                  ),
-                ))
           ],
         ),
       ),

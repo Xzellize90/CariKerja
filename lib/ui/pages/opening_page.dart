@@ -13,11 +13,11 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 10,
+      seconds: 5,
       backgroundColor: Colors.white,
-      image: Image.asset('assets/Double Ring-1s-200px.gif'),
+      image: Image.asset('assets/HollowNaughtyAfricanhornbill-small.gif'),
       loaderColor: Colors.white,
-      photoSize: 150.0,
+      photoSize: 130.0,
       navigateAfterSeconds: Opening(),
     );
   }

@@ -230,7 +230,7 @@ class _DetailJobState extends State<DetailJob> {
                                             '',
                                           );
                                           bool result =
-                                              await JobServices.editProduct(
+                                              await JobServices.editJoblist(
                                                   product);
                                           if (result == true) {
                                             Fluttertoast.showToast(

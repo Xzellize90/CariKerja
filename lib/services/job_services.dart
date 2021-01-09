@@ -12,7 +12,7 @@ class JobServices {
 
   static CollectionReference joblistCollection =
       FirebaseFirestore.instance.collection("joblist");
-  static DocumentReference productDoc;
+  static DocumentReference jobDoc;
 
   User _auth = FirebaseAuth.instance.currentUser;
 
@@ -53,14 +53,14 @@ class JobServices {
 
   static String imgUrl;
 
-  static Future<bool> editProduct(Joblist product) async {
+  static Future<bool> editJoblist(Joblist joblist) async {
     await Firebase.initializeApp();
 
-    await joblistCollection.doc(product.id).update(
+    await joblistCollection.doc(joblist.id).update(
       {
-        'judul': product.judul,
-        'deskripsi': product.deskripsi,
-        'gaji': product.gaji
+        'judul': joblist.judul,
+        'deskripsi': joblist.deskripsi,
+        'gaji': joblist.gaji
       },
     );
 
@@ -70,7 +70,7 @@ class JobServices {
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
 
-    productDoc = await joblistCollection.add(
+    jobDoc = await joblistCollection.add(
       {
         'id': "",
         'judul': joblist.judul,
@@ -83,12 +83,12 @@ class JobServices {
       },
     );
 
-    if (productDoc.id != null) {
+    if (jobDoc.id != null) {
       //upload foto
       ref = FirebaseStorage.instance
           .ref()
           .child("images")
-          .child(productDoc.id + ".png");
+          .child(jobDoc.id + ".png");
       uploadTask = ref.putFile(File(imgFile.path));
 
       await uploadTask.whenComplete(
@@ -97,8 +97,8 @@ class JobServices {
             ),
       );
 
-      joblistCollection.doc(productDoc.id).update({
-        'id': productDoc.id,
+      joblistCollection.doc(jobDoc.id).update({
+        'id': jobDoc.id,
         'image': imgUrl,
       });
 

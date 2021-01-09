@@ -13,6 +13,9 @@ class _ExplorePageState extends State<ExplorePage> {
   CollectionReference productCollection =
       FirebaseFirestore.instance.collection("joblist");
 
+  CollectionReference adsCollection =
+      FirebaseFirestore.instance.collection("adss");
+
   bool _folder = true;
 
   @override
@@ -300,86 +303,6 @@ class _ExplorePageState extends State<ExplorePage> {
                   ),
                 ),
               )),
-          Flexible(
-              flex: 2,
-              child: Container(
-                height: 100,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    ),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    ),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    ),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    ),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    ),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    ),
-                    Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/white.jpeg"),
-                              fit: BoxFit.fill),
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    )
-                  ],
-                ),
-              ))
         ],
       ),
     );
