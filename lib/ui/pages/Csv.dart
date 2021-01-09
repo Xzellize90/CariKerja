@@ -14,6 +14,8 @@ class _CsvState extends State<Csv> {
 
   var ctrlJudul = "";
 
+  static DocumentReference productdoc;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,8 @@ class _CsvState extends State<Csv> {
                       child: CircleAvatar(
                         radius: 100,
                         backgroundImage: NetworkImage(
-                          "https://firebasestorage.googleapis.com/v0/b/startapp-ece15.appspot.com/o/assets%2Fdefault-user-image.png?alt=media&token=9807934a-cf98-4433-9c22-c013e6fc1859",
+                          widget.user.profileApplicant ??
+                              "https://firebasestorage.googleapis.com/v0/b/startapp-ece15.appspot.com/o/assets%2Fdefault-user-image.png?alt=media&token=9807934a-cf98-4433-9c22-c013e6fc1859",
                         ),
                       ),
                       width: 150,
@@ -115,28 +118,38 @@ class _CsvState extends State<Csv> {
                             "Accept",
                             style: TextStyle(fontFamily: 'saira', fontSize: 20),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             ctrlId =
                                 TextEditingController(text: widget.user.uid);
                             setState(() {
                               ctrlJudul = "";
 
-                              ctrlJudul = "Accepted";
+                              ctrlJudul = "1";
                             });
-                            FirebaseFirestore.instance
+                            productdoc = await FirebaseFirestore.instance
                                 .collection("accept")
                                 .add({
-                              'appliance_id':
-                                  FirebaseAuth.instance.currentUser.uid,
-                              'Status': ctrlJudul
+                              'appliance_id': widget.user.uid,
+                              'status': ctrlJudul,
+                              'id': '',
                             });
+                            if (productdoc.id != null) {
+                              FirebaseFirestore.instance
+                                  .collection("accept")
+                                  .doc(productdoc.id)
+                                  .update({
+                                'id': productdoc.id,
+                              });
+                            }
                             Fluttertoast.showToast(
-                                msg: "Successfull",
+                                msg: "Berhasil Diterima",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 backgroundColor: Colors.green,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
+                            Navigator.of(context).pop(MaterialPageRoute(
+                                builder: (context) => Capplicant()));
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
@@ -149,10 +162,35 @@ class _CsvState extends State<Csv> {
                         child: RaisedButton(
                           color: Colors.red,
                           child: Text(
-                            "Rejected",
+                            "Reject",
                             style: TextStyle(fontFamily: 'saira', fontSize: 20),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            ctrlId =
+                                TextEditingController(text: widget.user.uid);
+                            setState(() {
+                              ctrlJudul = "";
+
+                              ctrlJudul = "0";
+                            });
+                            FirebaseFirestore.instance
+                                .collection("accept")
+                                .add({
+                              'appliance_id':
+                                  FirebaseAuth.instance.currentUser.uid,
+                              'Status': ctrlJudul
+                            });
+                            Fluttertoast.showToast(
+                                msg: "Berhasil Ditolak",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+
+                            Navigator.of(context).pop(MaterialPageRoute(
+                                builder: (context) => Capplicant()));
+                          },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
                         ),
