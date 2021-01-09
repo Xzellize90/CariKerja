@@ -34,7 +34,7 @@ class _HighlightsState extends State<Highlights> {
             Column(
               children: <Widget>[
                 Flexible(
-                  flex: 2,
+                  flex: 3,
                   child: Container(
                     margin: EdgeInsets.only(top: 45),
                     child: Text("Highlights",
@@ -45,7 +45,7 @@ class _HighlightsState extends State<Highlights> {
                   ),
                 ),
                 Flexible(
-                  flex: 8,
+                  flex: 10,
                   child: Container(
                     width: 400,
                     height: 400,
@@ -150,7 +150,7 @@ class _HighlightsState extends State<Highlights> {
                   ),
                 ),
                 Flexible(
-                  flex: 1,
+                  flex: 2,
                   child: TextFormField(
                     controller: hlcode,
                     decoration: InputDecoration(
@@ -170,7 +170,7 @@ class _HighlightsState extends State<Highlights> {
                   height: 11,
                 ),
                 Flexible(
-                  flex: 1,
+                  flex: 2,
                   child: RaisedButton(
                     padding: EdgeInsets.only(
                       left: 30,
