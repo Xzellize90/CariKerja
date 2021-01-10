@@ -144,10 +144,10 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
           ),
           Flexible(
-              flex: 3,
+              flex: 2,
               child: Container(
                 margin: EdgeInsets.only(left: 25, right: 25),
-                height: 200,
+                height: double.infinity,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
@@ -209,7 +209,7 @@ class _ExplorePageState extends State<ExplorePage> {
               flex: 3,
               child: Container(
                 margin: EdgeInsets.only(left: 25, right: 25),
-                height: 200,
+                height: double.infinity,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
