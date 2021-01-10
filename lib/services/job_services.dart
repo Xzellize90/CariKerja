@@ -64,6 +64,20 @@ class JobServices {
     return true;
   }
 
+  static Future<bool> highlightJobList(Joblist joblist) async {
+    await Firebase.initializeApp();
+
+    await joblistCollection.doc(joblist.id).update(
+      {
+        'highlight':"1",
+        'code':joblist.code
+      },
+    );
+
+    return true;
+  }
+
+
   static Future<bool> addjoblist(Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
 
@@ -77,6 +91,8 @@ class JobServices {
         'penempatan': joblist.penempatan,
         'image': "",
         'owner': FirebaseAuth.instance.currentUser.uid,
+        'highlight':"0",
+        'code': ""
       },
     );
 

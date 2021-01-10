@@ -68,6 +68,8 @@ class _CompanyJobListState extends State<CompanyJobList> {
                         doc.data()['penempatan'],
                         doc.data()['image'],
                         doc.data()['owner'],
+                        doc.data()['highlight'],
+                        doc.data()['code']
                       ));
                     }).toList(),
                   );

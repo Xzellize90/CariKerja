@@ -228,6 +228,8 @@ class _DetailJobState extends State<DetailJob> {
                                             '',
                                             "",
                                             '',
+                                            '',
+                                            ''
                                           );
                                           bool result =
                                               await JobServices.editJoblist(
@@ -313,6 +315,8 @@ class _DetailJobState extends State<DetailJob> {
                                                     });
                                                     Joblist joblist = Joblist(
                                                         ctrlId.text,
+                                                        "",
+                                                        "",
                                                         "",
                                                         "",
                                                         "",

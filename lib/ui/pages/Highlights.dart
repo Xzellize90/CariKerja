@@ -183,37 +183,63 @@ class _HighlightsState extends State<Highlights> {
                       style: TextStyle(fontFamily: 'saira', fontSize: 30),
                     ),
                     onPressed: () async {
-                      if (hlcode.text == "") {
-                        Fluttertoast.showToast(
-                            msg: "Please fill your code",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.red,
-                            textColor: Colors.white,
-                            fontSize: 16.0);
-                      } else {
-                        ctrlId = TextEditingController(text: widget.joblist.id);
-                        productdoc = await FirebaseFirestore.instance
-                            .collection("highlight")
-                            .add({
-                          'jobName': widget.joblist.judul,
-                          'code': hlcode.text,
-                          'deskripsi': widget.joblist.deskripsi,
-                          'gaji': widget.joblist.gaji,
-                          'kontak': widget.joblist.kontak,
-                          'penempatan': widget.joblist.penempatan,
-                          'image': widget.joblist.image,
-                          'id': widget.joblist.id,
-                        });
-
-                        Fluttertoast.showToast(
-                            msg: "Successfull",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.green,
-                            textColor: Colors.white,
-                            fontSize: 16.0);
-                      }
+                      ctrlId = TextEditingController(
+                                            text: widget.joblist.id);
+                                        if (hlcode == "") {
+                                          Fluttertoast.showToast(
+                                            msg: "Please fill all fields!",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            backgroundColor: Colors.red,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0,
+                                          );
+                                        } else {
+                                          setState(() {
+                                            isLoading = true;
+                                          });
+                                          Joblist product = Joblist(
+                                            ctrlId.text,
+                                            '',
+                                            '',
+                                            '',
+                                            '',
+                                            '',
+                                            '',
+                                            "",
+                                            '',
+                                            hlcode.text
+                                          );
+                                          bool result =
+                                              await JobServices.highlightJobList(
+                                                  product);
+                                          if (result == true) {
+                                            Fluttertoast.showToast(
+                                              msg: "Update Product Succesful!",
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.BOTTOM,
+                                              backgroundColor: Colors.green,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0,
+                                            );
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                            Navigator.pop(context);
+                                          } else {
+                                            Fluttertoast.showToast(
+                                              msg: "Failed! Try again",
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.BOTTOM,
+                                              backgroundColor: Colors.red,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0,
+                                            );
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                          }
+                                        }
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),

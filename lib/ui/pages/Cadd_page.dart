@@ -316,6 +316,8 @@ class _CompanyAddState extends State<CompanyAdd> {
                                   ctrlPenempatan,
                                   '',
                                   '',
+                                  '',
+                                  ''
                                 );
                                 bool result = await JobServices.addjoblist(
                                     joblist, imageFile);
