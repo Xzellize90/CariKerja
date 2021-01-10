@@ -150,7 +150,7 @@ class _CsvState extends State<Csv> {
                                 .collection("accept")
                                 .add({
                               'appliance_id': appliance_id,
-                              'status': ctrlJudul,
+                              'status': "1",
                               'posisi': widget.joblist.judul,
                               'gaji': widget.joblist.gaji,
                               'deskripsi': widget.joblist.deskripsi,
@@ -208,7 +208,7 @@ class _CsvState extends State<Csv> {
                                 .collection("accept")
                                 .add({
                               'appliance_id': appliance_id,
-                              'status': ctrlJudul,
+                              'status': "0",
                               'posisi': widget.joblist.judul,
                               'id': '',
                             });

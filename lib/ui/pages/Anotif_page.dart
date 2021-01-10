@@ -70,14 +70,14 @@ class _NotifPageState extends State<NotifPage> {
                     children: snapshot.data.docs.map((DocumentSnapshot doc) {
                       return Astatus(
                           status: Status(
-                        doc.data()['appliance_id'],
                         doc.data()['id'],
-                        doc.data()['posisi'],
-                        doc.data()['posisi'],
                         doc.data()['status'],
                         doc.data()['posisi'],
-                        doc.data()['posisi'],
-                        doc.data()['posisi'],
+                        doc.data()['gaji'],
+                        doc.data()['status'],
+                        doc.data()['deskripsi'],
+                        doc.data()['kontak'],
+                        doc.data()['image'],
                       ));
                     }).toList(),
                   );

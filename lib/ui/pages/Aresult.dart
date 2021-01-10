@@ -36,13 +36,17 @@ class _ResultAState extends State<ResultA> {
           children: <Widget>[
             Center(
               child: Container(
-                margin: EdgeInsets.only(top: 50),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.white),
-                width: 270,
-                height: 170,
-              ),
+                      margin: EdgeInsets.only(top: 50),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: NetworkImage(widget.status.image ??
+                                  "https://firebasestorage.googleapis.com/v0/b/carikerja-49dd8.appspot.com/o/blankProfile%2Fblank-profile-picture-973460_1280.png?alt=media&token=74f8e1a1-50bc-4158-b3b2-a4d80c9ce2fa"),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white),
+                      width: 310,
+                      height: 220,
+                    ),
             ),
             SizedBox(height: 10),
             Text(widget.status.posisi,
