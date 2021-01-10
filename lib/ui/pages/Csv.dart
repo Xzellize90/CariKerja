@@ -158,6 +158,11 @@ class _CsvState extends State<Csv> {
                               'image': widget.joblist.image,
                               'id': '',
                             });
+                            FirebaseFirestore.instance
+                            .collection("joblist")
+                            .doc(widget.joblist.id)
+                            .collection('Appliance')
+                            .doc(widget.user.uid).delete();
                             if (productdoc.id != null) {
                               FirebaseFirestore.instance
                                   .collection("accept")
@@ -175,6 +180,7 @@ class _CsvState extends State<Csv> {
                                 fontSize: 16.0);
                             Navigator.of(context).pop(MaterialPageRoute(
                                 builder: (context) => Capplicant()));
+
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
@@ -206,6 +212,11 @@ class _CsvState extends State<Csv> {
                               'posisi': widget.joblist.judul,
                               'id': '',
                             });
+                            FirebaseFirestore.instance
+                            .collection("joblist")
+                            .doc(widget.joblist.id)
+                            .collection('Appliance')
+                            .doc(widget.user.uid).delete();
                             if (productdoc.id != null) {
                               FirebaseFirestore.instance
                                   .collection("accept")
@@ -223,6 +234,7 @@ class _CsvState extends State<Csv> {
                                 fontSize: 16.0);
                             Navigator.of(context).pop(MaterialPageRoute(
                                 builder: (context) => Capplicant()));
+
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
