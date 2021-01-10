@@ -152,7 +152,10 @@ class _ExplorePageState extends State<ExplorePage> {
                   width: double.infinity,
                   height: double.infinity,
                   child: StreamBuilder<QuerySnapshot>(
-                    stream: highlightCollection.snapshots(),
+                    stream: FirebaseFirestore.instance
+                        .collection("joblist")
+                        .where("highlight", isEqualTo: "1")
+                        .snapshots(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasError) {
@@ -169,17 +172,18 @@ class _ExplorePageState extends State<ExplorePage> {
                       return ListView(
                         children:
                             snapshot.data.docs.map((DocumentSnapshot doc) {
-                          return HighlightCard(
-                              highlightA: Highlight(
-                            doc.data()['code'],
-                            doc.data()['deskripsi'],
-                            doc.data()['jobName'],
-                            doc.data()['id'],
-                            doc.data()['kontak'],
-                            doc.data()['gaji'],
-                            doc.data()['penempatan'],
-                            doc.data()['image'],
-                          ));
+                          return JoblistCardA(
+                              joblist: Joblist(
+                                  doc.data()['id'],
+                                  doc.data()['judul'],
+                                  doc.data()['deskripsi'],
+                                  doc.data()['kontak'],
+                                  doc.data()['gaji'],
+                                  doc.data()['penempatan'],
+                                  doc.data()['image'],
+                                  doc.data()['owner'],
+                                  doc.data()['highlight'],
+                                  doc.data()['code']));
                         }).toList(),
                       );
                     },
@@ -229,17 +233,16 @@ class _ExplorePageState extends State<ExplorePage> {
                             snapshot.data.docs.map((DocumentSnapshot doc) {
                           return JoblistCardA(
                               joblist: Joblist(
-                            doc.data()['id'],
-                            doc.data()['judul'],
-                            doc.data()['deskripsi'],
-                            doc.data()['kontak'],
-                            doc.data()['gaji'],
-                            doc.data()['penempatan'],
-                            doc.data()['image'],
-                            doc.data()['owner'],
-                            doc.data()['highlight'],
-                            doc.data()['code']
-                          ));
+                                  doc.data()['id'],
+                                  doc.data()['judul'],
+                                  doc.data()['deskripsi'],
+                                  doc.data()['kontak'],
+                                  doc.data()['gaji'],
+                                  doc.data()['penempatan'],
+                                  doc.data()['image'],
+                                  doc.data()['owner'],
+                                  doc.data()['highlight'],
+                                  doc.data()['code']));
                         }).toList(),
                       );
                     },

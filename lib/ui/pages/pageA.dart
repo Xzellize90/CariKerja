@@ -9,7 +9,7 @@ import 'package:carikerja/models/highlight.dart';
 import 'package:carikerja/services/servicesA.dart';
 import 'package:carikerja/ui/pages/opening_page.dart';
 import 'package:carikerja/widgets/adsCard.dart';
-import 'package:carikerja/widgets/highlightCard.dart';
+//import 'package:carikerja/widgets/highlightCard.dart';
 import 'package:carikerja/widgets/joblistA.dart';
 import 'package:carikerja/widgets/Astatus.dart';
 

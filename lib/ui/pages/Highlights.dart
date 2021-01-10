@@ -13,6 +13,7 @@ class _HighlightsState extends State<Highlights> {
 
   var ctrlId = TextEditingController();
   bool isLoading = false;
+  // ignore: unused_field
   static DocumentReference productdoc;
   @override
   void dispose() {
@@ -183,63 +184,52 @@ class _HighlightsState extends State<Highlights> {
                       style: TextStyle(fontFamily: 'saira', fontSize: 30),
                     ),
                     onPressed: () async {
-                      ctrlId = TextEditingController(
-                                            text: widget.joblist.id);
-                                        if (hlcode == "") {
-                                          Fluttertoast.showToast(
-                                            msg: "Please fill all fields!",
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.BOTTOM,
-                                            backgroundColor: Colors.red,
-                                            textColor: Colors.white,
-                                            fontSize: 16.0,
-                                          );
-                                        } else {
-                                          setState(() {
-                                            isLoading = true;
-                                          });
-                                          Joblist product = Joblist(
-                                            ctrlId.text,
-                                            '',
-                                            '',
-                                            '',
-                                            '',
-                                            '',
-                                            '',
-                                            "",
-                                            '',
-                                            hlcode.text
-                                          );
-                                          bool result =
-                                              await JobServices.highlightJobList(
-                                                  product);
-                                          if (result == true) {
-                                            Fluttertoast.showToast(
-                                              msg: "Update Product Succesful!",
-                                              toastLength: Toast.LENGTH_SHORT,
-                                              gravity: ToastGravity.BOTTOM,
-                                              backgroundColor: Colors.green,
-                                              textColor: Colors.white,
-                                              fontSize: 16.0,
-                                            );
-                                            setState(() {
-                                              isLoading = false;
-                                            });
-                                            Navigator.pop(context);
-                                          } else {
-                                            Fluttertoast.showToast(
-                                              msg: "Failed! Try again",
-                                              toastLength: Toast.LENGTH_SHORT,
-                                              gravity: ToastGravity.BOTTOM,
-                                              backgroundColor: Colors.red,
-                                              textColor: Colors.white,
-                                              fontSize: 16.0,
-                                            );
-                                            setState(() {
-                                              isLoading = false;
-                                            });
-                                          }
-                                        }
+                      ctrlId = TextEditingController(text: widget.joblist.id);
+                      // ignore: unrelated_type_equality_checks
+                      if (hlcode == "") {
+                        Fluttertoast.showToast(
+                          msg: "Please fill all fields!",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0,
+                        );
+                      } else {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        Joblist product = Joblist(ctrlId.text, '', '', '', '',
+                            '', '', "", '', hlcode.text);
+                        bool result =
+                            await JobServices.highlightJobList(product);
+                        if (result == true) {
+                          Fluttertoast.showToast(
+                            msg: "Update Product Succesful!",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                          setState(() {
+                            isLoading = false;
+                          });
+                          Navigator.pop(context);
+                        } else {
+                          Fluttertoast.showToast(
+                            msg: "Failed! Try again",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                          setState(() {
+                            isLoading = false;
+                          });
+                        }
+                      }
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
