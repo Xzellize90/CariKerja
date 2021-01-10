@@ -53,9 +53,9 @@ class _ResultAState extends State<ResultA> {
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Text((() {
               if(widget.status.status == "1"){
-                return "DiTerima";}
+                return "Di Terima";}
 
-              return "DiTolak";
+              return "Di Tolak";
             })(),style: TextStyle(color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Container(
               width: 400,
