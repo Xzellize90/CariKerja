@@ -13,7 +13,6 @@ class _CsvState extends State<Csv> {
   var ctrlId = TextEditingController();
 
   var ctrlJudul = "";
-  // ignore: non_constant_identifier_names
   var appliance_id = "";
 
   static DocumentReference productdoc;

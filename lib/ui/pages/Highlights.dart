@@ -203,7 +203,7 @@ class _HighlightsState extends State<Highlights> {
                           'kontak': widget.joblist.kontak,
                           'penempatan': widget.joblist.penempatan,
                           'image': widget.joblist.image,
-                          'id': widget.joblist.id,
+                          'id': '',
                         });
 
                         Fluttertoast.showToast(
