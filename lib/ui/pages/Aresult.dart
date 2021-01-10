@@ -1,6 +1,8 @@
 part of 'pageA.dart';
 
 class ResultA extends StatefulWidget {
+  final Status status;
+  ResultA({this.status});
   @override
   _ResultAState createState() => _ResultAState();
 }
@@ -43,13 +45,13 @@ class _ResultAState extends State<ResultA> {
               ),
             ),
             SizedBox(height: 10),
-            Text("Sekretaris",
+            Text(widget.status.posisi,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 22)),
-            Text("Gaji : Rp.6.000.000",
+            Text("Gaji : " + widget.status.gaji,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
-            Text("diterima",
+            Text(widget.status.status,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Container(
@@ -59,25 +61,15 @@ class _ResultAState extends State<ResultA> {
               child: ListView(
                 children: [
                   Text(
-                    "         Dicari seorang sekrretaris, 8 jam kerja, mulai jam 8 pagi hingga jam 4 sore, kecuali tanggal merah dan hari sabtu, berlokasi di kantor mall pondok indah Jakarta, Indonesia",
+                    widget.status.deskripsi,
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Persyaratan utama adalah berumur max 25 tahun, lulusan SMA keatas, berdomisili di jakarta dan sekitarnya",
-                    style: TextStyle(fontFamily: 'saira', fontSize: 16),
-                  ),
-                  SizedBox(height: 10),
                   Text(
                     "Contact untuk info lebih lanjut : ",
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                   Text(
-                    "+6285123296352 ",
-                    style: TextStyle(fontFamily: 'saira', fontSize: 16),
-                  ),
-                  Text(
-                    "ZSolution.space@gmail.com ",
+                    widget.status.kontak,
                     style: TextStyle(fontFamily: 'saira', fontSize: 16),
                   ),
                   Text(

@@ -73,7 +73,11 @@ class _NotifPageState extends State<NotifPage> {
                         doc.data()['appliance_id'],
                         doc.data()['id'],
                         doc.data()['posisi'],
+                        doc.data()['posisi'],
                         doc.data()['status'],
+                        doc.data()['posisi'],
+                        doc.data()['posisi'],
+                        doc.data()['posisi'],
                       ));
                     }).toList(),
                   );

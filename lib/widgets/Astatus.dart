@@ -1,5 +1,6 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:carikerja/ui/pages/pageA.dart';
 import 'package:flutter/material.dart';
 //import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/models/modelsA.dart';
@@ -22,12 +23,25 @@ class Astatus extends StatelessWidget {
           color: Colors.yellow,
           child: ListTile(
             contentPadding: EdgeInsets.all(10),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ResultA(
+                        status: status,
+                      )));
+            },
             title: Text(status.posisi ?? '',
                 style: TextStyle(fontSize: 18, fontFamily: 'saira')),
             subtitle: Text(
-              'Diterima',
+              "Anda Diterima",
               style: TextStyle(fontFamily: 'saira', fontSize: 15),
+            ),
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 25,
+              backgroundImage: NetworkImage(
+                status.image ?? '',
+                scale: 40,
+              ),
             ),
           ));
     } else {
@@ -37,12 +51,25 @@ class Astatus extends StatelessWidget {
           color: Colors.yellow,
           child: ListTile(
             contentPadding: EdgeInsets.all(10),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ResultA(
+                        status: status,
+                      )));
+            },
             title: Text(status.posisi ?? '',
                 style: TextStyle(fontSize: 18, fontFamily: 'saira')),
             subtitle: Text(
               'ANDA DITOLAAKHH',
               style: TextStyle(fontFamily: 'saira', fontSize: 15),
+            ),
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 25,
+              backgroundImage: NetworkImage(
+                status.image ?? '',
+                scale: 40,
+              ),
             ),
           ));
     }

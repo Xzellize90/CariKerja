@@ -152,6 +152,10 @@ class _CsvState extends State<Csv> {
                               'appliance_id': appliance_id,
                               'status': ctrlJudul,
                               'posisi': widget.joblist.judul,
+                              'gaji': widget.joblist.gaji,
+                              'deskripsi': widget.joblist.deskripsi,
+                              'kontak': widget.joblist.kontak,
+                              'image': widget.joblist.image,
                               'id': '',
                             });
                             if (productdoc.id != null) {
