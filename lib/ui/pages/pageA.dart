@@ -2,19 +2,16 @@ import 'package:carikerja/models/adslist.dart';
 import 'package:carikerja/models/modelsA.dart';
 import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/models/highlight.dart';
-
 import 'package:carikerja/services/servicesA.dart';
 import 'package:carikerja/ui/pages/opening_page.dart';
 import 'package:carikerja/widgets/adsCard.dart';
 import 'package:carikerja/widgets/joblistA.dart';
 import 'package:carikerja/widgets/Astatus.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';

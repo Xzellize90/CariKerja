@@ -1,7 +1,6 @@
 import 'package:carikerja/models/adslist.dart';
 import 'package:carikerja/ui/pages/pageA.dart';
 import 'package:flutter/material.dart';
-//import 'package:intl/intl.dart';
 
 class AdsCard extends StatelessWidget {
   final AdsList ads;
@@ -9,8 +8,6 @@ class AdsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Card(
       color: Colors.green,
       elevation: 50,
@@ -28,8 +25,7 @@ class AdsCard extends StatelessWidget {
         },
         title: Text(
           ads.name ?? '',
-          style: TextStyle(
-               fontSize: 32),
+          style: TextStyle(fontSize: 32),
         ),
         subtitle: Text(ads.description ?? ''),
         leading: CircleAvatar(
