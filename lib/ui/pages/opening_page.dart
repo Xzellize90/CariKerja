@@ -15,9 +15,9 @@ class _SplashState extends State<Splash> {
     return SplashScreen(
       seconds: 5,
       backgroundColor: Colors.white,
-      image: Image.asset('assets/HollowNaughtyAfricanhornbill-small.gif'),
+      image: Image.asset('assets/Welcome.gif'),
       loaderColor: Colors.white,
-      photoSize: 130.0,
+      photoSize: 180.0,
       navigateAfterSeconds: Opening(),
     );
   }

@@ -45,16 +45,7 @@ class _AdsDetailState extends State<AdsDetail> {
         children: [
           Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end:
-                      Alignment(0.0, 0.0), // 10% of the width, so there are ten blinds.
-                  colors: [
-                    const Color(0xffee0000),
-                    const Color(0xffeeee00)
-                  ], // red to yellow
-                  tileMode: TileMode.repeated, // repeats the gradient over the canvas
-                ),
+            color: Colors.orange
               ),
             padding: EdgeInsets.all(10),
             child: ListView(

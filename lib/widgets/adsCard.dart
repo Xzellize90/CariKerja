@@ -9,9 +9,7 @@ class AdsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Shader linearGradient = LinearGradient(
-      colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
-    ).createShader(new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+    
 
     return Card(
       color: Colors.green,
@@ -31,7 +29,7 @@ class AdsCard extends StatelessWidget {
         title: Text(
           ads.name ?? '',
           style: TextStyle(
-              foreground: new Paint()..shader = linearGradient, fontSize: 32),
+               fontSize: 32),
         ),
         subtitle: Text(ads.description ?? ''),
         leading: CircleAvatar(

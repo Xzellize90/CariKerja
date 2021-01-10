@@ -23,18 +23,7 @@ class _AdsSceneState extends State<AdsScene> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end:
-                      Alignment(0.0, 0.0), // 10% of the width, so there are ten blinds.
-                  colors: [
-                    const Color(0xffee0000),
-                    const Color(0xffeeee00)
-                  ], // red to yellow
-                  tileMode: TileMode.repeated, // repeats the gradient over the canvas
-                ),
-              ),
+            color: Colors.orange,
             child: StreamBuilder<QuerySnapshot>(
                 stream: adsCollection.snapshots(),
                 builder: (BuildContext context,

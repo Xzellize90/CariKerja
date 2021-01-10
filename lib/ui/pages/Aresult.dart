@@ -51,9 +51,12 @@ class _ResultAState extends State<ResultA> {
             Text("Gaji : " + widget.status.gaji,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 17)),
-            Text(widget.status.status,
-                style: TextStyle(
-                    color: Colors.black, fontFamily: 'saira', fontSize: 17)),
+            Text((() {
+              if(widget.status.status == "1"){
+                return "DiTerima";}
+
+              return "DiTolak";
+            })(),style: TextStyle(color: Colors.black, fontFamily: 'saira', fontSize: 17)),
             Container(
               width: 400,
               height: 300,
