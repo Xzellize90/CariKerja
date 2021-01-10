@@ -17,7 +17,7 @@ import 'package:carikerja/widgets/Astatus.dart';
 
 //import 'package:carikerja/widgets/joblistcard.dart';
 
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+//import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
