@@ -10,6 +10,7 @@ class Csv extends StatefulWidget {
 }
 
 class _CsvState extends State<Csv> {
+  bool isLoading = false;
   var ctrlId = TextEditingController();
 
   var ctrlJudul = "";
@@ -139,6 +140,9 @@ class _CsvState extends State<Csv> {
                             style: TextStyle(fontFamily: 'saira', fontSize: 20),
                           ),
                           onPressed: () async {
+                            setState(() {
+                              isLoading = true;
+                            });
                             ctrlId =
                                 TextEditingController(text: widget.user.uid);
                             setState(() {
@@ -150,7 +154,7 @@ class _CsvState extends State<Csv> {
                                 .collection("accept")
                                 .add({
                               'appliance_id': appliance_id,
-                              'status': "1",
+                              'status': ctrlJudul,
                               'posisi': widget.joblist.judul,
                               'gaji': widget.joblist.gaji,
                               'deskripsi': widget.joblist.deskripsi,
@@ -159,10 +163,11 @@ class _CsvState extends State<Csv> {
                               'id': '',
                             });
                             FirebaseFirestore.instance
-                            .collection("joblist")
-                            .doc(widget.joblist.id)
-                            .collection('Appliance')
-                            .doc(widget.user.uid).delete();
+                                .collection("joblist")
+                                .doc(widget.joblist.id)
+                                .collection('Appliance')
+                                .doc(widget.user.uid)
+                                .delete();
                             if (productdoc.id != null) {
                               FirebaseFirestore.instance
                                   .collection("accept")
@@ -171,6 +176,10 @@ class _CsvState extends State<Csv> {
                                 'id': productdoc.id,
                               });
                             }
+
+                            setState(() {
+                              isLoading = false;
+                            });
                             Fluttertoast.showToast(
                                 msg: "Berhasil Diterima",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -180,7 +189,6 @@ class _CsvState extends State<Csv> {
                                 fontSize: 16.0);
                             Navigator.of(context).pop(MaterialPageRoute(
                                 builder: (context) => Capplicant()));
-
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
@@ -197,6 +205,9 @@ class _CsvState extends State<Csv> {
                             style: TextStyle(fontFamily: 'saira', fontSize: 20),
                           ),
                           onPressed: () async {
+                            setState(() {
+                              isLoading = true;
+                            });
                             ctrlId =
                                 TextEditingController(text: widget.user.uid);
                             setState(() {
@@ -208,15 +219,20 @@ class _CsvState extends State<Csv> {
                                 .collection("accept")
                                 .add({
                               'appliance_id': appliance_id,
-                              'status': "0",
+                              'status': ctrlJudul,
                               'posisi': widget.joblist.judul,
+                              'gaji': widget.joblist.gaji,
+                              'deskripsi': widget.joblist.deskripsi,
+                              'kontak': widget.joblist.kontak,
+                              'image': widget.joblist.image,
                               'id': '',
                             });
                             FirebaseFirestore.instance
-                            .collection("joblist")
-                            .doc(widget.joblist.id)
-                            .collection('Appliance')
-                            .doc(widget.user.uid).delete();
+                                .collection("joblist")
+                                .doc(widget.joblist.id)
+                                .collection('Appliance')
+                                .doc(widget.user.uid)
+                                .delete();
                             if (productdoc.id != null) {
                               FirebaseFirestore.instance
                                   .collection("accept")
@@ -225,6 +241,10 @@ class _CsvState extends State<Csv> {
                                 'id': productdoc.id,
                               });
                             }
+
+                            setState(() {
+                              isLoading = false;
+                            });
                             Fluttertoast.showToast(
                                 msg: "Berhasil Ditolak",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -234,7 +254,6 @@ class _CsvState extends State<Csv> {
                                 fontSize: 16.0);
                             Navigator.of(context).pop(MaterialPageRoute(
                                 builder: (context) => Capplicant()));
-
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)),
@@ -247,6 +266,14 @@ class _CsvState extends State<Csv> {
             ],
           ),
         ),
+        isLoading == true
+            ? Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.transparent,
+                child: SpinKitFadingCircle(size: 50, color: Colors.blue),
+              )
+            : Container(),
       ]),
     );
   }
