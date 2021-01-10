@@ -60,7 +60,7 @@ class Astatus extends StatelessWidget {
             title: Text(status.posisi ?? '',
                 style: TextStyle(fontSize: 18, fontFamily: 'saira')),
             subtitle: Text(
-              'ANDA DITOLAAKHH',
+              "Anda Ditolak",
               style: TextStyle(fontFamily: 'saira', fontSize: 15),
             ),
             leading: CircleAvatar(
