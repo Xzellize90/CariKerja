@@ -23,6 +23,8 @@ class _ExplorePageState extends State<ExplorePage> {
 
   bool _folder = true;
 
+  var ctrlSearch = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +54,7 @@ class _ExplorePageState extends State<ExplorePage> {
                             child: Container(
                           padding: EdgeInsets.only(left: 16, top: 13),
                           child: TextField(
+                            controller: ctrlSearch,
                             decoration: InputDecoration(
                                 hintText: 'search',
                                 hintStyle: TextStyle(color: Colors.black),
