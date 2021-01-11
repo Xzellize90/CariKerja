@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   angular: ^6.0.1
+  change_app_package_name: ^0.1.2
   circular_profile_avatar: ^1.0.8
   cloud_firestore: ^0.14.4
   cupertino_icons: ^0.1.3

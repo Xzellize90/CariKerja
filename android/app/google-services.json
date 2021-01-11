@@ -8,9 +8,38 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:570903754701:android:ba3e0c205d94e842613684",
+        "mobilesdk_app_id": "1:570903754701:android:f8fa28997a210ad0613684",
         "android_client_info": {
-          "package_name": "com.example.carikerja"
+          "package_name": "com.atp.carikerja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570903754701-9jkaoobmem1gtcobjta7up5t8gr1ejgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn1mTkHevjD4P_frj-01tppPgDViKRrk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570903754701-9jkaoobmem1gtcobjta7up5t8gr1ejgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570903754701:android:057e6e3339e109db613684",
+        "android_client_info": {
+          "package_name": "com.example.bloc_practice"
         }
       },
       "oauth_client": [
