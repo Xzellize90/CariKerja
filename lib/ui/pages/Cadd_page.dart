@@ -79,7 +79,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                             filled: true,
                             fillColor: Colors.white,
                             labelStyle: TextStyle(fontSize: 15),
-                            hintText: "Tuliskan Judul-mu",
+                            hintText: "Tuliskan Judul iklan pekerjaan anda",
                             hintStyle: TextStyle(fontSize: 10),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20.0))),
@@ -95,7 +95,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                             filled: true,
                             fillColor: Colors.white,
                             labelStyle: TextStyle(fontSize: 15),
-                            hintText: "Tuliskan Deskripsi mu nak",
+                            hintText: "Tuliskan Deskripsi dan kriteria pekerjaan",
                             hintStyle: TextStyle(fontSize: 10),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20.0))),
@@ -122,6 +122,7 @@ class _CompanyAddState extends State<CompanyAdd> {
                           style: TextStyle(
                               color: Colors.white, fontFamily: 'saira')),
                       TextFormField(
+                        keyboardType: TextInputType.number,
                         controller: ctrlGaji,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(5),

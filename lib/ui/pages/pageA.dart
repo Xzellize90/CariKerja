@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 part 'Amainmenu.dart';
 part 'signup_A_page.dart';
 part 'signin_A_page.dart';

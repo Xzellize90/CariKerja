@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carikerja/models/modelsC.dart';
 import 'package:carikerja/ui/pages/pageA.dart';
+import 'package:intl/intl.dart';
 
 class JoblistCardA extends StatelessWidget {
   final Joblist joblist;
@@ -22,10 +23,7 @@ class JoblistCardA extends StatelessWidget {
           },
           title: Text(joblist.judul ?? '',
               style: TextStyle(fontSize: 18, fontFamily: 'saira')),
-          subtitle: Text(
-            joblist.gaji ?? '',
-            style: TextStyle(fontFamily: 'saira', fontSize: 15),
-          ),
+          subtitle: Text(NumberFormat.currency(locale: 'id', decimalDigits: 0, symbol: 'Rp').format(int.parse(joblist.gaji))+" Per Bulan"),
           leading: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 25,
