@@ -84,7 +84,7 @@ class _DetailJobState extends State<DetailJob> {
                                                   fillColor: Colors.white,
                                                   labelStyle:
                                                       TextStyle(fontSize: 15),
-                                                  hintText: "Write your email",
+                                                  hintText: "Judul",
                                                   hintStyle:
                                                       TextStyle(fontSize: 10),
                                                   border: OutlineInputBorder(
@@ -98,6 +98,7 @@ class _DetailJobState extends State<DetailJob> {
                                             width: 170,
                                             height: 30,
                                             child: TextFormField(
+                                              keyboardType: TextInputType.number,
                                               controller: ctrlGaji =
                                                   TextEditingController(
                                                       text:
@@ -109,7 +110,7 @@ class _DetailJobState extends State<DetailJob> {
                                                   fillColor: Colors.white,
                                                   labelStyle:
                                                       TextStyle(fontSize: 15),
-                                                  hintText: "Write your email",
+                                                  hintText: "Gaji per bulan",
                                                   hintStyle:
                                                       TextStyle(fontSize: 10),
                                                   border: OutlineInputBorder(

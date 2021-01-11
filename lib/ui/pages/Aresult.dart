@@ -53,9 +53,7 @@ class _ResultAState extends State<ResultA> {
             Text(widget.status.posisi,
                 style: TextStyle(
                     color: Colors.black, fontFamily: 'saira', fontSize: 22)),
-            Text("Gaji : " + widget.status.gaji,
-                style: TextStyle(
-                    color: Colors.black, fontFamily: 'saira', fontSize: 17)),
+            Text(NumberFormat.currency(locale: 'id', decimalDigits: 0, symbol: 'Rp').format(int.parse(widget.status.gaji))+" Per Bulan"),
             Text((() {
               if (widget.status.status == "1") {
                 return "Di Terima";

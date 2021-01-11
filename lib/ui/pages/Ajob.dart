@@ -99,8 +99,8 @@ class _JobAState extends State<JobA> {
                         color: Colors.black,
                         fontFamily: 'saira',
                         fontSize: 22)),
-                Text(widget.joblist.gaji ?? '',
-                    style: TextStyle(
+                Text(NumberFormat.currency(locale: 'id', decimalDigits: 0, symbol: 'Rp').format(int.parse(widget.joblist.gaji))+" Per Bulan",
+                  style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'saira',
                         fontSize: 17)),
