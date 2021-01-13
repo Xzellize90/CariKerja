@@ -6,6 +6,7 @@ extension FirebaseUserAExtension on User {
           {String namaA = "No Name",
           String lokasi = "No Location",
           String ttlahir = "No Data",
+          String gender = "No Data",
           String agama = "No Data",
           String hobby = "No Data",
           String spndidikan = "No Data",
@@ -26,5 +27,6 @@ extension FirebaseUserAExtension on User {
           this.displayName,
           this.displayName,
           status: status,
+          gender: gender
           );
 }

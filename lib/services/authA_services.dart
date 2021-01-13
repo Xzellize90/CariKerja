@@ -6,13 +6,13 @@ class AuthAServices{
   static Reference ref;
   static UploadTask uploadTask;
 
-  static Future<String> signUp(String email, String password, String namaA, String lokasi, String ttlahir, String agama, String hobby, String spendidikan, String skills, String pbekerja) async{
+  static Future<String> signUp(String email, String password, String namaA, String lokasi, String ttlahir, String gender, String agama, String hobby, String spendidikan, String skills, String pbekerja) async{
     await Firebase.initializeApp();
     String msg = "";
     try{
       UserCredential result = await auth.createUserWithEmailAndPassword(email: email, password: password);
 
-      UserA userA = result.user.convertToUser(namaA: namaA, lokasi: lokasi, ttlahir: ttlahir, agama: agama, hobby: hobby, spndidikan: spendidikan, skills: skills, pbekerja: pbekerja, status: "Applicant");
+      UserA userA = result.user.convertToUser(namaA: namaA, lokasi: lokasi, ttlahir: ttlahir, gender: gender, agama: agama, hobby: hobby, spndidikan: spendidikan, skills: skills, pbekerja: pbekerja, status: "Applicant");
 
       auth.signOut();
       await UserAServices.updateUser(userA);

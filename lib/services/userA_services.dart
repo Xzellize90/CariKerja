@@ -15,6 +15,7 @@ class UserAServices {
       'namaA': userA.namaA,
       'lokasi': userA.lokasi,
       'ttlahir': userA.ttlahir,
+      'gender': userA.gender,
       'agama': userA.agama,
       'hobby': userA.hobby,
       'spendidikan': userA.spendidikan,

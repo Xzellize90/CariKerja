@@ -33,6 +33,7 @@ class _ProfileAppState extends State<ProfileApp> {
       agama,
       pendidikan,
       ttl,
+      gender,
       skill,
       kerja,
       status,
@@ -42,6 +43,7 @@ class _ProfileAppState extends State<ProfileApp> {
   var ctrlName = TextEditingController();
   var ctrlLokasi = TextEditingController();
   var ctrlLahir = TextEditingController();
+  var ctrlGender = TextEditingController();
   var ctrlAgama = TextEditingController();
   var ctrlHobby = TextEditingController();
   var ctrlPend = TextEditingController();
@@ -70,6 +72,7 @@ class _ProfileAppState extends State<ProfileApp> {
       name = event.data()['namaA'];
       lokai = event.data()['lokasi'];
       ttl = event.data()['ttlahir'];
+      gender = event.data()['gender'];
       agama = event.data()['agama'];
       hobby = event.data()['hobby'];
       pendidikan = event.data()['spendidikan'];

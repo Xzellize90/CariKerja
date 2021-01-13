@@ -34,7 +34,7 @@ class _CapplicantState extends State<Capplicant> {
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
-                  return Text("Failed to get products data!");
+                  return Text("Failed to get applicant data!");
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return SpinKitFadingCircle(

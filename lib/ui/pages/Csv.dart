@@ -119,7 +119,7 @@ class _CsvState extends State<Csv> {
               ),
               SizedBox(height: 10),
               Container(
-                child: Text("Skill : " + widget.user.spendidikan,
+                child: Text("Skill : " + widget.user.skills,
                     style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'saira',

@@ -17,6 +17,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
   final ctrlSkills = TextEditingController();
   final ctrlPBekerja = TextEditingController();
   final ctrlStatus = TextEditingController(text : "Applicant");
+  var ctrlGender = "";
   bool isLoading = false;
 
   @override
@@ -46,6 +47,9 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
     ctrlSkills.clear();
     ctrlPBekerja.clear();
   }
+
+  bool _ditekan1 = false;
+  bool _ditekan2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +120,66 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                         )
                       ),
                     ),
+                    SizedBox(height: 10),
+                      Text("Gender",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: 'saira')),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              child: Container(
+                                child: RaisedButton(
+                                  color:
+                                      _ditekan1 ? Colors.orange : Colors.white,
+                                  child: Text(
+                                    "Laki - Laki",
+                                    style: TextStyle(
+                                        fontFamily: 'saira', fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    ctrlGender = "";
+                                    setState(() {
+                                      _ditekan2 = false;
+                                      _ditekan1 = !_ditekan1;
+                                      ctrlGender = "Laki";
+                                    });
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50)),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: Container(
+                                child: RaisedButton(
+                                  color:
+                                      _ditekan2 ? Colors.orange : Colors.white,
+                                  child: Text(
+                                    "Perempuan",
+                                    style: TextStyle(
+                                        fontFamily: 'saira', fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      ctrlGender = "";
+                                      _ditekan1 = false;
+                                      _ditekan2 = !_ditekan2;
+
+                                      ctrlGender = "Perempuan";
+                                    });
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50)),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     SizedBox(height: 25),
                     Align(
                       alignment: Alignment.center,
@@ -154,7 +218,7 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                           setState(() {
                             isLoading = true;
                           });
-                          String result = await AuthAServices.signUp(ctrlEmail.text, ctrlPassword.text, ctrlName.text, ctrlLokasi.text, ctrlttLahir.text, ctrlAgama.text, ctrlHobby.text, ctrlSPenddidikan.text, ctrlSkills.text, ctrlPBekerja.text);
+                          String result = await AuthAServices.signUp(ctrlEmail.text, ctrlPassword.text, ctrlName.text, ctrlLokasi.text, ctrlttLahir.text, ctrlGender, ctrlAgama.text, ctrlHobby.text, ctrlSPenddidikan.text, ctrlSkills.text, ctrlPBekerja.text);
                           if(result=="success"){
                             Fluttertoast.showToast(
                               msg: "Success",

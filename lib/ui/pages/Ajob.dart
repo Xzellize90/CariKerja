@@ -29,6 +29,7 @@ class _JobAState extends State<JobA> {
       kerja,
       pendidikan,
       ttlahir,
+      gender,
       skill,
       images;
 
@@ -40,6 +41,7 @@ class _JobAState extends State<JobA> {
       name = event.data()['namaA'];
       lokai = event.data()['lokasi'];
       ttlahir = event.data()['ttlahir'];
+      gender = event.data()['gender'];
       agama = event.data()['agama'];
       hobby = event.data()['hobby'];
       pendidikan = event.data()['spendidikan'];
@@ -165,7 +167,7 @@ class _JobAState extends State<JobA> {
                                   kerja == null ||
                                   skill == null ||
                                   pendidikan == null ||
-                                  ttlahir == null) {
+                                  ttlahir == null ) {
                                 Fluttertoast.showToast(
                                     msg: "Mohon lengkapi profil",
                                     toastLength: Toast.LENGTH_SHORT,
@@ -193,9 +195,10 @@ class _JobAState extends State<JobA> {
                                   'lokasi': lokai ?? '',
                                   'namaA': name ?? '',
                                   'pbekerja': kerja ?? '',
-                                  'skill': skill ?? '',
+                                  'skills': skill ?? '',
                                   'spendidikan': pendidikan ?? '',
                                   'ttlahir': ttlahir ?? '',
+                                  'gender': gender ?? '',
                                   'uid': "",
                                 });
                                 if (productDoc != null) {
