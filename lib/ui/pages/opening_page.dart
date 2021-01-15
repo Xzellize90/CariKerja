@@ -36,7 +36,7 @@ class _OpeningState extends State<Opening> {
         onWillPop: () {
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) {
-            return Splash();
+            return Opening();
           }));
         },
         child: MaterialApp(
