@@ -17,6 +17,7 @@ class _ProfileAppState extends State<ProfileApp> {
   TextEditingController controllerLahir;
   TextEditingController controllerAgama;
   TextEditingController controllerHobby;
+  TextEditingController controllerGender;
   TextEditingController controllerPend;
   TextEditingController controllerSkill;
   TextEditingController controllerKerja;
@@ -168,7 +169,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         filled: true,
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
-                        hintText: "Nama Lengkap Anda",
+                        hintText: "nama anda",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
@@ -200,6 +201,22 @@ class _ProfileAppState extends State<ProfileApp> {
                         fillColor: Colors.white,
                         labelStyle: TextStyle(fontSize: 15),
                         hintText: "Tempat / Tanggal Lahir",
+                        hintStyle: TextStyle(fontSize: 10),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0))),
+                  ),
+                  SizedBox(height: 10),
+                  Text("Gender",
+                      style:
+                          TextStyle(color: Colors.white, fontFamily: 'saira')),
+                  TextFormField(
+                    controller: ctrlGender = TextEditingController(text: gender),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(5),
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelStyle: TextStyle(fontSize: 15),
+                        hintText: "Perempuan / Laki - Laki",
                         hintStyle: TextStyle(fontSize: 10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0))),
@@ -343,6 +360,7 @@ class _ProfileAppState extends State<ProfileApp> {
                                       ctrlName.text,
                                       ctrlLokasi.text,
                                       ctrlLahir.text,
+                                      ctrlGender.text,
                                       ctrlAgama.text,
                                       ctrlHobby.text,
                                       ctrlPend.text,

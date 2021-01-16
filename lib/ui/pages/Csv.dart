@@ -107,6 +107,14 @@ class _CsvState extends State<Csv> {
                             fontFamily: 'saira',
                             fontSize: 22)),
                   )),
+                  Center(
+                      child: Container(
+                    child: Text(widget.user.gender,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'saira',
+                            fontSize: 22)),
+                  )),
                 ],
               ),
               SizedBox(height: 10),

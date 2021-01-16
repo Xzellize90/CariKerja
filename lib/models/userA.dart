@@ -21,13 +21,14 @@ class UserA extends Equatable {
       this.namaA,
       this.lokasi,
       this.ttlahir,
+      this.gender,
       this.agama,
       this.hobby,
       this.spendidikan,
       this.skills,
       this.pbekerja,
       this.profileApplicant,
-      {this.gender,this.status});
+      {this.status});
 
   @override
   List<Object> get props => [

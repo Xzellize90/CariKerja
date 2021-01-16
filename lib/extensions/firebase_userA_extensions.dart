@@ -26,7 +26,7 @@ extension FirebaseUserAExtension on User {
           this.displayName,
           this.displayName,
           this.displayName,
+          this.displayName,
           status: status,
-          gender: gender
           );
 }

@@ -26,3 +26,4 @@ part 'Aresult.dart';
 part 'Ajob.dart';
 part 'AdsScene.dart';
 part 'AdsDetail.dart';
+part 'Search_Page.dart';

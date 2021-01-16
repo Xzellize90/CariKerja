@@ -165,6 +165,7 @@ class _JobAState extends State<JobA> {
                                   hobby == null ||
                                   lokai == null ||
                                   kerja == null ||
+                                  gender == null ||
                                   skill == null ||
                                   pendidikan == null ||
                                   ttlahir == null ) {

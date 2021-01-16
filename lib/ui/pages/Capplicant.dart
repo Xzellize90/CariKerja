@@ -70,6 +70,7 @@ class _CapplicantState extends State<Capplicant> {
                             doc.data()['namaA'],
                             doc.data()['lokasi'],
                             doc.data()['ttlahir'],
+                            doc.data()['gender'],
                             doc.data()['agama'],
                             doc.data()['hobby'],
                             doc.data()['spendidikan'],

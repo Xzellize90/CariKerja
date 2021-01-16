@@ -18,12 +18,9 @@ class _ExplorePageState extends State<ExplorePage> {
   CollectionReference highlightCollection =
       FirebaseFirestore.instance.collection("highlight");
 
-  CollectionReference adsCollection =
-      FirebaseFirestore.instance.collection("adss");
-
   bool _folder = true;
 
-  var ctrlSearch = TextEditingController();
+  final ctrlSearch = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +75,11 @@ class _ExplorePageState extends State<ExplorePage> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(25)),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context) => SPage(ctrlSearch: ctrlSearch.text))
+                                      );
+                                    },
                                     child: Text("Cari",
                                         style: TextStyle(color: Colors.white)),
                                   )),

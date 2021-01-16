@@ -32,6 +32,7 @@ class UserAServices {
       'namaA': user.namaA,
       'lokasi': user.lokasi,
       'ttlahir': user.ttlahir,
+      'gender': user.gender,
       'agama': user.agama,
       'hobby': user.hobby,
       'spendidikan': user.spendidikan,
