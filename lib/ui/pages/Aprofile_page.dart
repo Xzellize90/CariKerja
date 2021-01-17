@@ -130,7 +130,7 @@ class _ProfileAppState extends State<ProfileApp> {
                             .then((value) {
                           if (value) {
                             Fluttertoast.showToast(
-                              msg: "Update profile picture succesfull!",
+                              msg: "Update profile picture succesful!",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
                               backgroundColor: Colors.green,
@@ -150,7 +150,7 @@ class _ProfileAppState extends State<ProfileApp> {
                         });
                       },
                       icon: Icon(Icons.image_aspect_ratio),
-                      label: Text("Rechoose from gallery")),
+                      label: Text("Re-choose from gallery")),
                   Center(
                     child: Text(email ?? '',
                         style: TextStyle(
@@ -210,7 +210,8 @@ class _ProfileAppState extends State<ProfileApp> {
                       style:
                           TextStyle(color: Colors.white, fontFamily: 'saira')),
                   TextFormField(
-                    controller: ctrlGender = TextEditingController(text: gender),
+                    controller: ctrlGender =
+                        TextEditingController(text: gender),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(5),
                         filled: true,

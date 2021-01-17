@@ -1,5 +1,6 @@
 part of 'pageA.dart';
 
+// ignore: must_be_immutable
 class SPage extends StatefulWidget {
   String ctrlSearch;
   SPage({this.ctrlSearch});
@@ -17,6 +18,7 @@ class _SPageState extends State<SPage> {
   CollectionReference productCollection =
       FirebaseFirestore.instance.collection("joblist");
 
+  // ignore: unused_field
   bool _folder = true;
 
   @override

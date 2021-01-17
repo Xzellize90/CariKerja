@@ -57,7 +57,6 @@ class _CapplicantState extends State<Capplicant> {
                       ),
                     ),
                   );
-                  //^ WINNER MOHON UNTUK INGATKAN DIRI SENDIRI KERJAKAN INI, ATAU SIAPAPUN YG LIAT TULISAN INI INGATKAN GW KERJAKAN INI^
                 } else {
                   return Container(
                     margin: EdgeInsets.only(top: 120),

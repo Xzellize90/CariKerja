@@ -44,9 +44,7 @@ class _AdsDetailState extends State<AdsDetail> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-            color: Colors.orange
-              ),
+            decoration: BoxDecoration(color: Colors.orange),
             padding: EdgeInsets.all(10),
             child: ListView(
               children: [
@@ -60,27 +58,28 @@ class _AdsDetailState extends State<AdsDetail> {
                     )),
                     SizedBox(height: 20),
                     Center(
-                      child: Container(
-                    child: Text(widget.ads.name,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'saira',
-                            fontSize: 24)),
-                  )),
+                        child: Container(
+                      child: Text(widget.ads.name,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'saira',
+                              fontSize: 24)),
+                    )),
                     SizedBox(height: 20),
                     Center(
-                      child: Container(
-                    child: Text(widget.ads.description,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'saira',
-                            fontSize: 18)),
-                  )),
+                        child: Container(
+                      child: Text(widget.ads.description,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'saira',
+                              fontSize: 18)),
+                    )),
                     SizedBox(height: 20),
                     TextFormField(
                       style: TextStyle(color: Colors.white),
                       controller: ctrlPrice = TextEditingController(
-                          text: widget.ads.link, ),
+                        text: widget.ads.link,
+                      ),
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.add_box_rounded),
                         labelText: 'Go to this link for more information',

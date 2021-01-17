@@ -92,7 +92,7 @@ class _HighlightsState extends State<Highlights> {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          "B. Rp. 85.000 untuk 7 hari Highlight",
+                          "B. Rp. 35.000 untuk 7 hari Highlight",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: 'saira',
@@ -101,7 +101,7 @@ class _HighlightsState extends State<Highlights> {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          "C. Rp. 85.000 untuk 30 hari Highlight",
+                          "C. Rp. 55.000 untuk 30 hari Highlight",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: 'saira',
@@ -119,7 +119,16 @@ class _HighlightsState extends State<Highlights> {
                         ),
                         SizedBox(height: 15),
                         Text(
-                          widget.joblist.judul,
+                          "setelah selesai transfer, jangan lupa kirim bukti melalui e-mail kerja kita",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: 'saira',
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: 15),
+                        Text(
+                          " advancetechpioneer@gmail.com",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: 'saira',
@@ -205,7 +214,7 @@ class _HighlightsState extends State<Highlights> {
                             await JobServices.highlightJobList(product);
                         if (result == true) {
                           Fluttertoast.showToast(
-                            msg: "Update Product Succesful!",
+                            msg: "Highlight request has been sent",
                             toastLength: Toast.LENGTH_SHORT,
                             gravity: ToastGravity.BOTTOM,
                             backgroundColor: Colors.green,

@@ -77,8 +77,10 @@ class _ExplorePageState extends State<ExplorePage> {
                                             BorderRadius.circular(25)),
                                     onPressed: () {
                                       Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (context) => SPage(ctrlSearch: ctrlSearch.text))
-                                      );
+                                          MaterialPageRoute(
+                                              builder: (context) => SPage(
+                                                  ctrlSearch:
+                                                      ctrlSearch.text)));
                                     },
                                     child: Text("Cari",
                                         style: TextStyle(color: Colors.white)),

@@ -69,7 +69,7 @@ class _DetailJobState extends State<DetailJob> {
                                         children: [
                                           Container(
                                             width: 170,
-                                            height: 30,
+                                            height: 60,
                                             child: TextFormField(
                                               controller: ctrlName =
                                                   TextEditingController(
@@ -82,8 +82,11 @@ class _DetailJobState extends State<DetailJob> {
                                                           horizontal: 5.0),
                                                   filled: true,
                                                   fillColor: Colors.white,
-                                                  labelStyle:
-                                                      TextStyle(fontSize: 15),
+                                                  labelText: "Judul: ",
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.black,
+                                                      fontFamily: "saira"),
                                                   hintText: "Judul",
                                                   hintStyle:
                                                       TextStyle(fontSize: 10),
@@ -96,9 +99,10 @@ class _DetailJobState extends State<DetailJob> {
                                           SizedBox(height: 10),
                                           Container(
                                             width: 170,
-                                            height: 30,
+                                            height: 60,
                                             child: TextFormField(
-                                              keyboardType: TextInputType.number,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               controller: ctrlGaji =
                                                   TextEditingController(
                                                       text:
@@ -108,8 +112,11 @@ class _DetailJobState extends State<DetailJob> {
                                                       EdgeInsets.all(5),
                                                   filled: true,
                                                   fillColor: Colors.white,
-                                                  labelStyle:
-                                                      TextStyle(fontSize: 15),
+                                                  labelText: "Gaji: ",
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.black,
+                                                      fontFamily: "saira"),
                                                   hintText: "Gaji per bulan",
                                                   hintStyle:
                                                       TextStyle(fontSize: 10),
@@ -159,7 +166,7 @@ class _DetailJobState extends State<DetailJob> {
                               "Penempatan : " + widget.joblist.penempatan,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 15,
+                                  fontSize: 25,
                                   fontFamily: 'saira')),
                         ),
                         SizedBox(height: 10),
@@ -169,7 +176,12 @@ class _DetailJobState extends State<DetailJob> {
                           decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
-                              hintText: "Sejarah Pendidikan",
+                              labelText: "Deskripsi dan Persyaratan: ",
+                              labelStyle: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                  fontFamily: "saira"),
+                              hintText: "Deskripsi dan Persyaratan",
                               hintStyle: TextStyle(fontSize: 18),
                               contentPadding: new EdgeInsets.symmetric(
                                   vertical: 40.0, horizontal: 10.0),
@@ -221,23 +233,22 @@ class _DetailJobState extends State<DetailJob> {
                                             isLoading = true;
                                           });
                                           Joblist product = Joblist(
-                                            ctrlId.text,
-                                            ctrlName.text,
-                                            ctrlDesc.text,
-                                            '',
-                                            ctrlGaji.text,
-                                            '',
-                                            "",
-                                            '',
-                                            '',
-                                            ''
-                                          );
+                                              ctrlId.text,
+                                              ctrlName.text,
+                                              ctrlDesc.text,
+                                              '',
+                                              ctrlGaji.text,
+                                              '',
+                                              "",
+                                              '',
+                                              '',
+                                              '');
                                           bool result =
                                               await JobServices.editJoblist(
                                                   product);
                                           if (result == true) {
                                             Fluttertoast.showToast(
-                                              msg: "Update Product Succesful!",
+                                              msg: "Update Succesful!",
                                               toastLength: Toast.LENGTH_SHORT,
                                               gravity: ToastGravity.BOTTOM,
                                               backgroundColor: Colors.green,
@@ -286,7 +297,7 @@ class _DetailJobState extends State<DetailJob> {
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontFamily: 'saira',
-                                              fontSize: 14)),
+                                              fontSize: 15)),
                                     )),
                                 Container(
                                   alignment: Alignment.centerRight,
@@ -306,7 +317,7 @@ class _DetailJobState extends State<DetailJob> {
                                             return AlertDialog(
                                               title: Text("Confirmation"),
                                               content: Text(
-                                                  "Are you sure want to delete?"),
+                                                  "Are you sure want to delete this?"),
                                               actions: [
                                                 FlatButton(
                                                   child: Text("Yes"),
@@ -332,7 +343,7 @@ class _DetailJobState extends State<DetailJob> {
                                                     if (result == true) {
                                                       Fluttertoast.showToast(
                                                         msg:
-                                                            "Delete product succesful!",
+                                                            "Delete succesful!",
                                                         toastLength:
                                                             Toast.LENGTH_SHORT,
                                                         gravity:
