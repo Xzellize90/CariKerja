@@ -31,10 +31,12 @@ class _DetailJobState extends State<DetailJob> {
       body: Stack(
         children: [
           Container(
+            width: double.infinity,
             child: Container(
               child: ListView(
                 children: <Widget>[
                   Container(
+                    width: double.infinity,
                     margin: EdgeInsets.all(10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -55,6 +57,7 @@ class _DetailJobState extends State<DetailJob> {
                         SizedBox(height: 10),
                         SizedBox(height: 10),
                         Container(
+
                           alignment: Alignment.topCenter,
                           child: Column(
                             children: [
@@ -203,6 +206,7 @@ class _DetailJobState extends State<DetailJob> {
                         Container(
                           child: Container(
                               child: Container(
+                                width: double.infinity,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
