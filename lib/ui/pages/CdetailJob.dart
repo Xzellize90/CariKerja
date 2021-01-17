@@ -57,13 +57,15 @@ class _DetailJobState extends State<DetailJob> {
                         SizedBox(height: 10),
                         SizedBox(height: 10),
                         Container(
-
+                          width: double.infinity,
                           alignment: Alignment.topCenter,
                           child: Column(
                             children: [
                               Container(
                                 child: Container(
+                                  width: double.infinity,
                                     child: Container(
+                                      width: double.infinity,
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
