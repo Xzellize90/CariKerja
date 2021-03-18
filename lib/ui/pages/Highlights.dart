@@ -166,8 +166,7 @@ class _HighlightsState extends State<Highlights> {
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText:
-                            "Masukan Kode Highlight yang anda inginkan : 'A', 'B', 'C'",
+                        hintText: "Masukan Kode Highlight",
                         hintStyle: TextStyle(fontSize: 14),
                         contentPadding: new EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 10.0),
