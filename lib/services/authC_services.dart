@@ -5,6 +5,8 @@ class AuthCServices {
   static Reference ref;
   static UploadTask uploadTask;
 
+  static DocumentReference userDoc;
+
   Future<String> getCurrentUID() async {
     return (auth.currentUser).uid;
   }
@@ -17,7 +19,8 @@ class AuthCServices {
       UserCredential result = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
-      UserC userC = result.user.convertToUser(namaC: namaC, lokasi: lokasi, status: "Company");
+      UserC userC = result.user
+          .convertToUser(namaC: namaC, lokasi: lokasi, status: "Company");
 
       auth.signOut();
       await UserCServices.updateUser(userC);
@@ -29,13 +32,19 @@ class AuthCServices {
     return msg;
   }
 
+  static Future<bool> addUserC(String email, String password) async {
+    await Firebase.initializeApp();
+
+    await FirebaseFirestore.instance.collection("userAuth").doc(email).set(
+      {'email': email, 'password': password, 'role': "1"},
+    );
+    return true;
+  }
+
   static Future<String> signIn(String email, String password) async {
     await Firebase.initializeApp();
 
-    FirebaseFirestore.instance
-      .collection("userA")
-      .where("status",
-          isEqualTo: "Company");
+    print(FirebaseFirestore.instance.collection("userAuth").get());
 
     String msg = "Success";
     try {

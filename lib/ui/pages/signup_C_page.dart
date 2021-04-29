@@ -167,6 +167,10 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                               ctrlPassword.text,
                               ctrlName.text,
                               ctrlLokasi.text);
+                          await AuthCServices.addUserC(
+                            ctrlEmail.text,
+                            ctrlPassword.text,
+                          );
                           if (result == "success") {
                             Fluttertoast.showToast(
                               msg: "Success",
