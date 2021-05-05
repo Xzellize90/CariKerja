@@ -43,24 +43,4 @@ class HighlightsServices {
       kerja = event.data()['pbekerja'];
     });
   }
-
-  static Future updateHighlight(String uid, PickedFile imageFile) async {
-    Joblist joblist;
-    String fileName = uid + ".png";
-
-    ref = FirebaseStorage.instance
-        .ref()
-        .child('assets/notaHighlight')
-        .child(fileName);
-    uploadTask = ref.putFile(File(imageFile.path));
-    await uploadTask.whenComplete(
-        () => ref.getDownloadURL().then((value) => imageUrl = value));
-    return joblistCollection
-        .doc(joblist.id)
-        .update({
-          'imageH': imageUrl,
-        })
-        .then((value) => true)
-        .catchError((onError) => false);
-  }
 }

@@ -158,6 +158,15 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                             textColor: Colors.white,
                             fontSize: 16.0,
                           );
+                        } else if (ctrlPassword.text.characters.length <= 5) {
+                          Fluttertoast.showToast(
+                            msg: "Password minimal 6 character",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
                         } else {
                           setState(() {
                             isLoading = true;

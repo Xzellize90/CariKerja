@@ -64,12 +64,30 @@ class JobServices {
     return true;
   }
 
-  static Future<bool> highlightJobList(Joblist joblist) async {
+  static Future<bool> highlightJobList(
+      Joblist joblist, PickedFile imgFile) async {
     await Firebase.initializeApp();
 
     await joblistCollection.doc(joblist.id).update(
       {'highlight': "1", 'code': joblist.code},
     );
+
+    //upload foto
+    ref = FirebaseStorage.instance
+        .ref()
+        .child("notaHighlight")
+        .child(joblist.id + ".png");
+    uploadTask = ref.putFile(File(imgFile.path));
+
+    await uploadTask.whenComplete(
+      () => ref.getDownloadURL().then(
+            (value) => imgUrl = value,
+          ),
+    );
+
+    joblistCollection.doc(jobDoc.id).update({
+      'imageH': imgUrl,
+    });
 
     return true;
   }

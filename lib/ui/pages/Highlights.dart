@@ -186,59 +186,53 @@ class _HighlightsState extends State<Highlights> {
                         )),
                   ),
                 ),
-                Center(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(images ??
-                                "https://firebasestorage.googleapis.com/v0/b/carikerja-49dd8.appspot.com/o/blankProfile%2Fblank-profile-picture-973460_1280.png?alt=media&token=74f8e1a1-50bc-4158-b3b2-a4d80c9ce2fa"),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.white),
-                    width: 270,
-                    height: 170,
-                  ),
+                SizedBox(
+                  height: 10,
                 ),
-                SizedBox(height: 10),
-                Center(
-                    child: Container(
-                  child: Text("Unggah Bukti Transaksi",
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: 'saira')),
-                )),
-                RaisedButton.icon(
-                    onPressed: () async {
-                      await chooseImage();
-                      await HighlightsServices.updateHighlight(
-                              FirebaseFirestore.instance
-                                  .collection("joblist")
-                                  .id,
-                              imageFile)
-                          .then((value) {
-                        if (value) {
-                          Fluttertoast.showToast(
-                            msg: "Update profile picture succesful!",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.green,
-                            textColor: Colors.white,
-                            fontSize: 16.0,
-                          );
-                        } else {
-                          Fluttertoast.showToast(
-                            msg: "Failed",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.red,
-                            textColor: Colors.white,
-                            fontSize: 16.0,
-                          );
-                        }
-                      });
-                    },
-                    icon: Icon(Icons.image_aspect_ratio),
-                    label: Text("Re-choose from gallery")),
+                imageFile == null
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          RaisedButton(
+                            color: Colors.white,
+                            child: Text(
+                              "Pilih Gambar",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            onPressed: () async {
+                              chooseImage();
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                          ),
+                          Text("File not found"),
+                        ],
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          RaisedButton(
+                            color: Colors.white,
+                            child: Text(
+                              "Pilih Gambar",
+                              style:
+                                  TextStyle(fontFamily: 'saira', fontSize: 15),
+                            ),
+                            onPressed: () async {
+                              chooseImage();
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                          ),
+                          Semantics(
+                            child: Image.file(File(imageFile.path), width: 100),
+                          )
+                        ],
+                      ),
+                SizedBox(
+                  height: 10,
+                ),
                 Flexible(
                   flex: 2,
                   child: RaisedButton(
@@ -255,7 +249,7 @@ class _HighlightsState extends State<Highlights> {
                     onPressed: () async {
                       ctrlId = TextEditingController(text: widget.joblist.id);
                       // ignore: unrelated_type_equality_checks
-                      if (hlcode == "") {
+                      if (hlcode == "" || imageFile == null) {
                         Fluttertoast.showToast(
                           msg: "Please fill all fields!",
                           toastLength: Toast.LENGTH_SHORT,
@@ -270,8 +264,8 @@ class _HighlightsState extends State<Highlights> {
                         });
                         Joblist product = Joblist(ctrlId.text, '', '', '', '',
                             '', '', '', '', hlcode.text, '');
-                        bool result =
-                            await JobServices.highlightJobList(product);
+                        bool result = await JobServices.highlightJobList(
+                            product, imageFile);
                         if (result == true) {
                           Fluttertoast.showToast(
                             msg: "Highlight request has been sent",
@@ -284,6 +278,7 @@ class _HighlightsState extends State<Highlights> {
                           setState(() {
                             isLoading = false;
                           });
+                          Navigator.pop(context);
                           Navigator.pop(context);
                         } else {
                           Fluttertoast.showToast(
