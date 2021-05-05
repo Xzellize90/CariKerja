@@ -186,12 +186,9 @@ class _HighlightsState extends State<Highlights> {
                         )),
                   ),
                 ),
-                SizedBox(
-                  height: 11,
-                ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(images ??

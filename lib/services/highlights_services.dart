@@ -45,19 +45,20 @@ class HighlightsServices {
   }
 
   static Future updateHighlight(String uid, PickedFile imageFile) async {
+    Joblist joblist;
     String fileName = uid + ".png";
 
     ref = FirebaseStorage.instance
         .ref()
-        .child('assets/profileApplicant')
+        .child('assets/notaHighlight')
         .child(fileName);
     uploadTask = ref.putFile(File(imageFile.path));
     await uploadTask.whenComplete(
         () => ref.getDownloadURL().then((value) => imageUrl = value));
     return joblistCollection
-        .doc(uid)
+        .doc(joblist.id)
         .update({
-          'profileApplicant': imageUrl,
+          'imageH': imageUrl,
         })
         .then((value) => true)
         .catchError((onError) => false);
