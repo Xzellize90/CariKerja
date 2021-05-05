@@ -189,7 +189,8 @@ class _ExplorePageState extends State<ExplorePage> {
                                   doc.data()['image'],
                                   doc.data()['owner'],
                                   doc.data()['highlight'],
-                                  doc.data()['code']));
+                                  doc.data()['code'],
+                                  doc.data()['imageH']));
                         }).toList(),
                       );
                     },
@@ -248,7 +249,8 @@ class _ExplorePageState extends State<ExplorePage> {
                                   doc.data()['image'],
                                   doc.data()['owner'],
                                   doc.data()['highlight'],
-                                  doc.data()['code']));
+                                  doc.data()['code'],
+                                  doc.data()['imageH']));
                         }).toList(),
                       );
                     },

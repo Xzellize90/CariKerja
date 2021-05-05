@@ -60,17 +60,17 @@ class _CompanyJobListState extends State<CompanyJobList> {
                     children: snapshot.data.docs.map((DocumentSnapshot doc) {
                       return JoblistCard(
                           joblist: Joblist(
-                        doc.data()['id'],
-                        doc.data()['judul'],
-                        doc.data()['deskripsi'],
-                        doc.data()['kontak'],
-                        doc.data()['gaji'],
-                        doc.data()['penempatan'],
-                        doc.data()['image'],
-                        doc.data()['owner'],
-                        doc.data()['highlight'],
-                        doc.data()['code']
-                      ));
+                              doc.data()['id'],
+                              doc.data()['judul'],
+                              doc.data()['deskripsi'],
+                              doc.data()['kontak'],
+                              doc.data()['gaji'],
+                              doc.data()['penempatan'],
+                              doc.data()['image'],
+                              doc.data()['owner'],
+                              doc.data()['highlight'],
+                              doc.data()['code'],
+                              doc.data()['imageH']));
                     }).toList(),
                   );
                 }

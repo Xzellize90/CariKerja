@@ -10,7 +10,7 @@ class Highlights extends StatefulWidget {
 
 class _HighlightsState extends State<Highlights> {
   var hlcode = TextEditingController();
-
+  String images;
   var ctrlId = TextEditingController();
   bool isLoading = false;
   // ignore: unused_field
@@ -24,6 +24,17 @@ class _HighlightsState extends State<Highlights> {
   void clearForm() {
     hlcode.clear();
     hlcode.dispose();
+  }
+
+  PickedFile imageFile;
+  final ImagePicker imagePicker = ImagePicker();
+
+  Future chooseImage() async {
+    final selectedImage = await imagePicker.getImage(
+        source: ImageSource.gallery, imageQuality: 50);
+    setState(() {
+      imageFile = selectedImage;
+    });
   }
 
   Widget build(BuildContext context) {
@@ -178,6 +189,59 @@ class _HighlightsState extends State<Highlights> {
                 SizedBox(
                   height: 11,
                 ),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 50),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(images ??
+                                "https://firebasestorage.googleapis.com/v0/b/carikerja-49dd8.appspot.com/o/blankProfile%2Fblank-profile-picture-973460_1280.png?alt=media&token=74f8e1a1-50bc-4158-b3b2-a4d80c9ce2fa"),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white),
+                    width: 270,
+                    height: 170,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Center(
+                    child: Container(
+                  child: Text("Unggah Bukti Transaksi",
+                      style:
+                          TextStyle(color: Colors.white, fontFamily: 'saira')),
+                )),
+                RaisedButton.icon(
+                    onPressed: () async {
+                      await chooseImage();
+                      await HighlightsServices.updateHighlight(
+                              FirebaseFirestore.instance
+                                  .collection("joblist")
+                                  .id,
+                              imageFile)
+                          .then((value) {
+                        if (value) {
+                          Fluttertoast.showToast(
+                            msg: "Update profile picture succesful!",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                        } else {
+                          Fluttertoast.showToast(
+                            msg: "Failed",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                        }
+                      });
+                    },
+                    icon: Icon(Icons.image_aspect_ratio),
+                    label: Text("Re-choose from gallery")),
                 Flexible(
                   flex: 2,
                   child: RaisedButton(
@@ -208,7 +272,7 @@ class _HighlightsState extends State<Highlights> {
                           isLoading = true;
                         });
                         Joblist product = Joblist(ctrlId.text, '', '', '', '',
-                            '', '', "", '', hlcode.text);
+                            '', '', '', '', hlcode.text, '');
                         bool result =
                             await JobServices.highlightJobList(product);
                         if (result == true) {

@@ -63,103 +63,108 @@ class _DetailJobState extends State<DetailJob> {
                             children: [
                               Container(
                                 child: Container(
-                                  width: double.infinity,
+                                    width: double.infinity,
                                     child: Container(
                                       width: double.infinity,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Column(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
                                         children: [
-                                          Container(
-                                            width: 170,
-                                            height: 60,
-                                            child: TextFormField(
-                                              controller: ctrlName =
-                                                  TextEditingController(
-                                                      text:
-                                                          widget.joblist.judul),
-                                              decoration: InputDecoration(
-                                                  contentPadding:
-                                                      new EdgeInsets.symmetric(
-                                                          vertical: 5,
-                                                          horizontal: 5.0),
-                                                  filled: true,
-                                                  fillColor: Colors.white,
-                                                  labelText: "Judul: ",
-                                                  labelStyle: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.black,
-                                                      fontFamily: "saira"),
-                                                  hintText: "Judul",
-                                                  hintStyle:
-                                                      TextStyle(fontSize: 10),
-                                                  border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20.0))),
-                                            ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                width: 170,
+                                                height: 60,
+                                                child: TextFormField(
+                                                  controller: ctrlName =
+                                                      TextEditingController(
+                                                          text: widget
+                                                              .joblist.judul),
+                                                  decoration: InputDecoration(
+                                                      contentPadding:
+                                                          new EdgeInsets
+                                                                  .symmetric(
+                                                              vertical: 5,
+                                                              horizontal: 5.0),
+                                                      filled: true,
+                                                      fillColor: Colors.white,
+                                                      labelText: "Judul: ",
+                                                      labelStyle: TextStyle(
+                                                          fontSize: 20,
+                                                          color: Colors.black,
+                                                          fontFamily: "saira"),
+                                                      hintText: "Judul",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 10),
+                                                      border: OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0))),
+                                                ),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Container(
+                                                width: 170,
+                                                height: 60,
+                                                child: TextFormField(
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  controller: ctrlGaji =
+                                                      TextEditingController(
+                                                          text: widget
+                                                              .joblist.gaji),
+                                                  decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.all(5),
+                                                      filled: true,
+                                                      fillColor: Colors.white,
+                                                      labelText: "Gaji: ",
+                                                      labelStyle: TextStyle(
+                                                          fontSize: 20,
+                                                          color: Colors.black,
+                                                          fontFamily: "saira"),
+                                                      hintText:
+                                                          "Gaji per bulan",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 10),
+                                                      border: OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0))),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(height: 10),
                                           Container(
-                                            width: 170,
-                                            height: 60,
-                                            child: TextFormField(
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              controller: ctrlGaji =
-                                                  TextEditingController(
-                                                      text:
-                                                          widget.joblist.gaji),
-                                              decoration: InputDecoration(
-                                                  contentPadding:
-                                                      EdgeInsets.all(5),
-                                                  filled: true,
-                                                  fillColor: Colors.white,
-                                                  labelText: "Gaji: ",
-                                                  labelStyle: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.black,
-                                                      fontFamily: "saira"),
-                                                  hintText: "Gaji per bulan",
-                                                  hintStyle:
-                                                      TextStyle(fontSize: 10),
-                                                  border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20.0))),
+                                            alignment: Alignment.centerRight,
+                                            child: RaisedButton(
+                                              color: Colors.white,
+                                              child: Text(
+                                                "Applicant",
+                                                style: TextStyle(
+                                                    fontFamily: 'saira',
+                                                    fontSize: 35),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Capplicant(
+                                                              joblist: widget
+                                                                  .joblist,
+                                                            )));
+                                              },
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50)),
                                             ),
-                                          ),
+                                          )
                                         ],
                                       ),
-                                      Container(
-                                        alignment: Alignment.centerRight,
-                                        child: RaisedButton(
-                                          color: Colors.white,
-                                          child: Text(
-                                            "Applicant",
-                                            style: TextStyle(
-                                                fontFamily: 'saira',
-                                                fontSize: 35),
-                                          ),
-                                          onPressed: () {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Capplicant(
-                                                          joblist:
-                                                              widget.joblist,
-                                                        )));
-                                          },
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )),
+                                    )),
                               ),
                             ],
                           ),
@@ -208,7 +213,7 @@ class _DetailJobState extends State<DetailJob> {
                         Container(
                           child: Container(
                               child: Container(
-                                width: double.infinity,
+                            width: double.infinity,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -248,7 +253,8 @@ class _DetailJobState extends State<DetailJob> {
                                               "",
                                               '',
                                               '',
-                                              '');
+                                              '',
+                                              "");
                                           bool result =
                                               await JobServices.editJoblist(
                                                   product);
@@ -333,6 +339,7 @@ class _DetailJobState extends State<DetailJob> {
                                                     });
                                                     Joblist joblist = Joblist(
                                                         ctrlId.text,
+                                                        "",
                                                         "",
                                                         "",
                                                         "",

@@ -7,6 +7,7 @@ class HighlightsServices {
   static CollectionReference joblistCollection =
       FirebaseFirestore.instance.collection("joblist");
   static DocumentReference jobDoc;
+  static String imageUrl;
 
   final uid = FirebaseAuth.instance.currentUser.uid;
   final db = FirebaseFirestore.instance;
@@ -41,5 +42,24 @@ class HighlightsServices {
       skill = event.data()['skills'];
       kerja = event.data()['pbekerja'];
     });
+  }
+
+  static Future updateHighlight(String uid, PickedFile imageFile) async {
+    String fileName = uid + ".png";
+
+    ref = FirebaseStorage.instance
+        .ref()
+        .child('assets/profileApplicant')
+        .child(fileName);
+    uploadTask = ref.putFile(File(imageFile.path));
+    await uploadTask.whenComplete(
+        () => ref.getDownloadURL().then((value) => imageUrl = value));
+    return joblistCollection
+        .doc(uid)
+        .update({
+          'profileApplicant': imageUrl,
+        })
+        .then((value) => true)
+        .catchError((onError) => false);
   }
 }

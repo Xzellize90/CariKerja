@@ -75,7 +75,8 @@ class _SPageState extends State<SPage> {
                                   doc.data()['image'],
                                   doc.data()['owner'],
                                   doc.data()['highlight'],
-                                  doc.data()['code']));
+                                  doc.data()['code'],
+                                  doc.data()['imageH']));
                         }).toList(),
                       );
                     },
