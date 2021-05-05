@@ -88,7 +88,8 @@ class JobServices {
         'image': "",
         'owner': FirebaseAuth.instance.currentUser.uid,
         'highlight': "0",
-        'code': ""
+        'code': "",
+        'imageH': "",
       },
     );
 
