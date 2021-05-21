@@ -14,7 +14,7 @@ class UserCServices {
       'email': userC.email,
       'namaC': userC.namaC,
       'lokasi': userC.lokasi,
-      'status': userC.status,
+      'role': userC.role,
       'profileCompany': userC.profileCompany ?? ""
     });
   }
@@ -35,5 +35,13 @@ class UserCServices {
         })
         .then((value) => true)
         .catchError((onError) => false);
+  }
+
+  static Future<DocumentSnapshot> getUser(String uid) async{
+    await Firebase.initializeApp();
+    DocumentSnapshot snapshot;
+    var data = await UserCServices.userCollection.doc(uid).get();
+    snapshot = data;
+    return snapshot;
   }
 }

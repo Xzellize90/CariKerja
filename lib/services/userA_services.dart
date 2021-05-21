@@ -22,7 +22,7 @@ class UserAServices {
       'skills': userA.skills,
       'pbekerja': userA.pbekerja,
       'profileApplicant': userA.profileApplicant,
-      'status' : userA.status,
+      'role' : userA.role,
     });
   }
 
@@ -60,5 +60,13 @@ class UserAServices {
         })
         .then((value) => true)
         .catchError((onError) => false);
+  }
+
+  static Future<DocumentSnapshot> getUser(String uid) async{
+    await Firebase.initializeApp();
+    DocumentSnapshot snapshot;
+    var data = await UserAServices.userAollection.doc(uid).get();
+    snapshot = data;
+    return snapshot;
   }
 }

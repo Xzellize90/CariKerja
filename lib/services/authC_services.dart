@@ -20,7 +20,7 @@ class AuthCServices {
           email: email, password: password);
 
       UserC userC = result.user
-          .convertToUser(namaC: namaC, lokasi: lokasi, status: "Company");
+          .convertToUser(namaC: namaC, lokasi: lokasi, role: "2");
 
       auth.signOut();
       await UserCServices.updateUser(userC);
@@ -35,26 +35,33 @@ class AuthCServices {
   static Future<bool> addUserC(String email, String password) async {
     await Firebase.initializeApp();
 
-    await FirebaseFirestore.instance.collection("userAuth").doc(email).set(
-      {'email': email, 'password': password, 'role': "1"},
+    userDoc = await FirebaseFirestore.instance.collection("userAuth").add(
+      {'uid': "", 'email': email, 'password': password, 'role': "2"},
     );
-    return true;
+    if (userDoc.id != null) {
+      FirebaseFirestore.instance.collection("userAuth").doc(userDoc.id).update({
+        'uid': userDoc.id,
+      });
+
+      return true;
+    } else {
+      return false;
+    }
   }
 
   static Future<String> signIn(String email, String password) async {
     await Firebase.initializeApp();
 
-    print(FirebaseFirestore.instance.collection("userAuth").get());
-
-    String msg = "Success";
+    String msg = "";
+    String uid;
     try {
-      await auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .whenComplete(
-            () => msg = "success",
-          );
+      UserCredential result = await auth.signInWithEmailAndPassword(
+        email: email, password: password);
+      uid = result.user.uid;
+      DocumentSnapshot snapshot = await UserCServices.getUser(uid);
+      msg = snapshot.data()['role'].toString();
     } catch (e) {
-      msg = e.toString();
+      msg = "no";
     }
     return msg;
   }

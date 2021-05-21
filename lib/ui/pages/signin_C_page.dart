@@ -116,23 +116,7 @@ class _SignInCompanyState extends State<SignInCompany> {
                                 });
                                 String result = await AuthCServices.signIn(
                                     ctrlEmailA.text, ctrlPasswordA.text);
-                                if (result == "success") {
-                                  Fluttertoast.showToast(
-                                    msg: "Success",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.BOTTOM,
-                                    backgroundColor: Colors.green,
-                                    textColor: Colors.white,
-                                    fontSize: 16.0,
-                                  );
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                  Navigator.pushReplacement(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return CompanyMain();
-                                  }));
-                                } else {
+                                if (result == "no"){
                                   Fluttertoast.showToast(
                                     msg: result,
                                     toastLength: Toast.LENGTH_SHORT,
@@ -144,7 +128,30 @@ class _SignInCompanyState extends State<SignInCompany> {
                                   setState(() {
                                     isLoading = false;
                                   });
+                                }else {
+                                  if(result == "2"){
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                    Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return CompanyMain();
+                                  }));
+                                  }else{
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                    Fluttertoast.showToast(
+                                    msg: result,
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0,
+                                  );
+                                  }
                                 }
+
                               }
                             },
                           ),

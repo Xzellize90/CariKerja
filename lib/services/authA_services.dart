@@ -34,7 +34,7 @@ class AuthAServices {
           spndidikan: spendidikan,
           skills: skills,
           pbekerja: pbekerja,
-          status: "Applicant");
+          role: "1");
 
       auth.signOut();
       await UserAServices.updateUser(userA);
@@ -50,12 +50,12 @@ class AuthAServices {
     await Firebase.initializeApp();
 
     userDoc = await FirebaseFirestore.instance.collection("userAuth").add(
-      {'id': "", 'email': email, 'password': password, 'role': "2"},
+      {'uid': "", 'email': email, 'password': password, 'role': "1"},
     );
 
     if (userDoc.id != null) {
       FirebaseFirestore.instance.collection("userAuth").doc(userDoc.id).update({
-        'id': userDoc.id,
+        'uid': userDoc.id,
       });
 
       return true;
@@ -67,19 +67,16 @@ class AuthAServices {
   static Future<String> signIn(String email, String password) async {
     await Firebase.initializeApp();
 
-    await FirebaseFirestore.instance
-        .collection("userAuth")
-        .where("role", isEqualTo: "2");
-
-    String msg = "Success";
+    String msg = "";
+    String uid;
     try {
-      await auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .whenComplete(
-            () => msg = "success",
-          );
+      UserCredential result = await auth.signInWithEmailAndPassword(
+        email: email, password: password);
+      uid = result.user.uid;
+      DocumentSnapshot snapshot = await UserAServices.getUser(uid);
+      msg = snapshot.data()['role'].toString();
     } catch (e) {
-      msg = e.toString();
+      msg = "no";
     }
     return msg;
   }
