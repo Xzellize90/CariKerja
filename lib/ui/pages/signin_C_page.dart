@@ -145,7 +145,7 @@ class _SignInCompanyState extends State<SignInCompany> {
                                     msg: "Welcome",
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.BOTTOM,
-                                    backgroundColor: Colors.red,
+                                    backgroundColor: Colors.green,
                                     textColor: Colors.white,
                                     fontSize: 16.0,
                                   );
