@@ -61,7 +61,7 @@ class AuthCServices {
       DocumentSnapshot snapshot = await UserCServices.getUser(uid);
       msg = snapshot.data()['role'].toString();
     } catch (e) {
-      msg = "no";
+      msg = "No Permission";
     }
     return msg;
   }

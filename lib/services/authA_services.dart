@@ -76,7 +76,7 @@ class AuthAServices {
       DocumentSnapshot snapshot = await UserAServices.getUser(uid);
       msg = snapshot.data()['role'].toString();
     } catch (e) {
-      msg = "no";
+      msg = "No Permission";
     }
     return msg;
   }

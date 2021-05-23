@@ -140,19 +140,19 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                       MaterialPageRoute(builder: (context) {
                                     return MainMenu();
                                   }));
-                                  }else{
+                                  }
                                     setState(() {
                                       isLoading = false;
                                     });
                                     Fluttertoast.showToast(
-                                    msg: result,
+                                    msg: "Welcome",
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.BOTTOM,
-                                    backgroundColor: Colors.red,
+                                    backgroundColor: Colors.green,
                                     textColor: Colors.white,
                                     fontSize: 16.0,
                                   );
-                                  }
+                                  
                                 }
 
                               }

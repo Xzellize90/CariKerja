@@ -137,19 +137,18 @@ class _SignInCompanyState extends State<SignInCompany> {
                                       MaterialPageRoute(builder: (context) {
                                     return CompanyMain();
                                   }));
-                                  }else{
+                                  }
                                     setState(() {
                                       isLoading = false;
                                     });
                                     Fluttertoast.showToast(
-                                    msg: result,
+                                    msg: "Welcome",
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.BOTTOM,
                                     backgroundColor: Colors.red,
                                     textColor: Colors.white,
                                     fontSize: 16.0,
                                   );
-                                  }
                                 }
 
                               }
