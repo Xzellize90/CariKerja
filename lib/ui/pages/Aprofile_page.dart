@@ -367,7 +367,7 @@ class _ProfileAppState extends State<ProfileApp> {
                                       ctrlPend.text,
                                       ctrlSkill.text,
                                       ctrlKerja.text,
-                                      "");
+                                      images);
                                   bool result =
                                       await UserAServices.editApplicant(user);
                                   if (result == true) {

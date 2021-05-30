@@ -8,7 +8,7 @@ class UserAServices {
   static UploadTask uploadTask;
   static String imageUrl;
 
-  static Future<void> updateUser(UserA userA) async {
+  static Future<bool> updateUser(UserA userA) async {
     userAollection.doc(userA.uid).set({
       'uid': userA.uid,
       'email': userA.email,
@@ -21,9 +21,10 @@ class UserAServices {
       'spendidikan': userA.spendidikan,
       'skills': userA.skills,
       'pbekerja': userA.pbekerja,
-      'profileApplicant': userA.profileApplicant,
-      'role' : userA.role,
+      //'profileApplicant': userA.profileApplicant,
+      //'role': userA.role,
     });
+    return true;
   }
 
   static Future<bool> editApplicant(UserA user) async {
@@ -62,7 +63,7 @@ class UserAServices {
         .catchError((onError) => false);
   }
 
-  static Future<DocumentSnapshot> getUser(String uid) async{
+  static Future<DocumentSnapshot> getUser(String uid) async {
     await Firebase.initializeApp();
     DocumentSnapshot snapshot;
     var data = await UserAServices.userAollection.doc(uid).get();

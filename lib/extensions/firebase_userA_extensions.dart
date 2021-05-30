@@ -15,18 +15,18 @@ extension FirebaseUserAExtension on User {
           String role = "1",
           String images = "No image"}) =>
       UserA(
-          this.uid,
-          this.email,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          this.displayName,
-          role: role,
-          );
+        this.uid,
+        this.email,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        this.displayName,
+        role: role,
+      );
 }
