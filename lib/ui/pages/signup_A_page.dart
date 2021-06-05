@@ -20,6 +20,11 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
   final ctrlStatus = TextEditingController(text: "Applicant");
   bool isLoading = false;
 
+  var key = "null";
+  String encrypt, decrypt;
+  var password = "null";
+  PlatformStringCryptor cryptor;
+
   @override
   void dispose() {
     ctrlName.dispose();
@@ -134,6 +139,8 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
                       textColor: Colors.black,
                       color: Colors.white,
                       onPressed: () async {
+                        encrypts();
+
                         if (ctrlEmail.text == "" || ctrlPassword.text == "") {
                           Fluttertoast.showToast(
                             msg: "Please fill all fields !",
@@ -223,5 +230,16 @@ class _SignUpApplicantState extends State<SignUpApplicant> {
         ]),
       ),
     );
+  }
+
+  void encrypts() async {
+    cryptor = PlatformStringCryptor();
+    final salt = await cryptor.generateSalt();
+
+    password = ctrlPassword.text;
+    key = await cryptor.generateKeyFromPassword(password, salt);
+
+    encrypt = await cryptor.encrypt(password, key);
+    print(encrypt);
   }
 }

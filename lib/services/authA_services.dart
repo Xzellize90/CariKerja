@@ -71,7 +71,7 @@ class AuthAServices {
     String uid;
     try {
       UserCredential result = await auth.signInWithEmailAndPassword(
-        email: email, password: password);
+          email: email, password: password);
       uid = result.user.uid;
       DocumentSnapshot snapshot = await UserAServices.getUser(uid);
       msg = snapshot.data()['role'].toString();

@@ -10,6 +10,7 @@ class SignInApplicant extends StatefulWidget {
 class _SignInApplicantState extends State<SignInApplicant> {
   final ctrlEmailA = TextEditingController();
   final ctrlPasswordA = TextEditingController();
+
   bool isLoading = false;
   bool isworking = false;
 
@@ -119,7 +120,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                 });
                                 String result = await AuthAServices.signIn(
                                     ctrlEmailA.text, ctrlPasswordA.text);
-                                if (result == "no"){
+                                if (result == "no") {
                                   Fluttertoast.showToast(
                                     msg: result,
                                     toastLength: Toast.LENGTH_SHORT,
@@ -131,20 +132,20 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                   setState(() {
                                     isLoading = false;
                                   });
-                                }else {
-                                  if(result == "1"){
+                                } else {
+                                  if (result == "1") {
                                     setState(() {
                                       isLoading = false;
                                     });
                                     Navigator.pushReplacement(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return MainMenu();
-                                  }));
+                                        MaterialPageRoute(builder: (context) {
+                                      return MainMenu();
+                                    }));
                                   }
-                                    setState(() {
-                                      isLoading = false;
-                                    });
-                                    Fluttertoast.showToast(
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  Fluttertoast.showToast(
                                     msg: "Welcome",
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.BOTTOM,
@@ -152,9 +153,7 @@ class _SignInApplicantState extends State<SignInApplicant> {
                                     textColor: Colors.white,
                                     fontSize: 16.0,
                                   );
-                                  
                                 }
-
                               }
                             },
                           ),
