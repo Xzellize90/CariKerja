@@ -130,25 +130,7 @@ class _HighlightsState extends State<Highlights> {
                         ),
                         SizedBox(height: 15),
                         Text(
-                          "setelah selesai transfer, jangan lupa kirim bukti melalui e-mail kerja kita",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: 'saira',
-                            fontSize: 16,
-                          ),
-                        ),
-                        SizedBox(height: 15),
-                        Text(
-                          " advancetechpioneer@gmail.com",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: 'saira',
-                            fontSize: 16,
-                          ),
-                        ),
-                        SizedBox(height: 15),
-                        Text(
-                          "Produk anda akan ter-highlight dalam durasi 2 jam setelah email bukti transfer dikirimkan (jam kerja sampai 16:00 WIB), segala highlight yang lewat dari jam 16:00 akan mulai di proses di keesokan hari.",
+                          "setelah selesai transfer, jangan lupa untuk mengupload bukti pembayaran",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: 'saira',
@@ -161,30 +143,6 @@ class _HighlightsState extends State<Highlights> {
                 ),
                 SizedBox(
                   height: 10,
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Text(
-                    "Kode Highlight",
-                    style: TextStyle(
-                        fontFamily: 'saira', fontSize: 16, color: Colors.white),
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: TextFormField(
-                    controller: hlcode,
-                    decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Masukan Kode Highlight",
-                        hintStyle: TextStyle(fontSize: 14),
-                        contentPadding: new EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        )),
-                  ),
                 ),
                 SizedBox(
                   height: 10,
